@@ -34,3 +34,29 @@ export const getArticleWithContent = (id: number) => {
     });
 }
 
+
+export const addReadCount = async (id: number) => {
+    try {
+        const article = await prisma.article.findUnique({
+            where: {
+                id: id
+            }
+        });
+        if (article) {
+            const updatedArticle = await prisma.article.update({
+                where: {
+                    id: id
+                },
+                data: {
+                    viewCount: article.viewCount + 1 // 增加阅读计数
+                }
+            });
+            return 'ok';
+        } else {
+            throw new Error('文章不存在');
+        }
+    } catch (error) {
+        throw error;
+    }
+}
+

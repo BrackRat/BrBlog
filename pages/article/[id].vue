@@ -21,15 +21,29 @@ async function fetchArticle() {
 }
 
 fetchArticle()
+
+async function addViewCount() {
+  const response = await $fetch(`/api/article/read/${id}`, {
+    method: 'GET',
+  })
+  console.log(response)
+}
+
+onMounted(() => {
+  setTimeout((() => {
+    console.log('addViewCount')
+    addViewCount()
+  }),3000)
+})
 </script>
 
 <template>
   <div class="flex flex-col p-4 justify-center items-center">
     <div v-if="!loading && article">
       <div class="max-w-[1000px]">
-        <div class="mb-4 h-96 shadow overflow-hidden rounded-lg">
+        <div class="mb-4 h-64 l shadow overflow-hidden rounded-lg">
           <nuxt-img
-                    :src="article.cover">
+              class="object-cover h-full w-full" :src="article.cover">
           </nuxt-img>
         </div>
 
@@ -52,7 +66,7 @@ fetchArticle()
           <div class="flex justify-end col-span-3 align-middle">
             <div class="flex space-x-1 items-center">
               <Icon class="align-middle" name="mingcute:eye-2-line" />
-              <span class="align-middle">42</span>
+              <span class="align-middle">{{ article.viewCount }}</span>
             </div>
           </div>
 
@@ -61,8 +75,8 @@ fetchArticle()
         <div class="mb-4 h-0.5 bg-gray-200 rounded-full">
         </div>
 
-        <div class="max-w-full">
-          test
+        <div >
+          <MDRender class="max-w-full" :content="article.content" />
 <!--          {{ article.content }}-->
         </div>
       </div>

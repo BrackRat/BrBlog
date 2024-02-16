@@ -16,8 +16,8 @@ const item:Article = props.article
 <template>
   <div @click="$router.push('/article/' + item.id)" class="shadow-lg hover:cursor-pointer w-auto md:max-w-80 lg:max-w-80 transition-all flex flex-col m-2 hover:shadow-2xl hover:-translate-y-1 duration-300">
 
-    <div class="h-64 overflow-hidden">
-      <nuxt-img :src="item.cover" class="bg-blue-400 rounded-t">
+    <div class="h-64">
+      <nuxt-img class="overflow-hidden h-full w-full object-cover bg-slate-400 rounded-t" :src="item.cover" >
       </nuxt-img>
     </div>
 
