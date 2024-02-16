@@ -25,7 +25,7 @@ const switchRoutes = computed(() => {
 </script>
 
 <template>
-  <div class="flex p-4 justify-center flex-row space-x-4 bg-slate-100">
+  <div class="flex p-4 justify-center flex-row space-x-4">
     <div v-for="(item, index) in switchRoutes" :key="index">
       <div :class="item.route === route.path ? 'btn-nav-active' : 'btn-nav'">
         <NuxtLink :to="item.route">{{ item.title }}</NuxtLink>
