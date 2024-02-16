@@ -4,7 +4,7 @@
 
 <template>
  <div class="flex flex-col px-8 mt-16 pb-4 ">
-   <div class="bg-gray-400  w-full h-[0.4px] px-8">
+   <div class="bg-gray-400  w-full h-[0.5px] px-8">
    </div>
     <div class="flex space-x-4 mt-4 px-4">
       <div class="text-gray-400 text-sm ">
