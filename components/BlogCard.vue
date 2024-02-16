@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type {Article} from "~/server/types/article";
+import {formatUnixTimestamp, formatUnixTimestampEasy} from "~/composables/formatTime";
 
 const props = defineProps({
   article: {
@@ -10,46 +11,44 @@ const props = defineProps({
 
 const item:Article = props.article
 
-// function getArticle() {
-//   const response = useFetch("/api/article/"+props.article.id, {
-//     method: 'GET',
-//   })
-//   if(response.data.value?.length && response.data.value?.length > 0){
-//     articles.value = response.data.value
-//   }
-// }
 </script>
 
 <template>
-  <div class="hover:cursor-pointer w-auto md:max-w-80 lg:max-w-80 transition-all flex flex-col m-2 hover:shadow-2xl hover:-translate-y-1 duration-300">
+  <div @click="$router.push('/article/' + item.id)" class="shadow-lg hover:cursor-pointer w-auto md:max-w-80 lg:max-w-80 transition-all flex flex-col m-2 hover:shadow-2xl hover:-translate-y-1 duration-300">
 
     <div class="h-64 overflow-hidden">
-      <nuxt-img src="https://images.pexels.com/photos/16518164/pexels-photo-16518164.jpeg?auto=compress&cs=tinysrgb" class="bg-blue-400 rounded-t">
-        $COVER
-        <!--      {{ item.cover }}-->
+      <nuxt-img :src="item.cover" class="bg-blue-400 rounded-t">
       </nuxt-img>
     </div>
 
     <div class="bg-white rounded-b p-4">
-      <div class="flex flex-row space-x-2 text-sm font-bold text-gray-400">
-        <div>
-          TAG
-          <!--        {{item.tag}}-->
-        </div>
-        <div>
-          TIME
-          <!--        {{ item.publishTime }}-->
-        </div>
+
+      <div class="text-lg font-black mb-1">
+              {{item.title}}
+      </div>
+      <div class="mb-4 text-ellipsis overflow-hidden h-12 text-gray-600">
+        {{ item.desc }}
       </div>
 
-      <div class="text-lg font-black mt-2">
-        标题标题标题标题标题标题标题标题
-        <!--      {{item.title}}-->
+      <div class="grid grid-cols-5 space-x-2 text-sm  text-gray-300">
+        <div>
+                  {{item.tag}}
+        </div>
+        <div>
+          {{ formatUnixTimestampEasy(item.publishTime) }}
+        </div>
+        <div class="flex justify-end col-span-3 align-middle">
+          <div class="flex space-x-1 items-center">
+            <Icon class="align-middle" name="mingcute:eye-2-line" />
+            <span class="align-middle">{{ item.viewCount }}</span>
+          </div>
+        </div>
+
       </div>
-      <div class="text-ellipsis mt-2 overflow-hidden h-12 text-gray-600">
-        简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-      </div>
+
     </div>
+
+
 
   </div>
 </template>

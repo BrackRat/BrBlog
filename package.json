@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --port 5137",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.11.4",
+    "nuxt-icon": "^0.6.8",
     "prisma": "^5.9.1"
   }
 }

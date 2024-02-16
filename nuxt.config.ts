@@ -5,8 +5,13 @@ export default defineNuxtConfig({
         '@nuxtjs/tailwindcss',
         '@nuxt/content',
         '@pinia/nuxt',
-        '@nuxt/image'
+        '@nuxt/image',
+        '@formkit/auto-animate/nuxt',
+        'nuxt-icon'
     ],
+    app: {
+        pageTransition: {name: 'page', mode: 'out-in'},
+    },
 
     devtools: {enabled: true}
 })
