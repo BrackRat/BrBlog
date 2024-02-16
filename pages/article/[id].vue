@@ -23,15 +23,13 @@ async function fetchArticle() {
 fetchArticle()
 
 async function addViewCount() {
-  const response = await $fetch(`/api/article/read/${id}`, {
+  await $fetch(`/api/article/read/${id}`, {
     method: 'GET',
   })
-  console.log(response)
 }
 
 onMounted(() => {
   setTimeout((() => {
-    console.log('addViewCount')
     addViewCount()
   }),3000)
 })
