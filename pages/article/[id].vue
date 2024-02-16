@@ -75,7 +75,10 @@ onMounted(() => {
 
         <div >
           <MDRender class="max-w-full" :content="article.content" />
-<!--          {{ article.content }}-->
+        </div>
+
+        <div>
+          <Comment/>
         </div>
       </div>
 
