@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div>
+  <div class="h-screen w-full pt-16 text-secondary">
     Friends Page
     <div>
       <Comment />

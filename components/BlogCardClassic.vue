@@ -35,8 +35,8 @@ watch(() => props.reverse, () => {
 
     <!--  Detail  -->
     <div class="flex flex-col">
-      <div class="text-4xl font-[600]">
-        {{rounded}}  {{reverse}}标题标题标题标题标题标题标题标题标题
+      <div class="text-4xl font-[600] w-[800px]">
+        标题标题标题标题标题标题标题标题标题 {{rounded}}  {{reverse}}
       </div>
       <div class="flex space-x-4 opacity-50 pt-2 font-[600]">
         <div>

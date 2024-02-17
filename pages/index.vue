@@ -6,7 +6,31 @@
 
 <template>
   <div class="flex flex-col justify-center items-center font-frank-ruhl-libre pt-16">
+    <!--  弥散光  -->
 
+    <div class="w-full h-full overflow-hidden absolute">
+      <!--   头像下   -->
+      <div
+          class="top-[80px] left-[50px] rotate-[-45deg] w-[200px] h-[620px] blur-[200px] absolute  bg-primary -z-50">
+      </div>
+      <!--   右上   -->
+      <div
+          class=" top-[-200px] right-[100px] rotate-[-80deg] w-[100px] h-[500px] blur-[200px] absolute  bg-primary -z-50">
+      </div>
+      <!--   名字旁   -->
+      <div
+          class="top-[300px] right-[200px] rotate-[-59deg] w-[240px] h-[100px] absolute rounded-full blur-[100px] bg-primary -z-50">
+      </div>
+      <!--   Blogs 旁边   -->
+      <div
+          class="top-[1000px] right-[500px] rotate-[39deg] w-[240px] h-[100px] blur-[100px] absolute rounded-full bg-primary -z-50">
+      </div>
+      <!--   Blogs 旁边   -->
+      <div
+          class="top-[1400px] left-[300px] rotate-[39deg] w-[240px] h-[800px] blur-[300px] absolute rounded-full bg-primary -z-50">
+      </div>
+
+    </div>
 
     <!--  BR Hero  -->
     <div class="flex relative justify-around w-full px-32 mb-24">
@@ -148,31 +172,7 @@
     <!--        PUBLISH-->
     <!--      </div>-->
 
-    <!--  弥散光  -->
 
-    <div class="w-full h-full overflow-hidden absolute">
-      <!--   头像下   -->
-      <div
-          class="top-[80px] left-[50px] rotate-[-45deg] w-[200px] h-[620px] blur-[200px] absolute  bg-primary -z-50">
-      </div>
-      <!--   右上   -->
-      <div
-          class=" top-[-200px] right-[100px] rotate-[-80deg] w-[100px] h-[500px] blur-[200px] absolute  bg-primary -z-50">
-      </div>
-      <!--   名字旁   -->
-      <div
-          class="top-[300px] right-[200px] rotate-[-59deg] w-[240px] h-[100px] absolute rounded-full blur-[100px] bg-primary -z-50">
-      </div>
-      <!--   Blogs 旁边   -->
-      <div
-          class="top-[1000px] right-[500px] rotate-[39deg] w-[240px] h-[100px] blur-[100px] absolute rounded-full bg-primary -z-50">
-      </div>
-      <!--   Blogs 旁边   -->
-      <div
-          class="top-[1400px] left-[300px] rotate-[39deg] w-[240px] h-[800px] blur-[300px] absolute rounded-full bg-primary -z-50">
-      </div>
-
-    </div>
   </div>
 </template>
 
