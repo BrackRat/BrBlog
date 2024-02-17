@@ -18,7 +18,6 @@ import MyGiscus from './Giscus/MyGisgus.vue'
       emit-metadata="0"
       input-position="top"
       lang="zh-CN"
-      loading="lazy"
       mapping="pathname"
       reactions-enabled="1"
       repo="BrackRat/giscus"
