@@ -4,8 +4,9 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                'frank-ruhl-libre': ['Frank Ruhl Libre'],
-                'Lora': ['Lora'],
+                'frank-ruhl-libre': ['Frank Ruhl Libre', 'sans-serif'],
+                'Lora': ['Lora', 'sans-serif'],
+                'noto-serif': ["Noto Serif SC", "serif"]
             },
             colors: {
                 'primary': '#C24E13',

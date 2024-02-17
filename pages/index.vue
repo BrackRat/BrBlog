@@ -68,26 +68,26 @@
           </div>
         </div>
 
-        <div class="font-serif flex flex-col space-y-2 pt-4">
+        <div class="font-noto-serif font-medium flex flex-col space-y-2 pt-4">
 
-          <div class="text-content text-xl hover:opacity-80 hover:cursor-pointer">
+          <div class=" text-content text-xl hover:opacity-80 hover:cursor-pointer">
             通过 Docker 部署 Vue + Flask 的前后端分离项目
           </div>
           <div class="br-divide"/>
 
           <div class="text-content text-xl hover:opacity-80 hover:cursor-pointer">
-            通过 Docker 部署 Vue + Flask 的前后端分离项目
+            MoeCTF 2022 WP
           </div>
-
           <div class="br-divide"/>
 
           <div class="text-content text-xl hover:opacity-80 hover:cursor-pointer">
-            通过 Docker 部署 Vue + Flask 的前后端分离项目
+            BrackRat 的2022年度总结
           </div>
 
           <div class="br-divide"/>
           <div class="text-content text-xl hover:opacity-80 hover:cursor-pointer">
-            通过 Docker 部署 Vue + Flask 的前后端分离项目
+            我的Win11优化方案总结报告
+
           </div>
         </div>
 
@@ -111,7 +111,7 @@
         </div>
       </div>
 
-      <div class="flex justify-around pt-8">
+      <div class="font-noto-serif font-medium flex justify-around pt-8">
 
         <div class="flex flex-col items-center">
           <div class="relative h-[360px] w-[270px]">
@@ -121,7 +121,7 @@
                       src="/images/20200311174352-5e69235813514.jpg">
             </nuxt-img>
           </div>
-          <div class="font-serif text-content pt-8 text-xl font-bold">
+          <div class="text-content pt-8 text-xl ">
             波西的博客
           </div>
         </div>
@@ -134,7 +134,7 @@
                       src="/images/20200416224600-5e986fa8b804f.jpg">
             </nuxt-img>
           </div>
-          <div class="font-serif text-content pt-8 text-xl font-bold">
+          <div class=" text-content pt-8 text-xl ">
             波西的博客
           </div>
         </div>
@@ -147,7 +147,7 @@
                       src="/images/20200314110609-5e6cbaa171e81.jpg">
             </nuxt-img>
           </div>
-          <div class="font-serif text-content pt-8 text-xl font-bold">
+          <div class=" text-content pt-8 text-xl ">
             波西的博客
           </div>
         </div>

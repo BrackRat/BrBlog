@@ -3,7 +3,7 @@
 </script>
 
 <template>
- <div class="font-frank-ruhl-libre foot px-4 flex flex-col  mt-16 pb-4">
+ <div class="font-noto-serif font-medium foot px-8 flex flex-col  mt-16 pb-4">
    <div class="flex justify-between mt-4">
      <div class="flex space-x-2 text-content text-sm ">
        <div >

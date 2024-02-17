@@ -8,6 +8,8 @@
 </template>
 
 <script setup lang="ts">
+import "./assets/main.css"
+
 function isChromeBased() {
   const userAgent = navigator.userAgent.toLowerCase();
   return userAgent.indexOf('chrome') > -1 || userAgent.indexOf('chromium') > -1;
@@ -25,6 +27,7 @@ function checkSupportBrowser(): boolean {
 </script>
 
 <style>
+
 .page-enter-active,
 .page-leave-active {
   transition: opacity 0.2s, transform 0.2s;
@@ -41,13 +44,7 @@ function checkSupportBrowser(): boolean {
   border-bottom: 1px solid rgba(194, 78, 19, 0.5);
 }
 
-@font-face {
-  font-family: 'FrankRuhlLibre';
-  src: url('/fonts/FrankRuhlLibre-VariableFont_wght.ttf') format('ttf');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+
 
 .bg-noise {
   background-color: #0F1213;
@@ -66,4 +63,5 @@ function checkSupportBrowser(): boolean {
   z-index: 0;
 }
 
+@import "./assets/main.css";
 </style>
