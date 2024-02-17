@@ -21,28 +21,24 @@ async function fetchArticles() {
   }
 }
 
-// fetchArticles()
 
-function generateRandomRoundedClass() {
-  const positions = ['tl', 'tr', 'bl', 'br'];
-  const randomPosition = positions[Math.floor(Math.random() * positions.length)];
-  return `rounded-${randomPosition}-[100px]`;
+function generateReverse(index:number) {
+  return index % 2 === 0 ? 'true' : 'false';
 }
 
-function generateRandomReverse() {
-  const positions = ['true','false'];
-  const random = positions[Math.floor(Math.random() * positions.length)];
-  return `${random}`;
-}
+onMounted(() => {
+  fetchArticles()
+})
+
 </script>
 
 <template>
-  <div class="flex flex-col">
-    <div v-if="loading">
-      Loading...
+  <div class="flex flex-col transition-all">
+    <div v-if="loading" class="w-full h-screen text-secondary pt-16 flex justify-center animate-pulse">
+      <BlogCardClassicSkeleton />
     </div>
 
-    <div class="pb-32">
+    <div v-else class="pb-32">
       <div class="w-full h-full overflow-hidden absolute">
         <div
             class="top-[-300px] left-[800px] rotate-[-45deg] w-[200px] h-[620px] blur-[200px] absolute  bg-primary -z-50">
@@ -50,17 +46,12 @@ function generateRandomReverse() {
       </div>
 
       <div class="flex pt-24 relative flex-col justify-center items-center w-full">
-        <BlogCardClassic :reverse="generateRandomReverse()" :rounded="generateRandomRoundedClass()" />
-        <BlogCardClassic :reverse="generateRandomReverse()" :rounded="generateRandomRoundedClass()" />
-        <BlogCardClassic :reverse="generateRandomReverse()" :rounded="generateRandomRoundedClass()" />
-        <BlogCardClassic :reverse="generateRandomReverse()" :rounded="generateRandomRoundedClass()" />
+        <div v-for="(item, index) in articles" :key="index">
+          <BlogCardClassic :article="item" :reverse="generateReverse(index)" />
+        </div>
       </div>
     </div>
 
-<!--      <div v-for="item in articles">-->
-<!--        <BlogCard :article="item"/>-->
-<!--      </div>-->
-<!--    </div>-->
   </div>
 </template>
 
