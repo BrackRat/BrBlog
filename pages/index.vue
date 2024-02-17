@@ -52,7 +52,7 @@
         <div class="absolute -top-8 left-8  bg-transparent  h-[400px] w-[800px] rounded-tr-[100px] outline-border">
         </div>
         <div class="relative h-[400px] w-[800px] z-30">
-          <nuxt-img class="overflow-hidden h-full w-full object-cover bg-slate-400 rounded-tr-[100px]"
+          <nuxt-img class="overflow-hidden h-full w-full object-cover bg-secondary rounded-tr-[100px]"
                     src="/images/20200314110609-5e6cbaa171e81.jpg">
           </nuxt-img>
         </div>
@@ -119,7 +119,7 @@
           <div class="relative h-[360px] w-[270px]">
             <div class="absolute -top-6 left-6  bg-transparent  h-[360px] w-[270px] rounded-tr-[100px] outline-border">
             </div>
-            <nuxt-img class="relative rounded-tr-[100px] overflow-hidden h-full w-full object-cover bg-slate-400 "
+            <nuxt-img class="relative rounded-tr-[100px] overflow-hidden h-full w-full object-cover bg-secondary "
                       src="/images/20200311174352-5e69235813514.jpg">
             </nuxt-img>
           </div>
@@ -132,7 +132,7 @@
           <div class="relative h-[360px] w-[270px]">
             <div class="absolute top-6 right-6  bg-transparent  h-[360px] w-[270px] rounded-t-full outline-border">
             </div>
-            <nuxt-img class="relative rounded-t-full overflow-hidden h-full w-full object-cover bg-slate-400 "
+            <nuxt-img class="relative rounded-t-full overflow-hidden h-full w-full object-cover bg-secondary "
                       src="/images/20200416224600-5e986fa8b804f.jpg">
             </nuxt-img>
           </div>
@@ -145,7 +145,7 @@
           <div class="relative h-[360px] w-[270px]">
             <div class="absolute top-6 right-6  bg-transparent  h-[360px] w-[270px] rounded-bl-[100px] outline-border">
             </div>
-            <nuxt-img class="relative rounded-bl-[100px] overflow-hidden h-full w-full object-cover bg-slate-400 "
+            <nuxt-img class="relative rounded-bl-[100px] overflow-hidden h-full w-full object-cover bg-secondary "
                       src="/images/20200314110609-5e6cbaa171e81.jpg">
             </nuxt-img>
           </div>

@@ -70,7 +70,7 @@ onMounted(() => {
   height: 100%;
   background-image: url('/images/noise.png');
   background-repeat: repeat;
-  opacity: 0.7;
+  opacity: 100%;
   z-index: 0;
 }
 
