@@ -8,21 +8,15 @@ const blogStore = useBlogStore()
 <template>
 
   <div class="flex flex-col justify-center items-center font-frank-ruhl-libre">
-    <div>
-      <div class="absolute top-[-10px] right-[-50px] " >
-        <nuxt-img class="h-[100px] w-[300px] blur-[50px] " src="/images/Blur.svg"></nuxt-img>
+    <div class="w-full h-full overflow-hidden absolute ">
+      <div
+          class="top-[80px] left-[50px] rotate-[-45deg] w-[200px] h-[620px] blur-[200px] absolute super-blur bg-primary -z-50">
       </div>
-<!--      <div-->
-<!--          class="top-[80px] left-[50px] rotate-[-45deg] w-[200px] h-[620px] blur-[200px] absolute super-blur bg-primary -z-50">-->
-<!--      </div>-->
 
-<!--      <div-->
-<!--          class="top-[-200px] right-[100px] rotate-[-80deg] w-[100px] h-[500px] blur-[200px] absolute super-blur bg-primary -z-50">-->
-<!--      </div>-->
+      <div
+          class=" top-[-200px] right-[100px] rotate-[-80deg] w-[100px] h-[500px] blur-[200px] absolute super-blur bg-primary -z-50">
+      </div>
 
-<!--      <div-->
-<!--          class="top-[200px] right-[300px] rotate-[30deg] w-[100px] h-[300px] blur-[200px] absolute super-blur bg-primary -z-50">-->
-<!--      </div>-->
     </div>
 
 
