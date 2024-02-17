@@ -3,31 +3,34 @@
 </script>
 
 <template>
- <div class="flex flex-col px-8 mt-16 pb-4 ">
-   <div class="bg-gray-400  w-full h-[0.5px] px-8">
+ <div class="font-frank-ruhl-libre foot px-4 flex flex-col  mt-16 pb-4">
+   <div class="flex justify-between mt-4">
+     <div class="flex space-x-2 text-content text-sm ">
+       <div >
+         2019-2024
+       </div><a class="flex items-center space-x-0.5" href="https://github.com/BrackRat"><Icon class="align-middle" name="mingcute:github-line" /><div>BrackRat</div></a>
+     </div>
+     <div class="flex space-x-2 text-content text-sm ">
+       <div>
+         ©CC0
+       </div>
+     </div>
+     <div class="flex space-x-1 text-content text-sm ">
+       <p>
+         Powered By
+       </p>
+       <p class="text-primary">
+         BrBlog
+       </p>
+     </div>
    </div>
-    <div class="flex space-x-4 mt-4 px-4">
-      <div class="text-gray-400 text-sm ">
-        <a class="flex items-center space-x-0.5" href="https://github.com/BrackRat"><Icon class="align-middle" name="mingcute:github-line" /><div>BrackRat</div></a>
-      </div>
-      <div class=" text-gray-400 text-sm">
-        2019-2024
-      </div>
-      <div class="text-gray-400 text-sm">
-        ©CC0
-      </div>
-
-
-      <div class="flex-grow"></div>
-
-      <div class="flex  space-x-1 items-center">
-        <a href="https://www.foreverblog.cn/go.html" target="_blank"> <nuxt-img class="align-middle" src="https://img.foreverblog.cn/wormhole_4_tp.gif" title="穿梭虫洞-随机访问十年之约友链博客"/></a>
-      </div>
-
-    </div>
  </div>
 </template>
 
 <style scoped>
-
+.foot{
+  opacity: 1;
+  background: rgba(15, 18, 19, 1);
+  border-top: 1px solid rgba(194, 78, 19, 0.5);
+}
 </style>

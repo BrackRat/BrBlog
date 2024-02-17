@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#E2E3E5]">
+  <div class="bg-[#0F1213]">
     <navbar ></navbar>
     <NuxtPage />
     <brFooter />
@@ -21,4 +21,11 @@
   opacity: 0;
 }
 
+@font-face {
+  font-family: 'FrankRuhlLibre';
+  src: url('/fonts/FrankRuhlLibre-VariableFont_wght.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 </style>
