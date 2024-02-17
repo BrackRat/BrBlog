@@ -29,8 +29,8 @@
 
 <style scoped>
 .foot{
-  opacity: 1;
-  background: rgba(15, 18, 19, 1);
-  border-top: 1px solid rgba(194, 78, 19, 0.5);
-}
+   opacity: 1;
+   background: rgba(15, 18, 19, 1);
+   border-top: 1px solid rgba(194, 78, 19, 0.5);
+ }
 </style>

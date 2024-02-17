@@ -1,25 +1,36 @@
 <script setup lang="ts">
-
-import {useBlogStore} from "~/stores/blog";
-
-const blogStore = useBlogStore()
+// import {useBlogStore} from "~/stores/blog";
+//
+// const blogStore = useBlogStore()
 </script>
 
 <template>
-
-  <div class="flex flex-col justify-center items-center font-frank-ruhl-libre">
+  <div class="flex flex-col justify-center items-center font-frank-ruhl-libre ">
     <div class="w-full h-full overflow-hidden absolute ">
+      <!--   头像下   -->
       <div
-          class="top-[80px] left-[50px] rotate-[-45deg] w-[200px] h-[620px] blur-[200px] absolute super-blur bg-primary -z-50">
+          class="top-[80px] left-[50px] rotate-[-45deg] w-[200px] h-[620px] blur-[200px] absolute  bg-primary -z-50">
       </div>
-
+      <!--   右上   -->
       <div
-          class=" top-[-200px] right-[100px] rotate-[-80deg] w-[100px] h-[500px] blur-[200px] absolute super-blur bg-primary -z-50">
+          class=" top-[-200px] right-[100px] rotate-[-80deg] w-[100px] h-[500px] blur-[200px] absolute  bg-primary -z-50">
+      </div>
+      <!--   名字旁   -->
+      <div
+          class="top-[300px] right-[200px] rotate-[-59deg] w-[240px] h-[100px] absolute rounded-full blur-[100px] bg-primary -z-50">
+      </div>
+      <!--   Blogs 旁边   -->
+      <div
+          class="top-[1000px] right-[500px] rotate-[39deg] w-[240px] h-[100px] blur-[100px] absolute rounded-full bg-primary -z-50">
+      </div>
+      <!--   Blogs 旁边   -->
+      <div
+          class="top-[1400px] left-[300px] rotate-[39deg] w-[240px] h-[800px] blur-[300px] absolute rounded-full bg-primary -z-50">
       </div>
 
     </div>
 
-
+    <!--  BR Hero  -->
     <div class="flex relative justify-around w-full px-32 mb-24">
       <div class="w-[330px] h-[330px]  pt-32">
         <nuxt-img class="rounded-full shadow-2xl" src="./icon.jpg"></nuxt-img>
@@ -27,7 +38,7 @@ const blogStore = useBlogStore()
 
       <div class="flex flex-col justify-end pl-32">
         <p class="text-secondary opacity-50 text-[72px] -mb-16 self-end">Revalidate</p>
-        <p class="text-secondary text-[140px] -mb-8 self-end">BrackRat</p>
+        <p class="text-secondary text-[140px] -mb-8 self-end font-[600]">BrackRat</p>
         <p class="text-content text-[18px] max-w-[450px]">With a clear direction in mind, day by day, there will be
           progress.</p>
       </div>
@@ -36,13 +47,14 @@ const blogStore = useBlogStore()
     <div class="flex relative w-full px-16 justify-around pt-64">
 
       <div class="relative">
-        <div class="h-[400px] w-[800px]">
+        <div class="absolute -top-8 left-8  bg-transparent  h-[400px] w-[800px] rounded-tr-[100px] outline-border">
+        </div>
+        <div class="relative h-[400px] w-[800px] z-30">
           <nuxt-img class="overflow-hidden h-full w-full object-cover bg-slate-400 rounded-tr-[100px]"
                     src="/images/20200314110609-5e6cbaa171e81.jpg">
           </nuxt-img>
         </div>
-        <!--        <div class="top-32 h-[300px] w-[600px] rounded-tr-[100px] border">-->
-        <!--        </div>-->
+
       </div>
 
       <div class="flex  flex-col ">
@@ -89,7 +101,7 @@ const blogStore = useBlogStore()
       </div>
     </div>
 
-    <div class="flex relative flex-col w-full px-16 pt-32 text-secondary ">
+    <div class="flex relative flex-col w-full px-16 py-32 text-secondary ">
       <div class=" flex text-secondary items-baseline">
         <div class="text-[72px]">
           P
@@ -99,12 +111,14 @@ const blogStore = useBlogStore()
         </div>
       </div>
 
-      <div class="flex justify-around">
+      <div class="flex justify-around pt-8">
 
         <div class="flex flex-col items-center">
-          <div class="h-[360px] w-[270px]">
-            <nuxt-img class="rounded-tr-[100px] overflow-hidden h-full w-full object-cover bg-slate-400 "
-                      src="/images/20200314110609-5e6cbaa171e81.jpg">
+          <div class="relative h-[360px] w-[270px]">
+            <div class="absolute -top-6 left-6  bg-transparent  h-[360px] w-[270px] rounded-tr-[100px] outline-border">
+            </div>
+            <nuxt-img class="relative rounded-tr-[100px] overflow-hidden h-full w-full object-cover bg-slate-400 "
+                      src="/images/20200311174352-5e69235813514.jpg">
             </nuxt-img>
           </div>
           <div class="font-serif text-content pt-8 text-xl font-bold">
@@ -113,9 +127,11 @@ const blogStore = useBlogStore()
         </div>
 
         <div class="flex flex-col items-center">
-          <div class="h-[360px] w-[270px]">
-            <nuxt-img class="rounded-t-full overflow-hidden h-full w-full object-cover bg-slate-400 "
-                      src="/images/20200314110609-5e6cbaa171e81.jpg">
+          <div class="relative h-[360px] w-[270px]">
+            <div class="absolute top-6 right-6  bg-transparent  h-[360px] w-[270px] rounded-t-full outline-border">
+            </div>
+            <nuxt-img class="relative rounded-t-full overflow-hidden h-full w-full object-cover bg-slate-400 "
+                      src="/images/20200416224600-5e986fa8b804f.jpg">
             </nuxt-img>
           </div>
           <div class="font-serif text-content pt-8 text-xl font-bold">
@@ -124,8 +140,10 @@ const blogStore = useBlogStore()
         </div>
 
         <div class="flex flex-col items-center">
-          <div class="h-[360px] w-[270px]">
-            <nuxt-img class="rounded-bl-[100px] overflow-hidden h-full w-full object-cover bg-slate-400 "
+          <div class="relative h-[360px] w-[270px]">
+            <div class="absolute top-6 right-6  bg-transparent  h-[360px] w-[270px] rounded-bl-[100px] outline-border">
+            </div>
+            <nuxt-img class="relative rounded-bl-[100px] overflow-hidden h-full w-full object-cover bg-slate-400 "
                       src="/images/20200314110609-5e6cbaa171e81.jpg">
             </nuxt-img>
           </div>
@@ -156,9 +174,9 @@ const blogStore = useBlogStore()
 </template>
 
 <style>
-.super-blur {
+.outline-border {
   opacity: 1;
-  z-index: 0;
+  border: 1px solid rgba(194, 78, 19, 0.5);
 }
 
 .br-divide {
@@ -169,7 +187,6 @@ const blogStore = useBlogStore()
 
 .more-button {
   opacity: 1;
-  background: rgba(15, 18, 19, 1);
   border: 1px solid rgba(194, 78, 19, 1);
 }
 </style>
