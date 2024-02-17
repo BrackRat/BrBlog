@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col w-full h-full relative bg-noise">
-    <div v-if="!checkSupportBrowser()">
+    <div v-if="!supportResult">
       <UnSupportBrowser  class="w-full z-50"/>
     </div>
     <navbar class="fixed top-0 left-0 w-full nav-border z-50"></navbar>
@@ -11,19 +11,30 @@
 
 <script setup lang="ts">
 function isChromeBased() {
+  if (typeof navigator === 'undefined') {
+    return false;
+  }
   const userAgent = navigator.userAgent.toLowerCase();
   return userAgent.indexOf('chrome') > -1 || userAgent.indexOf('chromium') > -1;
 }
 
 function isWebKitBased() {
+  if (typeof navigator === 'undefined') {
+    return false;
+  }
   const userAgent = navigator.userAgent.toLowerCase();
   return userAgent.indexOf('applewebkit') > -1;
 }
 
-
 function checkSupportBrowser(): boolean {
   return isChromeBased() || isWebKitBased()
 }
+
+const supportResult = ref(true)
+
+onMounted(() => {
+  supportResult.value = checkSupportBrowser()
+})
 </script>
 
 <style>

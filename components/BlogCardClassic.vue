@@ -59,7 +59,7 @@ onMounted(() => {
         {{article.desc}}
       </div>
       <div class="flex pt-16">
-        <div class="flex px-14 py-2 transition-all  hover:bg-primary hover:bg-opacity-10  font-[500] justify-center items-center text-[24px] hover:cursor-pointer text-primary border-button">
+        <div @click="$router.push('/article/' + article.id)" class="flex px-14 py-2 transition-all  hover:bg-primary hover:bg-opacity-10  font-[500] justify-center items-center text-[24px] hover:cursor-pointer text-primary border-button">
           Navigate
         </div>
       </div>
