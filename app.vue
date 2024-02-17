@@ -1,15 +1,15 @@
 <template>
-  <div class="relative bg-noise">
-    <UnSupportBrowser v-if="!checkSupportBrowser()" class="w-full z-50" />
-    <navbar class="fixed top-0 left-0  w-full nav-border z-50" ></navbar>
-      <NuxtPage class="relative pt-16 -mb-16 z-20"/>
+  <div class="flex flex-col w-full h-full relative bg-noise">
+    <div v-if="!checkSupportBrowser()">
+      <UnSupportBrowser  class="w-full z-50"/>
+    </div>
+    <navbar class="fixed top-0 left-0 w-full nav-border z-50"></navbar>
+    <NuxtPage class="relative z-20"/>
     <brFooter class="relative z-50"/>
   </div>
 </template>
 
 <script setup lang="ts">
-import "./assets/main.css"
-
 function isChromeBased() {
   const userAgent = navigator.userAgent.toLowerCase();
   return userAgent.indexOf('chrome') > -1 || userAgent.indexOf('chromium') > -1;
@@ -27,6 +27,7 @@ function checkSupportBrowser(): boolean {
 </script>
 
 <style>
+@import "./assets/main.css";
 
 .page-enter-active,
 .page-leave-active {
@@ -38,12 +39,11 @@ function checkSupportBrowser(): boolean {
   opacity: 0;
 }
 
-.nav-border{
+.nav-border {
   opacity: 1;
   background: rgba(15, 18, 19, 1);
   border-bottom: 1px solid rgba(194, 78, 19, 0.5);
 }
-
 
 
 .bg-noise {
@@ -63,5 +63,4 @@ function checkSupportBrowser(): boolean {
   z-index: 0;
 }
 
-@import "./assets/main.css";
 </style>

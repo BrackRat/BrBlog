@@ -8,7 +8,7 @@ const switchRoutes = computed(() => {
       'route':"/"
     },
     {
-      'title':"Blog",
+      'title':"Blogs",
       'route':"/blog"
     },
     {

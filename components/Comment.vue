@@ -10,7 +10,7 @@ import MyGiscus from './Giscus/MyGisgus.vue'
 
 <template>
   <MyGiscus
-      theme="light"
+      theme="dark"
       category="Announcements"
       category-id="DIC_kwDOLTSd6M4CdRSq"
       class="py-4 pt-4"
