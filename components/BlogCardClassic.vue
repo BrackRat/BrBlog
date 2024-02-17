@@ -1,12 +1,7 @@
 <script setup lang="ts">
-import { defineProps, watch } from 'vue';
 import type {Article} from "~/server/types/article";
 
 const props = defineProps({
-  rounded: {
-    type: String,
-    required: true,
-  },
   reverse: {
     type: String,
     required: true,
@@ -25,7 +20,7 @@ function generateRandomRoundedClass() {
 const cardRounded = ref("rounded-t-full")
 
 onMounted(() => {
-  cardRounded.value = generateRandomRoundedClass()
+  // cardRounded.value = generateRandomRoundedClass()
 })
 
 </script>

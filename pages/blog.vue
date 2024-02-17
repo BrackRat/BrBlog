@@ -15,10 +15,13 @@ async function fetchArticles() {
       articles.value = response.data.value
       articles.value = articles.value.sort((a, b) => b.id - a.id);
       loading.value = false
+      return true
     }
   } catch (error) {
     console.error('Error fetching article:', error)
+    return false
   }
+  return false
 }
 
 
@@ -26,10 +29,8 @@ function generateReverse(index:number) {
   return index % 2 === 0 ? 'true' : 'false';
 }
 
-onMounted(() => {
-  fetchArticles()
-})
 
+fetchArticles()
 </script>
 
 <template>
