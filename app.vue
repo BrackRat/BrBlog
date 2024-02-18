@@ -4,7 +4,7 @@
       <UnSupportBrowser  class="w-full z-50"/>
     </div>
     <navbar class="fixed top-0 left-0 w-full nav-border z-50"></navbar>
-    <NuxtPage class="relative z-20"/>
+    <NuxtPage class="relative z-20 min-h-screen"/>
     <brFooter class="relative z-50"/>
   </div>
 </template>

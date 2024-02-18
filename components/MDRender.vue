@@ -1,23 +1,7 @@
 <script setup lang="ts">
-import MarkdownIt from "markdown-it";
-import MarkdownItAbbr from "markdown-it-abbr";
-import MarkdownItAnchor from "markdown-it-anchor";
-import MarkdownItFootnote from "markdown-it-footnote";
-import MarkdownItHighlightjs from "markdown-it-highlightjs";
-import MarkdownItSub from "markdown-it-sub";
-import MarkdownItSup from "markdown-it-sup";
-import MarkdownItTasklists from "markdown-it-task-lists";
-import MarkdownItTOC from "markdown-it-toc-done-right";
-
-const md = new MarkdownIt()
-    .use(MarkdownItAbbr)
-    .use(MarkdownItAnchor)
-    .use(MarkdownItFootnote)
-    .use(MarkdownItHighlightjs)
-    .use(MarkdownItSub)
-    .use(MarkdownItSup)
-    .use(MarkdownItTasklists)
-    .use(MarkdownItTOC);
+import { ref } from 'vue';
+import { MdPreview, MdCatalog } from 'md-editor-v3';
+import 'md-editor-v3/lib/preview.css';
 
 const props = defineProps({
   content: {
@@ -26,11 +10,22 @@ const props = defineProps({
   },
 })
 
-const result = md.render(props.content)
+const id = 'preview-only';
+const text = props.content;
+const scrollElement = document.documentElement;
+
+
 </script>
 
 <template>
-  <div class="mb-20 mt-5 text-left">
-    <article v-html="result" />
+  <div class="flex">
+    <MdPreview :show-code-row-number="true" theme="dark" :editorId="id" :modelValue="text" />
+<!--    <MdCatalog theme="dark" :editorId="id" :scrollElement="scrollElement" />-->
   </div>
 </template>
+
+<style>
+.md-editor-dark {
+  --md-bk-color: rgba(0,0,0,15%) !important;
+}
+</style>
