@@ -17,7 +17,7 @@ import MyGiscus from './Giscus/MyGisgus.vue'
       crossorigin="anonymous"
       emit-metadata="0"
       input-position="top"
-      lang="zh-CN"
+      lang="en"
       mapping="pathname"
       reactions-enabled="1"
       repo="BrackRat/giscus"

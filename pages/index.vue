@@ -99,31 +99,14 @@ import ShadowImage from "~/components/ShadowImage.vue";
 
       <div class="flex flex-col lg:flex-row font-noto-serif font-medium justify-around pt-8">
 
-        <div class="flex flex-col items-center">
-          <ShadowImage image="/images/20200311174352-5e69235813514.jpg" shadow_x="-top-6" shadow_y="left-6"
-                       height="360px" width="270px" rounded="rounded-tr-[100px]"/>
+        <ElegantWithTitle text="波西的博客" height="360px" width="270px" rounded="rounded-tr-[100px]" image="/images/20200311174352-5e69235813514.jpg" shadow_x="-top-6" shadow_y="left-6" />
 
-          <div class="text-content pt-8 text-xl ">
-            波西的博客
-          </div>
-        </div>
 
-        <div class="flex flex-col items-center">
-          <ShadowImage image="/images/20200416224600-5e986fa8b804f.jpg" shadow_x="top-6" shadow_y="right-6"
-                       height="360px" width="270px" rounded="rounded-t-full"/>
-          <div class=" text-content pt-8 text-xl ">
-            第二个项目 Outline
-          </div>
-        </div>
+        <ElegantWithTitle text="第二个项目" height="360px" width="270px" rounded="rounded-t-full" image="/images/20200416224600-5e986fa8b804f.jpg" shadow_x="top-6" shadow_y="right-6" />
 
-        <div class="flex flex-col items-center">
-          <ShadowImage image="/images/20200314110609-5e6cbaa171e81.jpg" shadow_x="top-6" shadow_y="right-6"
-                       height="360px" width="270px" rounded="rounded-bl-[100px]"/>
 
-          <div class=" text-content pt-8 text-xl ">
-            第三个项目
-          </div>
-        </div>
+        <ElegantWithTitle text="第三个项目" height="360px" width="270px" rounded="rounded-bl-[100px]" image="/images/20200314110609-5e6cbaa171e81.jpg" shadow_x="top-6" shadow_y="right-6" />
+
 
       </div>
       <div class="pl-32 pt-4">

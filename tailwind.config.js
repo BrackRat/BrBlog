@@ -2,10 +2,6 @@
 export default {
     content: [],
     theme: {
-        screens: {
-            xs: '480px',
-            ...defaultTheme.screens,
-        },
         extend: {
             fontFamily: {
                 'frank-ruhl-libre': ['Frank Ruhl Libre', 'sans-serif'],
