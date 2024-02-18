@@ -97,18 +97,15 @@ import ShadowImage from "~/components/ShadowImage.vue";
     <div class="flex relative flex-col w-full px-4 py-32 lg:px-16 lg:py-32 text-secondary ">
       <ElegantTitle text="PROJECTS"/>
 
-      <div class="flex flex-col space-y-16 lg:flex-row font-noto-serif font-medium justify-around pt-8">
-
+      <div class="flex flex-col space-y-16 lg:space-y-0 lg:flex-row font-noto-serif font-medium justify-around pt-8">
           <ElegantWithTitle text="波西的博客" height="360px" width="270px" rounded="rounded-tr-[100px]" image="/images/20200311174352-5e69235813514.jpg" shadow_x="-top-6" shadow_y="left-6" />
 
-
           <ElegantWithTitle text="第二个项目" height="360px" width="270px" rounded="rounded-t-full" image="/images/20200416224600-5e986fa8b804f.jpg" shadow_x="top-6" shadow_y="right-6" />
-
 
           <ElegantWithTitle text="第三个项目" height="360px" width="270px" rounded="rounded-bl-[100px]" image="/images/20200314110609-5e6cbaa171e81.jpg" shadow_x="top-6" shadow_y="right-6" />
 
       </div>
-      <div class="self-center pt-4 lg:pl-32 ">
+      <div class="self-center lg:self-start pt-4 lg:pl-32 ">
         <MoreButton/>
       </div>
 

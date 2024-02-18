@@ -20,7 +20,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="flex flex-col font-noto-serif text-2xl">
+  <div class="flex flex-col font-noto-serif text-2xl font-[500]">
     <div class="flex space-x-4">
       <div class="flex w-[38px] h-[38px] ml-4 items-center justify-center">
         <nuxt-img class="rounded " :src="avatar"/>
@@ -30,7 +30,7 @@ const props = defineProps({
       </div>
     </div>
 
-    <a :href="link" target="_blank" class="transition-all active:scale-95 hover:cursor-pointer relative card-shadow mt-3 w-[600px] h-[200px] bg-content rounded-[14px] overflow-hidden">
+    <a :href="link" target="_blank" class="transition-all active:scale-95 hover:cursor-pointer relative card-shadow mt-3 max-w-full w-3/4 lg:w-[600px] lg:h-[200px] bg-content rounded-[14px] overflow-hidden">
       <div class="absolute z-10 card-shadow w-full h-full">
       </div>
       <nuxt-img class="relative  w-full h-full object-cover" :src="screenshot" />
