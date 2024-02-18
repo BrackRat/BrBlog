@@ -3,8 +3,16 @@
 </script>
 
 <template>
-  <div class="flex h-screen w-full pt-16 text-secondary">
-    About Page
+  <div class="flex flex-col justify-center items-center  w-full pt-16 text-secondary">
+    <ElegantTitle text="ABOUT" />
+
+    <div class="h-lvh w-full">
+
+    </div>
+
+    <div class="w-full px-16">
+      <Comment  />
+    </div>
   </div>
 </template>
 

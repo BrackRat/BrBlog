@@ -3,10 +3,15 @@
 </script>
 
 <template>
-  <div class="h-screen w-full pt-16 text-secondary">
-    Friends Page
-    <div>
-      <Comment />
+  <div class="flex flex-col justify-center items-center  w-full pt-16 text-secondary">
+    <ElegantTitle text="FRIENDS" />
+
+    <div class="h-lvh w-full">
+
+    </div>
+
+    <div class="w-full px-16">
+      <Comment  />
     </div>
   </div>
 </template>

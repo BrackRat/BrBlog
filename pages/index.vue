@@ -1,18 +1,16 @@
 <script setup lang="ts">
 // import {useBlogStore} from "~/stores/blog";
+//
 // const blogStore = useBlogStore()
 import MoreButton from "~/components/MoreButton.vue";
 import ShadowImage from "~/components/ShadowImage.vue";
-import {checkSupportBrowser} from "~/composables/supportCheck";
-import ElegantTitle from "~/components/ElegantTitle.vue";
-
 </script>
 
 <template>
   <div class="flex flex-col justify-center items-center font-frank-ruhl-libre pt-16">
-
     <!--  弥散光  -->
-    <div v-if="checkSupportBrowser()"  class="w-full h-full overflow-hidden absolute">
+
+    <div class="w-full h-full overflow-hidden absolute">
       <!--   头像下   -->
       <div
           class="top-[80px] left-[50px] rotate-[-45deg] w-[200px] h-[620px] blur-[200px] absolute  bg-primary -z-50">
@@ -52,12 +50,10 @@ import ElegantTitle from "~/components/ElegantTitle.vue";
 
     <div class="flex relative w-full px-16 justify-around pt-64">
 
-      <ShadowImage image="/images/20200314110609-5e6cbaa171e81.jpg" shadow_x="-top-8" shadow_y="left-8" height="400px" width="800px" rounded="rounded-tr-[100px]" />
+      <ShadowImage image="/images/20200311174352-5e69235813514.jpg" shadow_x="-top-6" shadow_y="left-6" height="330px" width="500px" rounded="rounded-tr-[100px]" />
 
 
-
-
-      <div class="flex  flex-col ">
+      <div class="flex flex-col ">
 
         <ElegantTitle text="BLOGS" />
 
@@ -90,14 +86,7 @@ import ElegantTitle from "~/components/ElegantTitle.vue";
     </div>
 
     <div class="flex relative flex-col w-full px-16 py-32 text-secondary ">
-      <div class=" flex text-secondary items-baseline">
-        <div class="text-[72px]">
-          P
-        </div>
-        <div class="text-[48px]">
-          ROJECTS
-        </div>
-      </div>
+      <ElegantTitle text="PROJECTS" />
 
       <div class="font-noto-serif font-medium flex justify-around pt-8">
 
@@ -132,13 +121,10 @@ import ElegantTitle from "~/components/ElegantTitle.vue";
 
     </div>
 
-    <!--      <div class="super-blur w-64 h-64">-->
-    <!--      </div>-->
 
     <!--      <div class="w-32 h-32 bg-slate-400" @click="blogStore.articlePublishTest()">-->
     <!--        PUBLISH-->
     <!--      </div>-->
-
 
   </div>
 </template>

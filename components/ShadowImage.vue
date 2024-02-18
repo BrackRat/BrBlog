@@ -28,13 +28,17 @@ const props = defineProps({
 </script>
 
 <template>
-  <div :class="`relative h-[${height}] w-[${width}]`">
-    <div :class="`${rounded} absolute ${shadow_y} ${shadow_x}  bg-transparent  h-[${height}] w-[${width}]  outline-border`">
+  <div class="relative">
+    <div :class="`relative h-[${height}] w-[${width}]`">
+      <nuxt-img :class="rounded + ' relative overflow-hidden h-full w-full object-cover bg-secondary'"
+                :src="image">
+      </nuxt-img>
     </div>
-    <nuxt-img :class="rounded + ' relative overflow-hidden h-full w-full object-cover bg-secondary'"
-              :src="image">
-    </nuxt-img>
+    <div
+        :class="`${rounded} -z-10 absolute ${shadow_y} ${shadow_x} bg-transparent h-[${height}] w-[${width}]  outline-border`">
+    </div>
   </div>
+
 </template>
 
 <style scoped>
