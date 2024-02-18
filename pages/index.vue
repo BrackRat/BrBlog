@@ -26,7 +26,7 @@ import ShadowImage from "~/components/ShadowImage.vue";
       </div>
       <!--   Blogs 旁边   -->
       <div
-          class="top-[1200px] left-[30px] lg:top-[1000px] lg:right-[500px] rotate-[39deg] w-[240px] h-[100px] blur-[100px] absolute rounded-full bg-primary -z-50">
+          class="top-[1200px] max-lg:left-[30px] lg:top-[1000px] lg:right-[500px] rotate-[39deg] w-[240px] h-[100px] blur-[100px] absolute rounded-full bg-primary -z-50">
       </div>
       <!--   Blogs 旁边   -->
       <div

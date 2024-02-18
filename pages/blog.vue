@@ -56,8 +56,8 @@ fetchArticles()
 
             <ElegantTitle text="BLOGS" />
 
-            <div v-for="(item, index) in articles" :key="index">
-              <BlogCardClassic :article="item" :reverse="generateReverse(index)"/>
+            <div  v-for="(item, index) in articles" :key="index">
+              <BlogCardClassic class="space-y-96" :article="item" :reverse="generateReverse(index)"/>
             </div>
           </div>
         </div>
