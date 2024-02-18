@@ -7,17 +7,14 @@ const article = ref<ArticleWithContent>()
 const id = parseInt(useRoute().params.id.toString(),10)
 const loading = ref(true)
 
-function fetchArticle() {
+async function fetchArticle() {
   loading.value = true
-  console.log('start loading')
   try {
-    const response = useFetch(`/api/article/${id}`, {
+    const response = await useFetch(`/api/article/${id}`, {
       method: 'GET',
     })
     if (response.data.value) {
       article.value = response.data.value
-      console.log(`Article value: ${article.value}`)
-
       if (article.value === undefined) {
         article.value = {
           id: id,
@@ -32,13 +29,9 @@ function fetchArticle() {
         }
       }
       loading.value = false
-      console.log(`load finish`)
-
     }
   } catch (error) {
     console.error('Error fetching article:', error)
-    console.log(`load error`)
-
     loading.value = false
   }
 }
@@ -50,11 +43,13 @@ async function addViewCount() {
   })
 }
 
-onMounted(async () => {
+onMounted(() => {
+
   setTimeout((() => {
     addViewCount()
   }),5000)
 })
+
 
 fetchArticle()
 </script>
@@ -68,37 +63,31 @@ fetchArticle()
       </div>
     </div>
 
-    <div  v-if="loading" >
-      <div id="loading" class="text-secondary animate-pulse">
-        Loading...
-      </div>
-    </div>
-
-    <div v-else class="relative" v-if="article !== undefined">
+    <div class="relative" v-if="!loading">
       <div class="lg:w-[1000px]">
         <div class="pt-32 max-w-screen">
-          <!--          <ShadowImage  height="360px" width="1000px" rounded="rounded-tr-[100px]" :image="article.cover" shadow_x="-top-6" shadow_y="left-6" />-->
+<!--          <ShadowImage  height="360px" width="1000px" rounded="rounded-tr-[100px]" :image="article.cover" shadow_x="-top-6" shadow_y="left-6" />-->
         </div>
 
         <div class="pt-8 text-3xl text-primary font-black mb-2">
-          {{ article.title}}
+          {{ article!.title}}
         </div>
 
         <div class="mb-2 text-secondary">
-          {{ article.desc }}
+          {{ article!.desc }}
         </div>
 
         <div class="mb-4 flex space-x-8 text-sm  text-content ">
           <div>
             <div class="flex space-x-1 items-center">
               <Icon class="align-middle" name="mingcute:calendar-2-line" />
-              <span class="align-middle">{{ formatUnixTimestamp(article.publishTime)  }}</span>
+              <span class="align-middle">{{ formatUnixTimestamp(article!.publishTime)  }}</span>
             </div>
           </div>
           <div class="flex justify-end col-span-3 align-middle">
             <div class="flex space-x-1 items-center">
               <Icon class="align-middle" name="mingcute:eye-2-line" />
-              <span class="align-middle">{{ article.viewCount }}</span>
+              <span class="align-middle">{{ article!.viewCount }}</span>
             </div>
           </div>
 
@@ -108,7 +97,7 @@ fetchArticle()
         </div>
 
         <div class="min-h-full">
-          <MDRender class="max-w-full" :content="article.content" />
+          <MDRender class="max-w-full" :content="article!.content" />
         </div>
 
         <div class="pt-32 pb-16">
@@ -118,11 +107,9 @@ fetchArticle()
 
     </div>
 
-
-
-
-
-
+    <div class="text-secondary animate-pulse" v-else>
+      Loading...
+    </div>
   </div>
 </template>
 

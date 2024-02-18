@@ -7,10 +7,10 @@ const loading = ref(true)
 
 const articles = ref<Article[]>()
 
-function fetchArticles() {
+async function fetchArticles() {
   loading.value = true
   try {
-    const response = useFetch(`/api/article`, {
+    const response = await useFetch(`/api/article`, {
       method: 'GET',
     })
     if (response.data.value) {
@@ -36,8 +36,10 @@ fetchArticles()
 
 <template>
   <div class="flex flex-col transition-all">
+
+
     <div class="pb-32">
-      <div id="loading" v-if="loading" class="w-full h-screen text-secondary pt-16 flex justify-center animate-pulse">
+      <div v-if="loading" class="w-full h-screen text-secondary pt-16 flex justify-center animate-pulse">
         <BlogCardClassicSkeleton/>
       </div>
 
