@@ -11,7 +11,7 @@ import ShadowImage from "~/components/ShadowImage.vue";
 
 
     <!--  弥散光  -->
-    <div class="w-full h-full overflow-hidden absolute hidden lg:block">
+    <div class="w-full h-full overflow-hidden absolute">
       <!--   头像下   -->
       <div
           class="top-[80px] left-[50px] rotate-[-45deg] w-[200px] h-[620px] blur-[200px] absolute  bg-primary -z-50">
@@ -26,11 +26,11 @@ import ShadowImage from "~/components/ShadowImage.vue";
       </div>
       <!--   Blogs 旁边   -->
       <div
-          class="top-[1000px] right-[500px] rotate-[39deg] w-[240px] h-[100px] blur-[100px] absolute rounded-full bg-primary -z-50">
+          class="top-[1200px] left-[30px] lg:top-[1000px] lg:right-[500px] rotate-[39deg] w-[240px] h-[100px] blur-[100px] absolute rounded-full bg-primary -z-50">
       </div>
       <!--   Blogs 旁边   -->
       <div
-          class="top-[1400px] left-[300px] rotate-[39deg] w-[240px] h-[800px] blur-[300px] absolute rounded-full bg-primary -z-50">
+          class="top-[1900px] lg:top-[1400px] left-[300px] rotate-[39deg] w-[240px] h-[800px] blur-[300px] absolute rounded-full bg-primary -z-50">
       </div>
 
     </div>
@@ -97,19 +97,18 @@ import ShadowImage from "~/components/ShadowImage.vue";
     <div class="flex relative flex-col w-full px-4 py-32 lg:px-16 lg:py-32 text-secondary ">
       <ElegantTitle text="PROJECTS"/>
 
-      <div class="flex flex-col lg:flex-row font-noto-serif font-medium justify-around pt-8">
+      <div class="flex flex-col space-y-16 lg:flex-row font-noto-serif font-medium justify-around pt-8">
 
-        <ElegantWithTitle text="波西的博客" height="360px" width="270px" rounded="rounded-tr-[100px]" image="/images/20200311174352-5e69235813514.jpg" shadow_x="-top-6" shadow_y="left-6" />
-
-
-        <ElegantWithTitle text="第二个项目" height="360px" width="270px" rounded="rounded-t-full" image="/images/20200416224600-5e986fa8b804f.jpg" shadow_x="top-6" shadow_y="right-6" />
+          <ElegantWithTitle text="波西的博客" height="360px" width="270px" rounded="rounded-tr-[100px]" image="/images/20200311174352-5e69235813514.jpg" shadow_x="-top-6" shadow_y="left-6" />
 
 
-        <ElegantWithTitle text="第三个项目" height="360px" width="270px" rounded="rounded-bl-[100px]" image="/images/20200314110609-5e6cbaa171e81.jpg" shadow_x="top-6" shadow_y="right-6" />
+          <ElegantWithTitle text="第二个项目" height="360px" width="270px" rounded="rounded-t-full" image="/images/20200416224600-5e986fa8b804f.jpg" shadow_x="top-6" shadow_y="right-6" />
 
+
+          <ElegantWithTitle text="第三个项目" height="360px" width="270px" rounded="rounded-bl-[100px]" image="/images/20200314110609-5e6cbaa171e81.jpg" shadow_x="top-6" shadow_y="right-6" />
 
       </div>
-      <div class="pl-32 pt-4">
+      <div class="self-center pt-4 lg:pl-32 ">
         <MoreButton/>
       </div>
 
