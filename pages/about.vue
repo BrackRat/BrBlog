@@ -6,7 +6,7 @@
   <div class="flex flex-col justify-center items-center  w-full pt-16 text-secondary">
     <ElegantTitle text="ABOUT" />
 
-    <div class="h-lvh w-full">
+    <div class="min-h-screen w-full">
 
     </div>
 
