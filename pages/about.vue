@@ -11,15 +11,20 @@ import {checkSupportBrowser} from "~/composables/supportCheck";
       </div>
     </div>
 
-    <ElegantTitle text="ABOUT" />
 
-    <div class="min-h-screen w-full">
+    <div class="relative w-full h-full flex flex-col justify-center items-center">
+      <ElegantTitle text="ABOUT" />
 
+      <div class="min-h-screen w-full">
+
+      </div>
+
+      <div class="w-4/5 max-w-full lg:w-[800px] pt-32 pb-16">
+        <Comment />
+      </div>
     </div>
 
-    <div class="w-4/5 max-w-full lg:w-[800px] pt-32 pb-16">
-      <Comment />
-    </div>
+
   </div>
 </template>
 

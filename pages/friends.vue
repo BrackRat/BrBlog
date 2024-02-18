@@ -42,15 +42,23 @@ const friends = [
       </div>
     </div>
 
-    <ElegantTitle text="FRIENDS" />
 
-    <div class="flex flex-col items-center pt-16 px-12 gap-y-14 lg:grid lg:grid-cols-2 lg:gap-x-12 lg:gap-y-12">
-      <FriendCard v-for="friend in friends" :key="friend.name" :name="friend.name" :avatar="friend.avatar" :screenshot="friend.screenshot" :link="friend.link" />
+    <div class="relative w-full h-full flex flex-col justify-center items-center">
+      <ElegantTitle text="FRIENDS" />
+
+
+      <div class="flex flex-col items-center pt-16 px-12 gap-y-14 lg:grid lg:grid-cols-2 lg:gap-x-12 lg:gap-y-12">
+        <FriendCard v-for="friend in friends" :key="friend.name" :name="friend.name" :avatar="friend.avatar" :screenshot="friend.screenshot" :link="friend.link" />
+      </div>
+
+      <div class="w-4/5 max-w-full lg:w-[800px] pt-32 pb-16">
+        <Comment />
+      </div>
     </div>
 
-    <div class="w-4/5 max-w-full lg:w-[800px] pt-32 pb-16">
-      <Comment />
-    </div>
+
+
+
   </div>
 </template>
 
