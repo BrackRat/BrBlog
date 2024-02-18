@@ -3,6 +3,7 @@
 //
 // const blogStore = useBlogStore()
 import MoreButton from "~/components/MoreButton.vue";
+import ShadowImage from "~/components/ShadowImage.vue";
 </script>
 
 <template>
@@ -49,16 +50,10 @@ import MoreButton from "~/components/MoreButton.vue";
 
     <div class="flex relative w-full px-16 justify-around pt-64">
 
-      <div class="relative">
-        <div class="absolute -top-8 left-8  bg-transparent  h-[400px] w-[800px] rounded-tr-[100px] outline-border">
-        </div>
-        <div class="relative h-[400px] w-[800px] z-30">
-          <nuxt-img class="overflow-hidden h-full w-full object-cover bg-secondary rounded-tr-[100px]"
-                    src="/images/20200314110609-5e6cbaa171e81.jpg">
-          </nuxt-img>
-        </div>
+      <ShadowImage image="/images/20200314110609-5e6cbaa171e81.jpg" shadow_x="-top-8" shadow_y="left-8" height="400px" width="800px" rounded="rounded-tr-[100px]" />
 
-      </div>
+
+
 
       <div class="flex  flex-col ">
 
@@ -112,41 +107,25 @@ import MoreButton from "~/components/MoreButton.vue";
       <div class="font-noto-serif font-medium flex justify-around pt-8">
 
         <div class="flex flex-col items-center">
-          <div class="relative h-[360px] w-[270px]">
-            <div class="absolute -top-6 left-6  bg-transparent  h-[360px] w-[270px] rounded-tr-[100px] outline-border">
-            </div>
-            <nuxt-img class="relative rounded-tr-[100px] overflow-hidden h-full w-full object-cover bg-secondary "
-                      src="/images/20200311174352-5e69235813514.jpg">
-            </nuxt-img>
-          </div>
+          <ShadowImage image="/images/20200311174352-5e69235813514.jpg" shadow_x="-top-6" shadow_y="left-6" height="360px" width="270px" rounded="rounded-tr-[100px]" />
+
           <div class="text-content pt-8 text-xl ">
             波西的博客
           </div>
         </div>
 
         <div class="flex flex-col items-center">
-          <div class="relative h-[360px] w-[270px]">
-            <div class="absolute top-6 right-6  bg-transparent  h-[360px] w-[270px] rounded-t-full outline-border">
-            </div>
-            <nuxt-img class="relative rounded-t-full overflow-hidden h-full w-full object-cover bg-secondary "
-                      src="/images/20200416224600-5e986fa8b804f.jpg">
-            </nuxt-img>
-          </div>
+          <ShadowImage image="/images/20200416224600-5e986fa8b804f.jpg" shadow_x="top-6" shadow_y="right-6" height="360px" width="270px" rounded="rounded-t-full" />
           <div class=" text-content pt-8 text-xl ">
-            波西的博客
+            第二个项目 Outline
           </div>
         </div>
 
         <div class="flex flex-col items-center">
-          <div class="relative h-[360px] w-[270px]">
-            <div class="absolute top-6 right-6  bg-transparent  h-[360px] w-[270px] rounded-bl-[100px] outline-border">
-            </div>
-            <nuxt-img class="relative rounded-bl-[100px] overflow-hidden h-full w-full object-cover bg-secondary "
-                      src="/images/20200314110609-5e6cbaa171e81.jpg">
-            </nuxt-img>
-          </div>
+          <ShadowImage image="/images/20200314110609-5e6cbaa171e81.jpg" shadow_x="top-6" shadow_y="right-6" height="360px" width="270px" rounded="rounded-bl-[100px]" />
+
           <div class=" text-content pt-8 text-xl ">
-            波西的博客
+            第三个项目
           </div>
         </div>
 
@@ -170,19 +149,10 @@ import MoreButton from "~/components/MoreButton.vue";
 </template>
 
 <style>
-.outline-border {
-  opacity: 1;
-  border: 1px solid rgba(194, 78, 19, 0.5);
-}
-
 .br-divide {
   opacity: 1;
   background: rgba(15, 18, 19, 1);
   border-top: 1px solid rgba(194, 78, 19, 0.5);
 }
 
-.more-button {
-  opacity: 1;
-  border: 1px solid rgba(194, 78, 19, 1);
-}
 </style>

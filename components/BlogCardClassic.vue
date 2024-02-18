@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type {Article} from "~/server/types/article";
+import ShadowImage from "~/components/ShadowImage.vue";
 
 const props = defineProps({
   reverse: {
@@ -17,12 +18,6 @@ function generateRandomRoundedClass() {
   return `rounded-${randomPosition}-[100px]`;
 }
 
-const cardRounded = ref("rounded-t-full")
-
-onMounted(() => {
-  cardRounded.value = generateRandomRoundedClass()
-})
-
 </script>
 
 <template>
@@ -30,13 +25,15 @@ onMounted(() => {
     <div :class="(reverse === 'true' ? 'flex-row-reverse space-x-reverse ' : '') + ' py-16 flex space-x-32 justify-center w-full text-secondary font-noto-serif'">
 
       <!-- Cover -->
-      <div class="flex relative h-[360px] w-[270px]">
-        <div :class="cardRounded + ' absolute -top-6 left-6  bg-transparent  h-[360px] w-[270px]  outline-border'">
-        </div>
-        <nuxt-img :class="cardRounded + ' relative overflow-hidden h-full w-full object-cover bg-slate-400' "
-                  src="/images/20200311174352-5e69235813514.jpg">
-        </nuxt-img>
-      </div>
+      <ShadowImage image="/images/20200311174352-5e69235813514.jpg" shadow_x="-top-6" shadow_y="left-6" height="360px" width="270px" :rounded="generateRandomRoundedClass()" />
+
+<!--      <div class="flex relative h-[360px] w-[270px]">-->
+<!--        <div :class="cardRounded + ' absolute -top-6 left-6  bg-transparent  h-[360px] w-[270px]  outline-border'">-->
+<!--        </div>-->
+<!--        <nuxt-img :class="cardRounded + ' relative overflow-hidden h-full w-full object-cover bg-slate-400' "-->
+<!--                  src="/images/20200311174352-5e69235813514.jpg">-->
+<!--        </nuxt-img>-->
+<!--      </div>-->
 
       <!--  Detail  -->
       <div class="flex flex-col">
@@ -55,7 +52,7 @@ onMounted(() => {
           {{article.desc}}
         </div>
         <div class="flex pt-16">
-          <div @click="$router.push('/article/' + article.id)" class="flex px-14 py-2 transition-all  hover:bg-primary hover:bg-opacity-10  font-[500] justify-center items-center text-[24px] hover:cursor-pointer text-primary border-button">
+          <div @click="$router.push('/article/' + article.id)" class="active:scale-95 flex px-10 py-2 transition-all  hover:bg-primary hover:bg-opacity-10  font-[500] justify-center items-center text-[24px] hover:cursor-pointer text-primary border-button">
             Navigate
           </div>
         </div>
