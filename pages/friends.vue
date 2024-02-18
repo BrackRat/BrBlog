@@ -1,5 +1,5 @@
 <script setup>
-import FirendCard from "~/components/FirendCard.vue";
+import FriendCard from "~/components/FriendCard.vue";
 
 const friends = [
   {
@@ -33,18 +33,19 @@ const friends = [
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col justify-center  items-center  w-full pt-16 text-secondary">
+  <div class="min-h-screen flex flex-col justify-center items-center w-full pt-16 text-secondary">
     <ElegantTitle text="FRIENDS" />
 
-    <div class="grid grid-cols-1 items-center pt-16 px-12 gap-y-14 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-12 ">
-      <FirendCard  :name="friend.name" :avatar="friend.avatar" :screenshot="friend.screenshot" :link="friend.link"  v-for="friend in friends"/>
+    <div class="flex flex-col items-center pt-16 px-12 gap-y-14 lg:grid lg:grid-cols-2 lg:gap-x-12 lg:gap-y-12">
+      <FriendCard v-for="friend in friends" :key="friend.name" :name="friend.name" :avatar="friend.avatar" :screenshot="friend.screenshot" :link="friend.link" />
     </div>
 
     <div class="w-4/5 max-w-full lg:w-[800px] pt-32 pb-16">
-      <Comment  />
+      <Comment />
     </div>
   </div>
 </template>
+
 
 <style>
 
