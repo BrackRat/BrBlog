@@ -26,7 +26,7 @@ async function fetchArticles() {
 
 
 function generateReverse(index:number) {
-  return index % 2 === 0 ? 'true' : 'false';
+  return index % 2 === 0 ? 'false' : 'true';
 }
 
 

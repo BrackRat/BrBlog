@@ -2,6 +2,7 @@
 // import {useBlogStore} from "~/stores/blog";
 //
 // const blogStore = useBlogStore()
+import MoreButton from "~/components/MoreButton.vue";
 </script>
 
 <template>
@@ -70,35 +71,30 @@
           </div>
         </div>
 
-        <div class="font-noto-serif font-medium flex flex-col space-y-2 pt-4">
+        <div class="font-noto-serif font-medium flex flex-col space-y-2 pt-4 ">
 
-          <div class=" text-content text-xl hover:opacity-80 hover:cursor-pointer">
+          <div class="transition-all text-content text-xl hover:opacity-80 hover:cursor-pointer">
             通过 Docker 部署 Vue + Flask 的前后端分离项目
           </div>
           <div class="br-divide"/>
 
-          <div class="text-content text-xl hover:opacity-80 hover:cursor-pointer">
+          <div class="transition-all text-content text-xl hover:opacity-80 hover:cursor-pointer">
             MoeCTF 2022 WP
           </div>
           <div class="br-divide"/>
 
-          <div class="text-content text-xl hover:opacity-80 hover:cursor-pointer">
+          <div class="transition-all text-content text-xl hover:opacity-80 hover:cursor-pointer">
             BrackRat 的2022年度总结
           </div>
 
           <div class="br-divide"/>
-          <div class="text-content text-xl hover:opacity-80 hover:cursor-pointer">
+          <div class="transition-all text-content text-xl hover:opacity-80 hover:cursor-pointer">
             我的Win11优化方案总结报告
 
           </div>
         </div>
 
-        <div class="mt-8 more-button hover:cursor-pointer flex justify-center items-center  rounded-full w-32">
-          <div class="text-primary text-xl">
-            More
-          </div>
-          <Icon class="text-primary ml-4" name="mingcute:arrow-right-line"></Icon>
-        </div>
+        <MoreButton @click="$router.push('/blog')" />
 
       </div>
     </div>
@@ -155,13 +151,10 @@
         </div>
 
       </div>
-
-      <div class="mt-8 ml-32 more-button hover:cursor-pointer flex justify-center items-center  rounded-full w-32">
-        <div class="text-primary text-xl">
-          More
-        </div>
-        <Icon class="text-primary ml-4" name="mingcute:arrow-right-line"></Icon>
+      <div class="pl-32 pt-4">
+        <MoreButton  />
       </div>
+
 
     </div>
 
