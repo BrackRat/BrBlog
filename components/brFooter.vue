@@ -8,7 +8,7 @@
      <div class="flex space-x-2 text-content text-sm ">
        <div >
          2019-2024
-       </div><a class="flex items-center space-x-0.5" href="https://github.com/BrackRat"><Icon class="align-middle" name="mingcute:github-line" /><div>BrackRat</div></a>
+       </div><a class="flex items-center space-x-0.5" href="https://github.com/BrackRat" target="_blank"><Icon class="align-middle" name="mingcute:github-line" /><div>BrackRat</div></a>
      </div>
      <div class="flex space-x-2 text-content text-sm ">
        <div>

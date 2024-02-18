@@ -8,9 +8,10 @@ import ShadowImage from "~/components/ShadowImage.vue";
 
 <template>
   <div class="flex flex-col justify-center items-center font-frank-ruhl-libre pt-16">
-    <!--  弥散光  -->
 
-    <div class="w-full h-full overflow-hidden absolute">
+
+    <!--  弥散光  -->
+    <div class="w-full h-full overflow-hidden absolute hidden lg:block">
       <!--   头像下   -->
       <div
           class="top-[80px] left-[50px] rotate-[-45deg] w-[200px] h-[620px] blur-[200px] absolute  bg-primary -z-50">
@@ -35,63 +36,72 @@ import ShadowImage from "~/components/ShadowImage.vue";
     </div>
 
     <!--  BR Hero  -->
-    <div class="flex relative justify-around w-full px-32 mb-24">
-      <div class="w-[330px] h-[330px]  pt-32">
+    <div class="flex flex-col lg:flex-row relative justify-around w-full lg:px-32 lg:mb-24">
+      <div class="w-32 ml-8 lg:w-[330px] lg:h-[330px] pt-8 lg:pt-32">
         <nuxt-img class="rounded-full shadow-2xl" src="./icon.jpg"></nuxt-img>
       </div>
 
-      <div class="flex flex-col justify-end pl-32">
-        <p class="text-secondary opacity-50 text-[72px] -mb-16 self-end">Revalidate</p>
-        <p class="text-secondary text-[140px] -mb-8 self-end font-[600]">BrackRat</p>
-        <p class="text-content text-[18px] max-w-[450px]">With a clear direction in mind, day by day, there will be
+      <div class="flex flex-col -mt-4 justify-end px-12 lg:pl-32">
+        <p class="text-secondary text-[32px] font-[300] -mb-8 lg:text-[72px] lg:-mb-16 self-end opacity-50">
+          Revalidate</p>
+        <p class="text-secondary text-[64px] font-[500] lg:text-[140px] lg:-mb-8 self-end lg:font-[600]">BrackRat</p>
+        <p class="text-content lg:text-[18px] max-w-[450px]">With a clear direction in mind, day by day, there will be
           progress.</p>
       </div>
     </div>
 
-    <div class="flex relative w-full px-16 justify-around pt-64">
+    <div class="flex flex-col px-8 lg:flex-row relative w-full lg:px-16 justify-around pt-32 lg:pt-64">
 
-      <ShadowImage image="/images/20200311174352-5e69235813514.jpg" shadow_x="-top-6" shadow_y="left-6" height="330px" width="500px" rounded="rounded-tr-[100px]" />
+      <!--   移动显示   -->
+      <ShadowImage class="block self-center md:hidden" image="/images/20200311174352-5e69235813514.jpg" shadow_x="-top-2"
+                   shadow_y="left-2" height="200px" width="300px" rounded="rounded-tr-[100px]"/>
+
+
+      <!--   宽屏显示   -->
+      <ShadowImage class="hidden md:block" image="/images/20200311174352-5e69235813514.jpg" shadow_x="-top-6" shadow_y="left-6"
+                   height="330px" width="500px" rounded="rounded-tr-[100px]"/>
 
 
       <div class="flex flex-col ">
 
-        <ElegantTitle text="BLOGS" />
+        <ElegantTitle text="BLOGS"/>
 
-        <div class="font-noto-serif font-medium flex flex-col space-y-2 pt-4 ">
+        <div class="font-noto-serif font-medium flex flex-col space-y-2 pt-4  lg:text-xl">
 
-          <div class="transition-all text-content text-xl hover:opacity-80 hover:cursor-pointer">
+          <div class="transition-all text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
             通过 Docker 部署 Vue + Flask 的前后端分离项目
           </div>
           <div class="br-divide"/>
 
-          <div class="transition-all text-content text-xl hover:opacity-80 hover:cursor-pointer">
+          <div class="transition-all text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
             MoeCTF 2022 WP
           </div>
           <div class="br-divide"/>
 
-          <div class="transition-all text-content text-xl hover:opacity-80 hover:cursor-pointer">
+          <div class="transition-all text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
             BrackRat 的2022年度总结
           </div>
 
           <div class="br-divide"/>
-          <div class="transition-all text-content text-xl hover:opacity-80 hover:cursor-pointer">
+          <div class="transition-all text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
             我的Win11优化方案总结报告
 
           </div>
         </div>
 
-        <MoreButton @click="$router.push('/blog')" />
+        <MoreButton @click="$router.push('/blog')"/>
 
       </div>
     </div>
 
-    <div class="flex relative flex-col w-full px-16 py-32 text-secondary ">
-      <ElegantTitle text="PROJECTS" />
+    <div class="flex relative flex-col w-full px-4 py-32 lg:px-16 lg:py-32 text-secondary ">
+      <ElegantTitle text="PROJECTS"/>
 
-      <div class="font-noto-serif font-medium flex justify-around pt-8">
+      <div class="flex flex-col lg:flex-row font-noto-serif font-medium justify-around pt-8">
 
         <div class="flex flex-col items-center">
-          <ShadowImage image="/images/20200311174352-5e69235813514.jpg" shadow_x="-top-6" shadow_y="left-6" height="360px" width="270px" rounded="rounded-tr-[100px]" />
+          <ShadowImage image="/images/20200311174352-5e69235813514.jpg" shadow_x="-top-6" shadow_y="left-6"
+                       height="360px" width="270px" rounded="rounded-tr-[100px]"/>
 
           <div class="text-content pt-8 text-xl ">
             波西的博客
@@ -99,14 +109,16 @@ import ShadowImage from "~/components/ShadowImage.vue";
         </div>
 
         <div class="flex flex-col items-center">
-          <ShadowImage image="/images/20200416224600-5e986fa8b804f.jpg" shadow_x="top-6" shadow_y="right-6" height="360px" width="270px" rounded="rounded-t-full" />
+          <ShadowImage image="/images/20200416224600-5e986fa8b804f.jpg" shadow_x="top-6" shadow_y="right-6"
+                       height="360px" width="270px" rounded="rounded-t-full"/>
           <div class=" text-content pt-8 text-xl ">
             第二个项目 Outline
           </div>
         </div>
 
         <div class="flex flex-col items-center">
-          <ShadowImage image="/images/20200314110609-5e6cbaa171e81.jpg" shadow_x="top-6" shadow_y="right-6" height="360px" width="270px" rounded="rounded-bl-[100px]" />
+          <ShadowImage image="/images/20200314110609-5e6cbaa171e81.jpg" shadow_x="top-6" shadow_y="right-6"
+                       height="360px" width="270px" rounded="rounded-bl-[100px]"/>
 
           <div class=" text-content pt-8 text-xl ">
             第三个项目
@@ -115,7 +127,7 @@ import ShadowImage from "~/components/ShadowImage.vue";
 
       </div>
       <div class="pl-32 pt-4">
-        <MoreButton  />
+        <MoreButton/>
       </div>
 
 
