@@ -4,6 +4,7 @@
 import MoreButton from "~/components/MoreButton.vue";
 import ShadowImage from "~/components/ShadowImage.vue";
 import {checkSupportBrowser} from "~/composables/supportCheck";
+import ElegantTitle from "~/components/ElegantTitle.vue";
 
 </script>
 
@@ -58,14 +59,7 @@ import {checkSupportBrowser} from "~/composables/supportCheck";
 
       <div class="flex  flex-col ">
 
-        <div class=" flex text-secondary items-baseline">
-          <div class="text-[72px]">
-            B
-          </div>
-          <div class="text-[48px]">
-            LOGS
-          </div>
-        </div>
+        <ElegantTitle text="BLOGS" />
 
         <div class="font-noto-serif font-medium flex flex-col space-y-2 pt-4 ">
 

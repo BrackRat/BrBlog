@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type {Article} from "~/server/types/article";
 import {checkSupportBrowser} from "~/composables/supportCheck";
+import ElegantTitle from "~/components/ElegantTitle.vue";
 
 const loading = ref(true)
 
@@ -50,11 +51,18 @@ fetchArticles()
           </div>
         </div>
 
-        <div class="flex pt-24 relative flex-col justify-center items-center w-full">
-          <div v-for="(item, index) in articles" :key="index">
-            <BlogCardClassic :article="item" :reverse="generateReverse(index)"/>
+        <div>
+          <div class="flex pt-24 relative flex-col justify-center items-center w-full">
+
+            <ElegantTitle text="BLOGS" />
+
+            <div v-for="(item, index) in articles" :key="index">
+              <BlogCardClassic :article="item" :reverse="generateReverse(index)"/>
+            </div>
           </div>
         </div>
+
+
       </div>
 
     </div>
