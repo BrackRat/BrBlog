@@ -38,5 +38,8 @@ const props = defineProps({
 </template>
 
 <style scoped>
-
+.outline-border {
+  opacity: 1;
+  border: 1px solid rgba(194, 78, 19, 0.5);
+}
 </style>

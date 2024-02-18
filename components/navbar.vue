@@ -27,7 +27,7 @@ const switchRoutes = computed(() => {
 <template>
   <div class="flex p-4 justify-center flex-row space-x-4">
     <div v-for="(item, index) in switchRoutes" :key="index">
-      <div :class="item.route === route.path ? 'base-text text-primary underline' : 'base-text text-secondary hover:underline'">
+      <div :class="item.route === route.path ? 'base-text text-primary underline' : 'base-text text-secondary  hover:text-primary transition-all'">
         <NuxtLink  :to="item.route">{{ item.title }}</NuxtLink>
       </div>
     </div>

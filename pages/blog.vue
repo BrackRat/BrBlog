@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type {Article} from "~/server/types/article";
+import {checkSupportBrowser} from "~/composables/supportCheck";
 
-const loading = ref(false)
+const loading = ref(true)
 
 const articles = ref<Article[]>()
 
@@ -25,32 +26,37 @@ async function fetchArticles() {
 }
 
 
-function generateReverse(index:number) {
+function generateReverse(index: number) {
   return index % 2 === 0 ? 'false' : 'true';
 }
-
 
 fetchArticles()
 </script>
 
 <template>
   <div class="flex flex-col transition-all">
-    <div v-if="loading" class="w-full h-screen text-secondary pt-16 flex justify-center animate-pulse">
-      <BlogCardClassicSkeleton />
-    </div>
 
-    <div v-else class="pb-32">
-      <div class="w-full h-full overflow-hidden absolute">
-        <div
-            class="top-[-300px] left-[800px] rotate-[-45deg] w-[200px] h-[620px] blur-[200px] absolute  bg-primary -z-50">
+
+    <div class="pb-32">
+      <div v-if="loading" class="w-full h-screen text-secondary pt-16 flex justify-center animate-pulse">
+        <BlogCardClassicSkeleton/>
+      </div>
+
+      <div v-else>
+        <!-- 弥散光 -->
+        <div v-if="checkSupportBrowser()" class="w-full h-full overflow-hidden absolute">
+          <div
+              class="top-[-300px] left-[800px] rotate-[-45deg] w-[200px] h-[620px] blur-[200px] absolute  bg-primary -z-50">
+          </div>
+        </div>
+
+        <div class="flex pt-24 relative flex-col justify-center items-center w-full">
+          <div v-for="(item, index) in articles" :key="index">
+            <BlogCardClassic :article="item" :reverse="generateReverse(index)"/>
+          </div>
         </div>
       </div>
 
-      <div class="flex pt-24 relative flex-col justify-center items-center w-full">
-        <div v-for="(item, index) in articles" :key="index">
-          <BlogCardClassic :article="item" :reverse="generateReverse(index)" />
-        </div>
-      </div>
     </div>
 
   </div>

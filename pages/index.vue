@@ -1,16 +1,17 @@
 <script setup lang="ts">
 // import {useBlogStore} from "~/stores/blog";
-//
 // const blogStore = useBlogStore()
 import MoreButton from "~/components/MoreButton.vue";
 import ShadowImage from "~/components/ShadowImage.vue";
+import {checkSupportBrowser} from "~/composables/supportCheck";
+
 </script>
 
 <template>
   <div class="flex flex-col justify-center items-center font-frank-ruhl-libre pt-16">
-    <!--  弥散光  -->
 
-    <div class="w-full h-full overflow-hidden absolute">
+    <!--  弥散光  -->
+    <div v-if="checkSupportBrowser()"  class="w-full h-full overflow-hidden absolute">
       <!--   头像下   -->
       <div
           class="top-[80px] left-[50px] rotate-[-45deg] w-[200px] h-[620px] blur-[200px] absolute  bg-primary -z-50">
