@@ -51,7 +51,7 @@ fetchArticles()
         <!-- 弥散光 -->
         <div v-if="checkSupportBrowser()" class="w-full h-full overflow-hidden absolute">
           <div
-              class="top-[-300px] left-[800px] rotate-[-45deg] w-[200px] h-[620px] blur-[200px] absolute  bg-primary -z-50">
+              class="top-[-300px]  lg:left-[800px] rotate-[-45deg] w-[200px] h-[620px] blur-[200px] absolute  bg-primary -z-50">
           </div>
         </div>
 
@@ -65,7 +65,7 @@ fetchArticles()
                 <BlogCardClassic class="space-y-96" :article="item" :reverse="generateReverse(index)"/>
               </div>
 
-              <div  v-if="loading" class=" animate-pulse">
+              <div v-if="loading" class="hidden lg:block animate-pulse">
                 <BlogCardClassicSkeleton />
               </div>
             </div>

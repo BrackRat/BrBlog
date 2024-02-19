@@ -29,10 +29,12 @@ onMounted(()=>{
 
 <template>
   <div>
-    <div :class="'px-8 flex-col items-center lg:items-start ' + ((windowWidth >= 1024 && reverse === 'true')  ? ' flex-row-reverse space-x-reverse ' : '') + ' py-16 flex lg:flex-row lg:space-x-32 justify-center w-full text-secondary font-noto-serif'">
+    <div class="px-8 flex-col items-center lg:items-start py-16 flex lg:flex-row lg:space-x-32 justify-center w-full text-secondary font-noto-serif">
 
       <!-- Cover -->
-      <ShadowImage :image="article.cover" shadow_x="-top-6" shadow_y="left-6" height="360px" width="270px" :rounded="generateRandomRoundedClass()" />
+      <ShadowImage class="hidden lg:block" :image="article.cover" shadow_x="-top-6" shadow_y="left-6" height="360px" width="270px" :rounded="generateRandomRoundedClass()" />
+
+      <ShadowImage class="block lg:hidden" :image="article.cover" shadow_x="-top-4" shadow_y="left-4" height="200px" width="350px" :rounded="generateRandomRoundedClass()" />
 
       <!--  Detail  -->
       <div class="flex flex-col">
