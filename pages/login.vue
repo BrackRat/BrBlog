@@ -58,19 +58,19 @@ async function login() {
     <div class="min-h-screen">
       <div class="space-y-6 font-noto-serif pt-32">
         <div>
-          <label for="Username" class="block text-sm font-medium leading-6 text-secondary">Username</label>
+          <label for="Username" class="block font-medium leading-6 text-secondary">Username</label>
           <div class="mt-2">
-            <input v-model="user.username" id="Username" name="username" class="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-secondary focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6">
+            <input v-model="user.username" id="Username" name="username" class="font-sans block w-full px-4 rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-secondary focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6">
           </div>
         </div>
 
-        <div>
+        <div >
           <div class="flex items-center justify-between">
-            <label for="password" class="block text-sm font-medium leading-6 text-secondary">Password</label>
+            <label for="password" class="block font-medium leading-6 text-secondary">Password</label>
 
           </div>
           <div class="mt-2">
-            <input v-model="user.password" id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <input v-model="user.password" id="password" name="password" type="password" autocomplete="current-password" required class="font-sans block px-4 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
         </div>
 
