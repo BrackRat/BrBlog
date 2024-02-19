@@ -31,3 +31,7 @@ export interface ArticleToPublish {
     createTime: number
     publishTime: number
 }
+
+export interface OnlyTitle {
+    title: string
+}

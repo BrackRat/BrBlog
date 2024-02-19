@@ -21,3 +21,11 @@ model Article {
   createTime  Int
   publishTime Int
 }
+
+model Friend {
+  id         Int    @id @default(autoincrement())
+  name       String
+  avatar     String
+  screenshot String
+  link       String
+}

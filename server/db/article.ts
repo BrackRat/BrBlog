@@ -65,3 +65,16 @@ export const addReadCount = async (id: number) => {
     }
 }
 
+export const getHome = () => {
+    const amount:number = 4;
+
+    return prisma.article.findMany({
+        orderBy: {
+            publishTime: 'desc'
+        },
+        take: amount,
+        select: {
+            title: true,
+        }
+    });
+}

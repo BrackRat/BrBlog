@@ -1,9 +1,31 @@
 <script setup lang="ts">
-// import {useBlogStore} from "~/stores/blog";
-//
-// const blogStore = useBlogStore()
+
 import MoreButton from "~/components/MoreButton.vue";
 import ShadowImage from "~/components/ShadowImage.vue";
+import type { OnlyTitle} from "~/server/types/article";
+
+const loading = ref(false)
+const articleTitles = ref<OnlyTitle[]>([])
+
+async function fetchHome() {
+  loading.value = true
+  try {
+    const response = await useFetch(`/api/home`, {
+      method: 'GET',
+    })
+    if (response.data.value && response.data.value.length >= 0) {
+      articleTitles.value = response.data.value
+      loading.value = false
+      return true
+    }
+  } catch (error) {
+    console.error('Error fetching Home:', error)
+    return false
+  }
+  return false
+}
+
+fetchHome()
 </script>
 
 <template>
@@ -68,25 +90,29 @@ import ShadowImage from "~/components/ShadowImage.vue";
 
         <div class="font-noto-serif font-medium flex flex-col space-y-2 pt-4  lg:text-xl">
 
-          <div class="transition-all text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
-            通过 Docker 部署 Vue + Flask 的前后端分离项目
-          </div>
-          <div class="br-divide"/>
-
-          <div class="transition-all text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
-            MoeCTF 2022 WP
-          </div>
-          <div class="br-divide"/>
-
-          <div class="transition-all text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
-            BrackRat 的2022年度总结
+          <div v-for="(item, idx) in articleTitles" >
+            <div class="transition-all pb-2 w-[550px] text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
+              {{ item.title }}
+            </div>
+            <div v-if="idx !== articleTitles.length-1" class="br-divide"/>
           </div>
 
-          <div class="br-divide"/>
-          <div class="transition-all text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
-            我的Win11优化方案总结报告
 
-          </div>
+
+<!--          <div class="transition-all text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">-->
+<!--            MoeCTF 2022 WP-->
+<!--          </div>-->
+<!--          <div class="br-divide"/>-->
+
+<!--          <div class="transition-all text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">-->
+<!--            BrackRat 的2022年度总结-->
+<!--          </div>-->
+
+<!--          <div class="br-divide"/>-->
+<!--          <div class="transition-all text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">-->
+<!--            我的Win11优化方案总结报告-->
+
+<!--          </div>-->
         </div>
 
         <MoreButton @click="$router.push('/blog')"/>
@@ -105,9 +131,10 @@ import ShadowImage from "~/components/ShadowImage.vue";
           <ElegantWithTitle text="第三个项目" height="360px" width="270px" rounded="rounded-bl-[100px]" image="https://static.brackrat.com/2024/02/19/65d3051a033f9.jpg" shadow_x="top-6" shadow_y="right-6" />
 
       </div>
-      <div class="self-center lg:self-start pt-4 lg:pl-32 ">
-        <MoreButton/>
-      </div>
+
+<!--      <div class="self-center lg:self-start pt-4 lg:pl-32 ">-->
+<!--        <MoreButton/>-->
+<!--      </div>-->
 
 
     </div>

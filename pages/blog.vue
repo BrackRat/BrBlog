@@ -37,10 +37,13 @@ function generateReverse(index: number) {
 const currentPage = ref(1)
 
 const loadMore = () => {
-  fetchArticles(currentPage.value)
+  if(loading){
+    fetchArticles(currentPage.value)
+  }
 }
 
 fetchArticles()
+
 </script>
 
 <template>
@@ -70,9 +73,13 @@ fetchArticles()
               </div>
             </div>
 
-            <div v-if="!loadMoreButtonDisable" @click="loadMore()" class="flex font-noto-serif pt-8 lg:pt-16 self-center">
-              <div class=" active:scale-95 flex px-10 py-2 transition-all  hover:bg-primary hover:bg-opacity-10  font-[500] justify-center items-center text-[24px] hover:cursor-pointer text-primary border-bn">
+
+            <div v-if="!loadMoreButtonDisable"  @click="loadMore()" class="flex font-noto-serif pt-8 lg:pt-24 self-center">
+              <div v-if="!loading" class=" active:scale-95 flex px-10 py-2 transition-all  hover:bg-primary hover:bg-opacity-10  font-[500] justify-center items-center text-[24px] hover:cursor-pointer text-primary border-bn">
                 More
+              </div>
+              <div v-else class="animate-pulse flex px-10 py-2 transition-all  hover:bg-primary hover:bg-opacity-10  font-[500] justify-center items-center text-[24px] hover:cursor-pointer text-primary border-bn">
+                Loading...
               </div>
             </div>
 
