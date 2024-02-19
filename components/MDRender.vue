@@ -13,12 +13,12 @@ const text = props.content;
 
 <template>
   <div  class="flex">
-    <MdPreview :show-code-row-number="true" theme="dark" :editorId="id" :modelValue="text" />
+    <MdPreview preview-theme="github" :show-code-row-number="true" theme="dark" :editorId="id" :modelValue="text" />
   </div>
 </template>
 
 <style>
 .md-editor-dark {
-  --md-bk-color: rgba(255,255,255,10%) !important;
+  --md-bk-color: rgba(0,0,0,30%) !important;
 }
 </style>

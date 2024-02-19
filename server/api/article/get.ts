@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
         const token = event.headers.get('Authorization') as string
         if (verifyToken(token)) {
             const page: number = query.page as number
-            return {code: 200, data: await getArticle(page, true, 10)};
+            return {code: 200, data: await getArticle(page, true, 20)};
         } else {
             return {code: 401, msg: "Authorization Failed"}
         }

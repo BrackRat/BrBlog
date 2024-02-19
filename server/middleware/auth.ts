@@ -27,6 +27,7 @@ export default defineEventHandler(event => {
         '/api/friend/update',
     ]
 
+
     if (needAuthRoutes.includes(event.path)) {
         const token: string = event.headers.get('Authorization') as string;
         if (verifyToken(token)) {

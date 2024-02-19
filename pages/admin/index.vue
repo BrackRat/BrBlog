@@ -2,6 +2,10 @@
 import {checkSupportBrowser} from "~/composables/supportCheck";
 import {useBlogStore} from "~/stores/blog";
 import type {Article} from "~/server/types/article";
+import ElegantButton from "~/components/ElegantButton.vue";
+
+
+const router = useRouter()
 
 const blogStore = useBlogStore()
 const loading = ref(false)
@@ -48,6 +52,12 @@ async function fetchAdminArticles() {
   return false
 }
 
+
+async function navigateToEdit(id: number=0)  {
+  // await router.push({ path: "/admin/edit",params:{id:id} })
+  await router.push(`/admin/edit?id=${id}`)
+}
+
 fetchAdminArticles()
 </script>
 
@@ -64,38 +74,48 @@ fetchAdminArticles()
       <ElegantTitle text="ADMIN"/>
     </div>
 
-    <div class="relative flex mt-16 pb-8 mb-32 flex-col justify-center items-center px-4 font-noto-serif bg-white bg-opacity-5">
-      <div class="flex flex-col">
-        <div class="grid grid-cols-7 w-full gap-y-4 font-black py-4">
-          <div class="col-span-3">
-            Title
+    <div class="relative flex pt-8">
+      <ElegantButton @click="navigateToEdit(undefined)">
+        <Icon class="mr-4" name="mingcute:add-fill" />
+        New
+      </ElegantButton>
+    </div>
+
+    <div class="relative ">
+      <div class="flex mt-4 pb-8 mb-32 flex-col justify-center items-center px-4 font-noto-serif bg-white bg-opacity-5">
+        <div class="flex flex-col">
+          <div class="grid grid-cols-7 w-full gap-y-4 font-black py-4">
+            <div class="col-span-3">
+              Title
+            </div>
+            <div>
+              Status
+            </div>
+            <div>
+              View Count
+            </div>
+            <div class="justify-self-end">
+              Publish Time
+            </div>
           </div>
-          <div>
-            Status
-          </div>
-          <div>
-            View Count
-          </div>
-          <div class="justify-self-end">
-            Publish Time
-          </div>
-        </div>
-        <div class="bg-primary h-0.5"/>
-        <div class="grid grid-cols-7 w-full mt-4" v-for="article in articles">
-          <div class="col-span-3 hover:cursor-pointer hover:underline">
-            {{ article.title }}
-          </div>
-          <div>
-            <span :class="StatusMap[article.status].style">{{ StatusMap[article.status].text }}</span>
-          </div>
-          <div class="justify-self-end pr-8">
-            {{ article.viewCount }}
-          </div>
-          <div>
-            {{ formatUnixTimestamp(article.publishTime) }}
+          <div class="bg-primary h-0.5"/>
+          <div class="grid grid-cols-7 w-full mt-4" v-for="article in articles">
+            <div @click="navigateToEdit(article.id)" class="col-span-3 hover:cursor-pointer hover:underline">
+              {{ article.title }}
+            </div>
+            <div>
+              <span :class="StatusMap[article.status].style">{{ StatusMap[article.status].text }}</span>
+            </div>
+            <div class="justify-self-end pr-8">
+              {{ article.viewCount }}
+            </div>
+            <div>
+              {{ formatUnixTimestamp(article.publishTime) }}
+            </div>
           </div>
         </div>
       </div>
+
 
     </div>
 
