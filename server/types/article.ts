@@ -7,6 +7,7 @@ export interface Article {
     tag: string
     createTime: number
     publishTime: number
+    status: number
 }
 
 export interface ArticleWithContent {
@@ -19,6 +20,8 @@ export interface ArticleWithContent {
     tag: string
     createTime: number
     publishTime: number
+    status: number
+
 }
 
 export interface ArticleToPublish {
@@ -30,6 +33,8 @@ export interface ArticleToPublish {
     tag: string
     createTime: number
     publishTime: number
+    status: number
+
 }
 
 export interface OnlyTitle {

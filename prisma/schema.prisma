@@ -10,6 +10,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Status
+// 0  Active
+// 1  Deleted
+
 model Article {
   id          Int    @id @default(autoincrement())
   title       String
@@ -20,6 +24,7 @@ model Article {
   tag         String
   createTime  Int
   publishTime Int
+  status      Int    @default(0)
 }
 
 model Friend {
@@ -28,4 +33,5 @@ model Friend {
   avatar     String
   screenshot String
   link       String
+  status     Int    @default(0)
 }
