@@ -15,6 +15,7 @@ async function fetchArticles(page:number = 1) {
     })
     if (response.data.value && response.data.value.length >= 0) {
       articles.value = [...articles.value, ...response.data.value];
+      articles.value = articles.value.sort((a, b) => b.publishTime - a.publishTime);
       currentPage.value++;
       loading.value = false
       if(response.data.value.length < 3){

@@ -74,6 +74,7 @@ export const getHome = () => {
         },
         take: amount,
         select: {
+            id: true,
             title: true,
         }
     });

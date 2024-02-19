@@ -15,6 +15,8 @@ async function fetchHome() {
     })
     if (response.data.value && response.data.value.length >= 0) {
       articleTitles.value = response.data.value
+      articleTitles.value = articleTitles.value.sort((a, b) => b.id - a.id);
+
       loading.value = false
       return true
     }
@@ -91,7 +93,7 @@ fetchHome()
         <div class="font-noto-serif font-medium flex flex-col space-y-2 pt-4  lg:text-xl">
 
           <div v-for="(item, idx) in articleTitles" >
-            <div class="transition-all pb-2 w-[550px] text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
+            <div @click="$router.push('/article/' + item.id)"  class="transition-all pb-2 w-[550px] text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
               {{ item.title }}
             </div>
             <div v-if="idx !== articleTitles.length-1" class="br-divide"/>

@@ -33,5 +33,6 @@ export interface ArticleToPublish {
 }
 
 export interface OnlyTitle {
+    id: number
     title: string
 }
