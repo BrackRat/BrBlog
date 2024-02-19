@@ -13,8 +13,9 @@ async function fetchHome() {
     const response = await useFetch(`/api/article/home`, {
       method: 'GET',
     })
-    if (response.data.value && response.data.value.length >= 0) {
-      articleTitles.value = response.data.value
+    const { code, data } = response.data.value
+    if (code === 200) {
+      articleTitles.value = data
       articleTitles.value = articleTitles.value.sort((a, b) => b.id - a.id);
 
       loading.value = false

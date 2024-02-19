@@ -9,7 +9,7 @@ function extractToken(authHeader: string): string | null {
     return null;
 }
 
-function verifyToken(token: string): boolean {
+export function verifyToken(token: string): boolean {
     try {
         const decoded = jwt.verify(extractToken(token), process.env.JWT_TOKEN);
         return !!decoded;

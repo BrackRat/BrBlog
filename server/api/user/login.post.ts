@@ -16,9 +16,9 @@ export default defineEventHandler(async (event) => {
 
     if (username === process.env.ADMIN_USERNAME && hashedPassword === process.env.ADMIN_HASHED_PASSWORD) {
         const token = generateToken(username, 'admin')
-        return {token}
+        return {code:200,token:token}
     } else {
-        return {msg: "wrong username or password"}
+        return {code:404,msg: "wrong username or password"}
     }
 })
 

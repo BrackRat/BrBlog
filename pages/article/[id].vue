@@ -13,8 +13,9 @@ async function fetchArticle() {
     const response = await useFetch(`/api/article/${id}`, {
       method: 'GET',
     })
-    if (response.data.value) {
-      article.value = response.data.value
+    const { code, data } = response.data.value
+    if (code === 200) {
+      article.value = data
 
       loading.value = false
     }else{
@@ -28,6 +29,7 @@ async function fetchArticle() {
         tag: 'No tag',
         createTime: 1708278685,
         publishTime: 1708278685,
+        status:0
       }
       loading.value = false
     }

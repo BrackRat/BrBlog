@@ -5,5 +5,5 @@ import {createArticle} from "~/server/db/article";
 export default defineEventHandler(async (event) => {
     const article:ArticleToPublish = await readBody(event)
     const result = await createArticle(article)
-    return {result:result}
+    return {code:200,data:result}
 })

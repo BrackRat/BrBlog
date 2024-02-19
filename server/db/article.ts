@@ -1,5 +1,6 @@
 import {prisma} from "~/server/db/index";
-import {ArticleToPublish} from "~/server/types/article";
+import {Article, ArticleToPublish} from "~/server/types/article";
+import {Prisma} from "@prisma/client";
 
 export const createArticle = (articleData: ArticleToPublish) => {
     return prisma.article.create({
@@ -7,14 +8,17 @@ export const createArticle = (articleData: ArticleToPublish) => {
     })
 }
 
-export const getArticle = (page: number, filterStatus: number = 0) => {
-    const pageSize: number = 3;
+export const changeArticle = (article: Article) => {
+    return prisma.article.update({
+        where: {id: article.id},
+        data: {...article},
+    });
+}
+
+export const getArticle = (page: number, getall: boolean = false, pageSize:number = 3) => {
     const skip: number = (page - 1) * pageSize;
 
-    return prisma.article.findMany({
-        where: {
-            status: filterStatus
-        },
+    let query: Prisma.ArticleFindManyArgs = {
         orderBy: {
             publishTime: 'desc'
         },
@@ -29,8 +33,16 @@ export const getArticle = (page: number, filterStatus: number = 0) => {
             tag: true,
             createTime: true,
             publishTime: true,
+            status: true
         }
-    });
+    };
+
+    if (!getall) {
+        query.where = {
+            status: 0
+        };
+    }
+    return prisma.article.findMany(query);
 }
 
 
@@ -74,8 +86,8 @@ export const getHome = () => {
     const amount: number = 4;
 
     return prisma.article.findMany({
-        where:{
-          status: 0
+        where: {
+            status: 0
         },
         orderBy: {
             publishTime: 'desc'

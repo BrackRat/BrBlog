@@ -41,8 +41,9 @@ async function fetchFriends() {
     const response = await useFetch(`/api/friend/get`, {
       method: 'GET',
     })
-    if (response.data.value && response.data.value.length >= 0) {
-      friends.value = response.data.value
+    const { code, data } = response.data.value
+    if (code === 200) {
+      friends.value = data
       loading.value = false
       return true
     }

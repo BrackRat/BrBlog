@@ -13,12 +13,13 @@ async function fetchArticles(page:number = 1) {
     const response = await useFetch(`/api/article/get?page=${page}`, {
       method: 'GET',
     })
-    if (response.data.value && response.data.value.length >= 0) {
-      articles.value = [...articles.value, ...response.data.value];
+    const { code, data } = response.data.value
+    if (code === 200 && data.length >= 0) {
+      articles.value = [...articles.value, ...data];
       articles.value = articles.value.sort((a, b) => b.publishTime - a.publishTime);
       currentPage.value++;
       loading.value = false
-      if(response.data.value.length < 3){
+      if(data.length < 3){
         loadMoreButtonDisable.value = true
       }
       return true
