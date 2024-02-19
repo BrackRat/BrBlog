@@ -38,7 +38,7 @@ import ShadowImage from "~/components/ShadowImage.vue";
     <!--  BR Hero  -->
     <div class="flex flex-col lg:flex-row relative justify-around w-full lg:px-32 lg:mb-24">
       <div class="w-32 ml-8 lg:w-[330px] lg:h-[330px] pt-8 lg:pt-32">
-        <nuxt-img class="rounded-full shadow-2xl" src="./icon.jpg"></nuxt-img>
+        <nuxt-img class="rounded-full shadow-2xl" src="https://static.brackrat.com/blog/2024/02/9911384e6b7ef52a4c87efc6415e0630.png"></nuxt-img>
       </div>
 
       <div class="flex flex-col -mt-4 justify-end px-12 lg:pl-32">
