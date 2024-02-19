@@ -38,7 +38,7 @@ const friends = ref([])
 async function fetchFriends() {
   loading.value = true
   try {
-    const response = await useFetch(`/api/friend`, {
+    const response = await useFetch(`/api/friend/get`, {
       method: 'GET',
     })
     if (response.data.value && response.data.value.length >= 0) {

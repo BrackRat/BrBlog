@@ -10,7 +10,7 @@ const articles = ref<Article[]>([])
 async function fetchArticles(page:number = 1) {
   loading.value = true
   try {
-    const response = await useFetch(`/api/article?page=${page}`, {
+    const response = await useFetch(`/api/article/get?page=${page}`, {
       method: 'GET',
     })
     if (response.data.value && response.data.value.length >= 0) {

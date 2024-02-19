@@ -10,7 +10,7 @@ const articleTitles = ref<OnlyTitle[]>([])
 async function fetchHome() {
   loading.value = true
   try {
-    const response = await useFetch(`/api/home`, {
+    const response = await useFetch(`/api/article/home`, {
       method: 'GET',
     })
     if (response.data.value && response.data.value.length >= 0) {
