@@ -53,12 +53,12 @@ import ShadowImage from "~/components/ShadowImage.vue";
     <div class="flex flex-col px-8 lg:flex-row relative w-full lg:px-16 justify-around pt-32 lg:pt-64">
 
       <!--   移动显示   -->
-      <ShadowImage class="block self-center md:hidden" image="/images/20200311174352-5e69235813514.jpg" shadow_x="-top-2"
+      <ShadowImage class="block self-center md:hidden" image="https://static.brackrat.com/2024/02/19/65d30518e651e.jpg" shadow_x="-top-2"
                    shadow_y="left-2" height="200px" width="300px" rounded="rounded-tr-[100px]"/>
 
 
       <!--   宽屏显示   -->
-      <ShadowImage class="hidden md:block" image="/images/20200311174352-5e69235813514.jpg" shadow_x="-top-6" shadow_y="left-6"
+      <ShadowImage class="hidden md:block" image="https://static.brackrat.com/2024/02/19/65d30518e651e.jpg" shadow_x="-top-6" shadow_y="left-6"
                    height="330px" width="500px" rounded="rounded-tr-[100px]"/>
 
 
@@ -98,11 +98,11 @@ import ShadowImage from "~/components/ShadowImage.vue";
       <ElegantTitle text="PROJECTS"/>
 
       <div class="flex flex-col space-y-16 lg:space-y-0 lg:flex-row font-noto-serif font-medium justify-around pt-8">
-          <ElegantWithTitle text="波西的博客" height="360px" width="270px" rounded="rounded-tr-[100px]" image="/images/20200311174352-5e69235813514.jpg" shadow_x="-top-6" shadow_y="left-6" />
+          <ElegantWithTitle text="波西的博客" height="360px" width="270px" rounded="rounded-tr-[100px]" image="https://static.brackrat.com/2024/02/19/65d30518e651e.jpg" shadow_x="-top-6" shadow_y="left-6" />
 
-          <ElegantWithTitle text="第二个项目" height="360px" width="270px" rounded="rounded-t-full" image="/images/20200416224600-5e986fa8b804f.jpg" shadow_x="top-6" shadow_y="right-6" />
+          <ElegantWithTitle text="第二个项目" height="360px" width="270px" rounded="rounded-t-full" image="https://static.brackrat.com/2024/02/19/65d30519521aa.jpg" shadow_x="top-6" shadow_y="right-6" />
 
-          <ElegantWithTitle text="第三个项目" height="360px" width="270px" rounded="rounded-bl-[100px]" image="/images/20200314110609-5e6cbaa171e81.jpg" shadow_x="top-6" shadow_y="right-6" />
+          <ElegantWithTitle text="第三个项目" height="360px" width="270px" rounded="rounded-bl-[100px]" image="https://static.brackrat.com/2024/02/19/65d3051a033f9.jpg" shadow_x="top-6" shadow_y="right-6" />
 
       </div>
       <div class="self-center lg:self-start pt-4 lg:pl-32 ">

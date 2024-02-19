@@ -36,14 +36,9 @@ fetchArticles()
 
 <template>
   <div class="flex flex-col transition-all">
-
-
     <div class="pb-32">
-      <div v-if="loading" class="w-full h-screen text-secondary pt-16 flex justify-center animate-pulse">
-        <BlogCardClassicSkeleton/>
-      </div>
 
-      <div v-else>
+      <div >
         <!-- 弥散光 -->
         <div v-if="checkSupportBrowser()" class="w-full h-full overflow-hidden absolute">
           <div
@@ -56,9 +51,14 @@ fetchArticles()
 
             <ElegantTitle text="BLOGS" />
 
-            <div  v-for="(item, index) in articles" :key="index">
+            <div v-if="loading" class=" animate-pulse">
+              <BlogCardClassicSkeleton v-for="item in [1,2,3]" />
+            </div>
+
+            <div v-else v-for="(item, index) in articles" :key="index">
               <BlogCardClassic class="space-y-96" :article="item" :reverse="generateReverse(index)"/>
             </div>
+
           </div>
         </div>
 

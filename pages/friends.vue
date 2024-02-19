@@ -6,27 +6,27 @@ const friends = [
   {
     name:"GZTime",
     avatar:"https://cdn.gzti.me/avatar/GZTime_2021.png",
-    screenshot:"https://cdn.liil.cc/2024/02/18/65d1dc965f92d.jpg?x-oss-process=style/load",
+    screenshot:"https://static.brackrat.com/blog/2024/02/d40e530a416381926a37c2909cc462a8.png",
     link:"https://blog.gztime.cc/"
   },
   {
     name:"极星网–博客论坛",
     avatar:"https://www.jixing.one/logo.php",
-    screenshot:"https://cdn.liil.cc/2024/02/18/65d1e27138943.jpg?x-oss-process=style/load",
+    screenshot:"https://static.brackrat.com/blog/2024/02/40f398429bf22a37a5ac7fdb33fd2697.png",
     link:"https://www.jixing.one/"
 
   },
   {
     name:"7gugu’s Blog",
     avatar:"https://7gugu.com/wp-content/uploads/2021/07/favicon.png",
-    screenshot:"https://cdn.liil.cc/2024/02/18/65d1e33fc3284.jpg?x-oss-process=style/load",
+    screenshot:"https://static.brackrat.com/blog/2024/02/a8189537e2d5e00b9d726eb8a3e3c49e.png",
     link:"https://www.7gugu.com/"
 
   },
   {
     name:"Muidar's Site",
     avatar:"https://muidar.com/wp-content/uploads/2022/12/icmLogo.png",
-    screenshot:"https://cdn.liil.cc/2024/02/18/65d1e33f5515c.jpg?x-oss-process=style/load",
+    screenshot:"https://static.brackrat.com/blog/2024/02/69985f644c91a12e530b1acbacba59a8.png",
     link:"https://muidar.com/"
   },
 ]
