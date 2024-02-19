@@ -4,19 +4,22 @@ import {checkSupportBrowser} from "~/composables/supportCheck";
 import ElegantTitle from "~/components/ElegantTitle.vue";
 
 const loading = ref(true)
+const loadMoreButtonDisable = ref(false)
+const articles = ref<Article[]>([])
 
-const articles = ref<Article[]>()
-
-async function fetchArticles() {
+async function fetchArticles(page:number = 1) {
   loading.value = true
   try {
-    const response = await useFetch(`/api/article`, {
+    const response = await useFetch(`/api/article?page=${page}`, {
       method: 'GET',
     })
-    if (response.data.value) {
-      articles.value = response.data.value
-      articles.value = articles.value.sort((a, b) => b.id - a.id);
+    if (response.data.value && response.data.value.length >= 0) {
+      articles.value = [...articles.value, ...response.data.value];
+      currentPage.value++;
       loading.value = false
+      if(response.data.value.length < 3){
+        loadMoreButtonDisable.value = true
+      }
       return true
     }
   } catch (error) {
@@ -29,6 +32,12 @@ async function fetchArticles() {
 
 function generateReverse(index: number) {
   return index % 2 === 0 ? 'false' : 'true';
+}
+
+const currentPage = ref(1)
+
+const loadMore = () => {
+  fetchArticles(currentPage.value)
 }
 
 fetchArticles()
@@ -47,17 +56,32 @@ fetchArticles()
         </div>
 
         <div>
-          <div class="flex pt-24 relative flex-col justify-center items-center w-full">
+          <div  class="flex pt-24 relative flex-col justify-center items-center w-full">
 
             <ElegantTitle text="BLOGS" />
 
-            <div v-if="loading" class=" animate-pulse">
-              <BlogCardClassicSkeleton v-for="item in [1,2,3]" />
+            <div v-auto-animate>
+              <div  v-for="(item, index) in articles" :key="index">
+                <BlogCardClassic class="space-y-96" :article="item" :reverse="generateReverse(index)"/>
+              </div>
+
+              <div  v-if="loading" class=" animate-pulse">
+                <BlogCardClassicSkeleton />
+              </div>
             </div>
 
-            <div v-else v-for="(item, index) in articles" :key="index">
-              <BlogCardClassic class="space-y-96" :article="item" :reverse="generateReverse(index)"/>
+            <div v-if="!loadMoreButtonDisable" @click="loadMore()" class="flex font-noto-serif pt-8 lg:pt-16 self-center">
+              <div class=" active:scale-95 flex px-10 py-2 transition-all  hover:bg-primary hover:bg-opacity-10  font-[500] justify-center items-center text-[24px] hover:cursor-pointer text-primary border-bn">
+                More
+              </div>
             </div>
+
+            <div v-if="loadMoreButtonDisable" class="flex font-noto-serif pt-8 lg:pt-16 self-center">
+              <div class=" flex px-10 py-2 transition-all   font-[500] justify-center items-center text-[24px] text-primary">
+                No more tales to tell.
+              </div>
+            </div>
+
 
           </div>
         </div>
@@ -71,5 +95,8 @@ fetchArticles()
 </template>
 
 <style scoped>
+.border-bn{
+  border: 1px solid rgba(194, 78, 19, 1);
+}
 
 </style>

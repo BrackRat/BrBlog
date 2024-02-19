@@ -7,12 +7,16 @@ export const createArticle = (articleData:ArticleToPublish) => {
     })
 }
 
-export const getArticle = (limit: number = 20) => {
+export const getArticle = (page: number) => {
+    const pageSize:number = 3;
+    const skip:number = (page - 1) * pageSize;
+
     return prisma.article.findMany({
         orderBy: {
             publishTime: 'desc'
         },
-        take: limit,
+        take: pageSize,
+        skip: skip,
         select: {
             id: true,
             title: true,
@@ -25,6 +29,7 @@ export const getArticle = (limit: number = 20) => {
         }
     });
 }
+
 
 export const getArticleWithContent = (id: number) => {
     return prisma.article.findUnique({
