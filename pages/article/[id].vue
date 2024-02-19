@@ -15,18 +15,19 @@ async function fetchArticle() {
     })
     if (response.data.value) {
       article.value = response.data.value
-      if (article.value === undefined) {
-        article.value = {
-          id: id,
-          title: 'No Title',
-          desc: 'No Desc',
-          cover: 'No Cover',
-          content: 'No Content',
-          viewCount: -1,
-          tag: 'No tag',
-          createTime: 1708278685,
-          publishTime: 1708278685,
-        }
+
+      loading.value = false
+    }else{
+      article.value = {
+        id: id,
+        title: 'No Title',
+        desc: 'No Desc',
+        cover: 'No Cover',
+        content: 'No Content',
+        viewCount: -1,
+        tag: 'No tag',
+        createTime: 1708278685,
+        publishTime: 1708278685,
       }
       loading.value = false
     }

@@ -63,7 +63,7 @@ export const addReadCount = async (id: number) => {
             });
             return 'ok';
         } else {
-            throw new Error('文章不存在');
+            return '文章不存在';
         }
     } catch (error) {
         throw error;
