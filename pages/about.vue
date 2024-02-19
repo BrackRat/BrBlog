@@ -1,5 +1,17 @@
 <script setup lang="ts">
 import {checkSupportBrowser} from "~/composables/supportCheck";
+
+const about = "🌌Introduction\n" +
+    "\n" +
+    "> My heart has a purpose, and I will make progress day after day.\n" +
+    "> 心有所向，日复一日，必有精进。\n" +
+    "\n" +
+    "- 🏫 Undergraduate student of Xidian University.\n" +
+    "- 📫 You can get in touch with me by email at brackrat256@outlook.com\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "  [1]: https://cdn.liil.cc/kodbox/imagesheet/imageUp/20211107214227.png"
 </script>
 
 <template>
@@ -15,9 +27,10 @@ import {checkSupportBrowser} from "~/composables/supportCheck";
     <div class="relative w-full h-full flex flex-col justify-center items-center">
       <ElegantTitle text="ABOUT" />
 
-      <div class="min-h-screen w-full">
-
+      <div class="min-h-full px-4">
+        <MDRender class="max-w-full" :content="about" />
       </div>
+
 
       <div class="w-4/5 max-w-full lg:w-[800px] pt-32 pb-16">
         <Comment />

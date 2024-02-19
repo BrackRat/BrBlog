@@ -11,7 +11,6 @@
 
 <script setup lang="ts">
 import {checkSupportBrowser} from "~/composables/supportCheck";
-
 const supportResult = ref(true)
 
 onMounted(() => {

@@ -12,5 +12,6 @@ export default defineNuxtConfig({
     app: {
         pageTransition: {name: 'page', mode: 'out-in'},
     },
+    css: ["md-editor-v3/lib/style.css"],
     devtools: {enabled: true}
 })

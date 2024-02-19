@@ -31,9 +31,9 @@ const props = defineProps({
     </div>
 
     <a :href="link" target="_blank" class="transition-all active:scale-95 hover:cursor-pointer relative card-shadow mt-3 max-w-full lg:w-[600px] lg:h-[200px] bg-content rounded-[14px] overflow-hidden">
-      <div class="absolute z-10 card-shadow w-full h-full">
+      <div class="transition-all hover:opacity-80 absolute z-10 card-shadow w-full h-full">
       </div>
-      <nuxt-img class="relative  w-full h-full object-cover" :src="screenshot" />
+      <nuxt-img class=" relative  w-full h-full object-cover" :src="screenshot" />
     </a>
   </div>
 </template>
