@@ -9,6 +9,8 @@ export const addFriend = (friend:FriendNew) => {
 
 export const getFriends = () => {
     return prisma.friend.findMany({
-
+        where:{
+            status:0
+        }
     })
 }
