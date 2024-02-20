@@ -54,6 +54,51 @@ const modalClose = () => {
   selectedFriend.value = {}
 }
 
+const sending = ref(false)
+
+async function saveFriend() {
+  sending.value = true
+  try {
+    const response = await $fetch(`/api/friend/change`, {
+      method: 'POST',
+      headers: {Authorization: blogStore.token},
+      body:selectedFriend.value
+    })
+    const {code} = response
+    if (code === 200) {
+      modalClose()
+      console.log("Success")
+      await fetchFriendsAll()
+    } else {
+    }
+  } catch (error) {
+    console.error('Error fetching article:', error)
+  }
+  sending.value = false
+}
+
+async function createFriend() {
+  sending.value = true
+  try {
+    const response = await $fetch(`/api/friend/create`, {
+      method: 'POST',
+      headers: {Authorization: blogStore.token},
+      body:selectedFriend.value
+    })
+    const {code} = response
+    if (code === 200) {
+      modalClose()
+      await fetchFriendsAll()
+      console.log("Success")
+    } else {
+    }
+  } catch (error) {
+    console.error('Error fetching article:', error)
+  }
+  sending.value = false
+}
+
+
 fetchFriendsAll()
 </script>
 
@@ -87,7 +132,7 @@ fetchFriendsAll()
                      class="ring-primary focus:ring-2 focus:ring-primary mt-1 text-black  p-2 block w-full border border-primary rounded-md">
             </div>
             <div>
-              <label class="block text-sm font-black text-gray-900">Link:</label>
+              <label class="block text-sm font-black text-gray-900">Status:</label>
               <select id="status" name="status" v-model="selectedFriend.status"
                       class="ring-primary focus:ring-2 focus:ring-primary mt-1 text-black  p-2 block w-full border border-primary rounded-md">
                 <option :value="0" class="bg-primary bg-opacity-20 ">Active</option>
@@ -97,8 +142,8 @@ fetchFriendsAll()
 
             <div class="flex pt-8 space-x-4 justify-end">
               <ElegantButton @click="modalClose">Cancel</ElegantButton>
-              <ElegantButton v-if="selectedFriend.id === undefind" @click="modalClose">New</ElegantButton>
-              <ElegantButton v-else @click="modalClose">Save</ElegantButton>
+              <ElegantButton v-if="selectedFriend.id === undefind" @click="createFriend()">New</ElegantButton>
+              <ElegantButton v-else @click="saveFriend()">Save</ElegantButton>
             </div>
           </div>
         </div>
