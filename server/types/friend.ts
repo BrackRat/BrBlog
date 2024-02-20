@@ -3,6 +3,7 @@ export interface FriendNew {
     avatar: string
     screenshot: string
     link: string
+    status: number
 }
 
 export interface FriendDB {
@@ -11,4 +12,5 @@ export interface FriendDB {
     avatar: string
     screenshot: string
     link: string
+    status: number
 }

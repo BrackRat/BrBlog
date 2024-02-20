@@ -1,23 +1,30 @@
 import {prisma} from "~/server/db/index";
 import {FriendDB, FriendNew} from "~/server/types/friend";
 
-export const addFriend = (friend:FriendNew) => {
+export const addFriend = (friend: FriendNew) => {
     return prisma.friend.create({
-        data:friend
+        data: friend
     })
 }
 
-export const changeFriend = (friend:FriendDB) => {
+export const changeFriend = (friend: FriendDB) => {
     return prisma.friend.update({
-        where: { id: friend.id },
-        data: { ...friend },
+        where: {id: friend.id},
+        data: {...friend},
     });
 }
 
-export const getFriends = () => {
-    return prisma.friend.findMany({
-        where:{
-            status:0
-        }
-    })
+export const getFriends = (getAll: boolean = false) => {
+    if (getAll) {
+        return prisma.friend.findMany({
+
+        })
+    } else {
+        return prisma.friend.findMany({
+            where: {
+                status: 0
+            }
+        })
+    }
+
 }

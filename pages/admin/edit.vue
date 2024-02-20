@@ -96,14 +96,20 @@ async function publishArticle() {
   sending.value = false
 }
 
+const router = useRouter()
+async function backArticle() {
+  await router.push(`/admin/article`)
+}
+
 fetchArticle()
 </script>
 
 <template>
   <div class="flex flex-col justify-center items-center pt-16">
-    <ElegantTitle text="EDIT"/>
-
-    <!--    ID:{{ route.query.id }}-->
+    <div @click="backArticle" class="w-24 self-center lg:ml-16 lg:self-start hover:cursor-pointer hover:opacity-80 transition-all">
+      <Icon class="mr-2" name="mingcute:arrow-left-line"/>
+      Article
+    </div>
 
     <div class="py-8 flex flex-col space-y-12 lg:space-y-0 lg:flex-row lg:space-x-16">
 

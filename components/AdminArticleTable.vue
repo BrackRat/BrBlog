@@ -25,7 +25,7 @@ const haveNext = computed(() => {
 
 const havePrev = computed(() => {
   const passAndNow = pageSize * currentArticlePage.value
-  return passAndNow > articleTotalCount.value;
+  return passAndNow > pageSize;
 })
 
 const toPrevPage = () => {
@@ -86,13 +86,23 @@ async function navigateToEdit(id: number = 0) {
   await router.push(`/admin/edit?id=${id}`)
 }
 
+async function backAdmin() {
+  await router.push(`/admin`)
+}
+
 fetchAdminArticles()
 </script>
 
 <template>
   <div class="flex flex-col">
-    <div class="flex pt-8 self-end">
-      <ElegantButton @click="navigateToEdit(undefined)">
+
+    <div class="flex pt-8 justify-between items-center">
+      <div @click="backAdmin" class=" w-24 hover:cursor-pointer hover:opacity-80 transition-all">
+        <Icon class="mr-2" name="mingcute:arrow-left-line"/>
+        Admin
+      </div>
+
+      <ElegantButton  @click="navigateToEdit(undefined)">
         <Icon class="mr-4" name="mingcute:add-fill"/>
         New
       </ElegantButton>

@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import AdminArticleTable from "~/components/AdminArticleTable.vue";
+
 </script>
 
 <template>
+  <div>
+
   <AdminArticleTable />
+  </div>
 </template>
 
 <style scoped>
