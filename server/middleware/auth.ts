@@ -11,7 +11,7 @@ function extractToken(authHeader: string): string | null {
 
 export function verifyToken(token: string): boolean {
     try {
-        const decoded = jwt.verify(extractToken(token), process.env.JWT_TOKEN);
+        const decoded = jwt.verify(extractToken(token), process.env.JWT_SECRET);
         return !!decoded;
 
     } catch (error) {

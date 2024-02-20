@@ -36,7 +36,8 @@ export const getArticle = (page: number, getall: boolean = false, pageSize: numb
             tag: true,
             createTime: true,
             publishTime: true,
-            status: true
+            status: true,
+            shortTitle:true
         }
     };
 
@@ -56,17 +57,17 @@ export const getCount = (getAll: boolean = false) => {
     }
 }
 
-export const getArticleWithContent = (id: number, getAll: boolean = false) => {
+export const getArticleWithContent = (shortTitle: string, getAll: boolean = false) => {
     if (getAll) {
         return prisma.article.findUnique({
             where: {
-                id: id,
+                shortTitle: shortTitle,
             }
         });
     } else {
         return prisma.article.findUnique({
             where: {
-                id: id,
+                shortTitle: shortTitle,
                 status: 0
             }
         });
@@ -74,18 +75,18 @@ export const getArticleWithContent = (id: number, getAll: boolean = false) => {
 }
 
 
-export const addReadCount = async (id: number) => {
+export const addReadCount = async (shortTitle: string) => {
     try {
         const article = await prisma.article.findUnique({
             where: {
-                id: id,
+                shortTitle: shortTitle,
                 status: 0,
             }
         });
         if (article) {
             const updatedArticle = await prisma.article.update({
                 where: {
-                    id: id
+                    shortTitle: shortTitle
                 },
                 data: {
                     viewCount: article.viewCount + 1 // 增加阅读计数
@@ -113,6 +114,7 @@ export const getHome = () => {
         take: amount,
         select: {
             id: true,
+            shortTitle:true,
             title: true,
             publishTime: true
         }

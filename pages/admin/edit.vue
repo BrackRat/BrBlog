@@ -10,6 +10,7 @@ const blogStore = useBlogStore()
 const loading = ref(false)
 const article = ref<ArticleWithContent>({
   id: -1,
+  shortTitle:'',
   title: '',
   desc: '',
   cover: '',
@@ -25,7 +26,7 @@ async function fetchArticle() {
   if (route.query.id !== '0') {
     loading.value = true
     try {
-      const response = await useFetch(`/api/article/${route.query.id}?getAll=true`, {
+      const response = await useFetch(`/api/article/${route.query.shortTitle}?getAll=true`, {
         method: 'GET',
         headers: {Authorization: blogStore.token}
       })

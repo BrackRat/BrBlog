@@ -81,9 +81,9 @@ async function fetchAdminArticles() {
 }
 
 
-async function navigateToEdit(id: number = 0) {
+async function navigateToEdit(shortTitle: string = '') {
   // await router.push({ path: "/admin/edit",params:{id:id} })
-  await router.push(`/admin/edit?id=${id}`)
+  await router.push(`/admin/edit?shortTitle=${shortTitle}`)
 }
 
 async function backAdmin() {
@@ -128,7 +128,7 @@ fetchAdminArticles()
           </div>
           <div class="bg-primary h-0.5"/>
           <div class="grid grid-cols-7 w-full mt-4" v-for="article in articles">
-            <div @click="navigateToEdit(article.id)" class="col-span-3 hover:cursor-pointer hover:underline">
+            <div @click="navigateToEdit(article.shortTitle)" class="col-span-3 hover:cursor-pointer hover:underline">
               {{ article.title }}
             </div>
             <div>

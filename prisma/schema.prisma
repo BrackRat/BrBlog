@@ -25,6 +25,7 @@ model Article {
   createTime  Int
   publishTime Int
   status      Int    @default(0)
+  shortTitle  String @unique
 }
 
 model Friend {

@@ -94,7 +94,7 @@ fetchHome()
         <div class="font-noto-serif font-medium flex flex-col space-y-2 pt-4  lg:text-xl">
 
           <div v-for="(item, idx) in articleTitles" >
-            <div @click="$router.push('/article/' + item.id)"  class="transition-all pb-2 lg:w-[550px] text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
+            <div @click="$router.push('/article/' + item.shortTitle)"  class="transition-all pb-2 lg:w-[550px] text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
               {{ item.title }}
             </div>
             <div v-if="idx !== articleTitles.length-1" class="br-divide"/>

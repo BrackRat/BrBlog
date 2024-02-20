@@ -4,13 +4,13 @@ import {formatUnixTimestamp} from "~/composables/formatTime";
 import {checkSupportBrowser} from "~/composables/supportCheck";
 
 const article = ref<ArticleWithContent>()
-const id = parseInt(useRoute().params.id.toString(),10)
+const shortTitle = useRoute().params.shortTitle.toString()
 const loading = ref(true)
 
 async function fetchArticle() {
   loading.value = true
   try {
-    const response = await useFetch(`/api/article/${id}`, {
+    const response = await useFetch(`/api/article/${shortTitle}`, {
       method: 'GET',
     })
     const { code, data } = response.data.value
@@ -20,7 +20,8 @@ async function fetchArticle() {
       loading.value = false
     }else{
       article.value = {
-        id: id,
+        id: -1,
+        shortTitle: shortTitle,
         title: 'No Title',
         desc: 'No Desc',
         cover: 'No Cover',
@@ -41,7 +42,7 @@ async function fetchArticle() {
 
 
 async function addViewCount() {
-  await $fetch(`/api/article/read/${id}`, {
+  await $fetch(`/api/article/read/${shortTitle}`, {
     method: 'GET',
   })
 }

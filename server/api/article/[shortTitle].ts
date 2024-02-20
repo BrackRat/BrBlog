@@ -1,21 +1,20 @@
-import {getArticle, getArticleWithContent} from "~/server/db/article";
+import { getArticleWithContent} from "~/server/db/article";
 import {verifyToken} from "~/server/middleware/auth";
 
 export default defineEventHandler(async (event) => {
-    const id = getRouterParam(event, 'id') as string;
-    const idAsInt = parseInt(id, 10);
+    const shortTitle = getRouterParam(event, 'shortTitle') as string;
     const query = getQuery(event)
 
-    if (query.getAll && idAsInt) {
+    if (query.getAll && shortTitle) {
         const token = event.headers.get('Authorization') as string
         if (verifyToken(token)) {
-            return {code: 200, data: await getArticleWithContent(idAsInt, true)};
+            return {code: 200, data: await getArticleWithContent(shortTitle, true)};
         } else {
             return {code: 401, msg: "Authorization Failed"}
         }
-    }else if (id){
+    }else if (shortTitle){
 
-            return {code:200,data: await getArticleWithContent(idAsInt)};
+            return {code:200,data: await getArticleWithContent(shortTitle)};
 
     }else{
         return {code:404,msg: "Empty id"};

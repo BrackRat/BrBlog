@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 
 // 生成 JWT
 function generateToken(username: string, role: string) {
-    return jwt.sign({username: username, role: role}, process.env.JWT_TOKEN, {expiresIn: '1h'});
+    return jwt.sign({username: username, role: role}, process.env.JWT_SECRET, {expiresIn: '1h'});
 }
 
 
