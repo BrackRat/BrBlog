@@ -22,8 +22,14 @@ const article = ref<ArticleWithContent>({
   status: 0
 })
 
+function articlePreprocess() {
+  article.value.publishTime = parseInt(article.value.publishTime.toString(),10)
+  article.value.createTime = parseInt(article.value.createTime.toString(),10)
+}
+
 async function fetchArticle() {
-  if (route.query.id !== '0') {
+  articlePreprocess()
+  if (route.query.shortTitle !== '') {
     loading.value = true
     try {
       const response = await useFetch(`/api/article/${route.query.shortTitle}?getAll=true`, {
@@ -52,6 +58,7 @@ const msg = ref("")
 
 async function saveArticle() {
   sending.value = true
+  articlePreprocess()
   msg.value = "Loading..."
     try {
       const response = await $fetch(`/api/article/change`, {
@@ -63,6 +70,8 @@ async function saveArticle() {
       if (code === 200) {
         console.log("Success")
         msg.value = "OK~"
+        await backArticle()
+
         setTimeout(() => {msg.value = ""},3000)
       } else {
         msg.value = `Failed:${code}`
@@ -75,6 +84,7 @@ async function saveArticle() {
 }
 
 async function publishArticle() {
+  articlePreprocess()
   sending.value = true
   msg.value = "Loading..."
   try {
@@ -87,6 +97,8 @@ async function publishArticle() {
     if (code === 200) {
       console.log("Success")
       msg.value = "OK~"
+      await backArticle()
+
       setTimeout(() => {msg.value = ""},3000)
     } else {
       msg.value = `Failed:${code}`
@@ -194,9 +206,9 @@ fetchArticle()
       <div class="flex flex-col space-y-4">
 
         <div class="w-64">
-          <label class="font-noto-serif block font-medium leading-6 text-content">View Count</label>
+          <label class="font-noto-serif block font-medium leading-6 text-content">Short Title</label>
           <div class="relative flex mt-2 rounded-md shadow-sm">
-            <input id="publishTime" v-model="article.viewCount" type="text"
+            <input id="shortTitle" v-model="article.shortTitle" type="text"
                    class="block text-lg bg-primary bg-opacity-20 w-full rounded-md border-0 py-1.5 px-4 text-content ring-1 ring-inset ring-content focus:ring-2 focus:ring-inset focus:ring-content sm:text-sm sm:leading-6">
           </div>
         </div>
@@ -204,7 +216,7 @@ fetchArticle()
         <div class="w-64">
           <label class="font-noto-serif block font-medium leading-6 text-content">Tag</label>
           <div class="relative flex mt-2 rounded-md shadow-sm">
-            <input id="publishTime" v-model="article.tag" type="text"
+            <input id="tag" v-model="article.tag" type="text"
                    class="block text-lg bg-primary bg-opacity-20 w-full rounded-md border-0 py-1.5 px-4 text-content ring-1 ring-inset ring-content focus:ring-2 focus:ring-inset focus:ring-content sm:text-sm sm:leading-6">
           </div>
         </div>
@@ -227,7 +239,7 @@ fetchArticle()
 
     <div class="flex py-8 flex-col items-center space-y-2">
       <div class="flex items-center">
-        <ElegantButton @click="publishArticle()" v-if="route.query.id === '0'" >
+        <ElegantButton @click="publishArticle()" v-if="route.query.shortTitle === ''" >
           <Icon class="mr-4" name="mingcute:upload-line" />
           Publish
         </ElegantButton>
