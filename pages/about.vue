@@ -27,7 +27,7 @@ const about = "🌌Introduction\n" +
     <div class="relative w-full h-full flex flex-col justify-center items-center">
       <ElegantTitle text="ABOUT" />
 
-      <div class="min-h-full px-4">
+      <div class="w-4/5 max-w-full lg:w-[800px] pt-14 pb-16">
         <MDRender class="max-w-full" :content="about" />
       </div>
 

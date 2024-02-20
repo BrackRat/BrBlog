@@ -24,6 +24,31 @@ async function fetchFriends() {
   return false
 }
 
+const md = "欢迎与你互换友链，记得先添加本站哦！\n" +
+    "\n" +
+    "- Name: 波西\n" +
+    "- Link: https://blog.brackrat.com/\n" +
+    "- Avatar: https://static.brackrat.com/icon.jpg\n" +
+    "- Desc: 心有所向，日复一日。\n" +
+    "\n" +
+    "有点小小的要求：\n" +
+    "\n" +
+    "- 无违法内容\n" +
+    "- HTTPS\n" +
+    "- 有自己的内容\n" +
+    "\n" +
+    "申请时，请在评论中提供以下信息:\n" +
+    "\n" +
+    "- 名称\n" +
+    "- 简介\n" +
+    "- 头像链接\n" +
+    "- 网站链接\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "\n"
+
 
 fetchFriends()
 </script>
@@ -46,7 +71,11 @@ fetchFriends()
         <FriendCard v-for="friend in friends" :key="friend.name" :name="friend.name" :avatar="friend.avatar" :screenshot="friend.screenshot" :link="friend.link" />
       </div>
 
-      <div class="w-4/5 max-w-full lg:w-[800px] pt-32 pb-16">
+      <div class="w-4/5 max-w-full lg:w-[800px] pt-24 pb-16">
+        <MDRender :content="md" />
+      </div>
+
+      <div class="w-4/5 max-w-full lg:w-[800px] pt-14 pb-16">
         <Comment />
       </div>
     </div>

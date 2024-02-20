@@ -19,6 +19,6 @@ const text = props.content;
 
 <style>
 .md-editor-dark {
-  --md-bk-color: rgba(0,0,0,30%) !important;
+  --md-bk-color: rgba(0,0,0,10%) !important;
 }
 </style>
