@@ -19,11 +19,16 @@ async function fetchArticle() {
     if (code === 200) {
       article.value = data
 
+      let temp_description = article.value?.desc
+      if(temp_description === ''){
+        temp_description = article.value?.content.slice(0,200)
+      }
+
       useSeoMeta({
         title: article.value?.title,
         ogTitle: article.value?.title,
-        description: article.value?.desc,
-        ogDescription: article.value?.desc,
+        description: temp_description,
+        ogDescription: temp_description,
         twitterCard: "summary_large_image",
       });
 
