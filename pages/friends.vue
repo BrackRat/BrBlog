@@ -2,6 +2,14 @@
 import FriendCard from "~/components/FriendCard.vue";
 import {checkSupportBrowser} from "~/composables/supportCheck.ts";
 
+useSeoMeta({
+  title: "BrackRat's Friends",
+  ogTitle: "BrackRat's Friends",
+  description: "BrackRat's Friends.",
+  ogDescription: "BrackRat's Friends.",
+  twitterCard: "summary_large_image",
+});
+
 const loading = ref(false)
 const friends = ref([])
 

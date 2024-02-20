@@ -3,6 +3,8 @@ import type {ArticleWithContent} from "~/server/types/article";
 import {formatUnixTimestamp} from "~/composables/formatTime";
 import {checkSupportBrowser} from "~/composables/supportCheck";
 
+
+
 const article = ref<ArticleWithContent>()
 const shortTitle = useRoute().params.shortTitle.toString()
 const loading = ref(true)
@@ -16,6 +18,14 @@ async function fetchArticle() {
     const { code, data } = response.data.value
     if (code === 200) {
       article.value = data
+
+      useSeoMeta({
+        title: article.value?.title,
+        ogTitle: article.value?.title,
+        description: article.value?.desc,
+        ogDescription: article.value?.desc,
+        twitterCard: "summary_large_image",
+      });
 
       loading.value = false
     }else{

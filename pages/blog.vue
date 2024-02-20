@@ -3,6 +3,14 @@ import type {Article} from "~/server/types/article";
 import {checkSupportBrowser} from "~/composables/supportCheck";
 import ElegantTitle from "~/components/ElegantTitle.vue";
 
+useSeoMeta({
+  title: "BrackRat's Blogs",
+  ogTitle: "BrackRat's Blogs",
+  description: "BrackRat's Blogs.",
+  ogDescription: "BrackRat's Blogs.",
+  twitterCard: "summary_large_image",
+});
+
 const loading = ref(true)
 const loadMoreButtonDisable = ref(false)
 const articles = ref<Article[]>([])

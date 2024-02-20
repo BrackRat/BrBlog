@@ -12,6 +12,14 @@ const about = "🌌Introduction\n" +
     "\n" +
     "\n" +
     "  [1]: https://cdn.liil.cc/kodbox/imagesheet/imageUp/20211107214227.png"
+
+useSeoMeta({
+  title: "About BrackRat",
+  ogTitle: "About BrackRat",
+  description: `About BrackRat.${about}`,
+  ogDescription: `About BrackRat.${about}`,
+  twitterCard: "summary_large_image",
+});
 </script>
 
 <template>

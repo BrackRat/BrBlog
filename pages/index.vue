@@ -1,9 +1,16 @@
 <script setup lang="ts">
-
 import MoreButton from "~/components/MoreButton.vue";
 import ShadowImage from "~/components/ShadowImage.vue";
 import type { OnlyTitle} from "~/server/types/article";
 import {checkSupportBrowser} from "~/composables/supportCheck";
+
+useSeoMeta({
+  title: "BrackRat's Blog | 波西的博客",
+  ogTitle: "BrackRat's Blog | 波西的博客",
+  description: "BrackRat's Blog.",
+  ogDescription: "BrackRat's Blog.",
+  twitterCard: "summary_large_image",
+});
 
 const loading = ref(false)
 const articleTitles = ref<OnlyTitle[]>([])
