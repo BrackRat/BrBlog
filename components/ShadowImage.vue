@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { defineProps, watch } from "vue";
+
 const props = defineProps({
   rounded: {
     type: String,
@@ -24,21 +26,30 @@ const props = defineProps({
     type: String,
     required: true,
   },
-})
+});
+
+watch([() => props.height, () => props.width], ([newHeight, newWidth]) => {
+  // 在 height 或 width 改变时，手动触发样式的更新
+  const outlineBorder = document.querySelector('.outline-border');
+  if (outlineBorder) {
+    outlineBorder.style.height = newHeight;
+    outlineBorder.style.width = newWidth;
+  }
+});
 </script>
 
 <template>
   <div class="relative">
-    <div :class="`relative h-[${height}] w-[${width}]`">
+    <div :style="{ height: height, width: width }" class="relative">
       <nuxt-img :class="rounded + ' relative overflow-hidden h-full w-full object-cover bg-secondary'"
                 :src="image">
       </nuxt-img>
     </div>
     <div
-        :class="`${rounded} -z-10 absolute ${shadow_y} ${shadow_x} bg-transparent h-[${height}] w-[${width}]  outline-border`">
+        :style="{ height: height, width: width, position: 'absolute',  }"
+        :class="` ${rounded} ` + ` ${shadow_x} ` + ` ${shadow_y} ` + ' outline-border -z-10 bg-transparent'">
     </div>
   </div>
-
 </template>
 
 <style scoped>

@@ -16,7 +16,7 @@ async function fetchHome() {
     const { code, data } = response.data.value
     if (code === 200) {
       articleTitles.value = data
-      articleTitles.value = articleTitles.value.sort((a, b) => b.id - a.id);
+      articleTitles.value = articleTitles.value.sort((a, b) => b.publishTime - a.publishTime);
 
       loading.value = false
       return true

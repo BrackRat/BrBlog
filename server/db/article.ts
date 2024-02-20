@@ -14,7 +14,7 @@ export const changeArticle = (article: Article) => {
     });
 }
 
-export const getArticle = (page: number, getall: boolean = false, pageSize:number = 3) => {
+export const getArticle = (page: number, getall: boolean = false, pageSize: number = 3) => {
     const skip: number = (page - 1) * pageSize;
 
     let query: Prisma.ArticleFindManyArgs = {
@@ -44,15 +44,23 @@ export const getArticle = (page: number, getall: boolean = false, pageSize:numbe
     return prisma.article.findMany(query);
 }
 
+export const getCount = (getAll: boolean = false) => {
+    if (getAll) {
+        return prisma.article.count({});
+    } else {
+        return prisma.article.count({where: {status: 0}});
+    }
 
-export const getArticleWithContent = (id: number, getAll:boolean = false) => {
-    if(getAll){
+}
+
+export const getArticleWithContent = (id: number, getAll: boolean = false) => {
+    if (getAll) {
         return prisma.article.findUnique({
             where: {
                 id: id,
             }
         });
-    }else{
+    } else {
         return prisma.article.findUnique({
             where: {
                 id: id,
@@ -103,6 +111,7 @@ export const getHome = () => {
         select: {
             id: true,
             title: true,
+            publishTime:true
         }
     });
 }

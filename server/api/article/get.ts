@@ -1,5 +1,5 @@
 // @ts-ignore
-import {getArticle} from "~/server/db/article";
+import {getArticle, getCount} from "~/server/db/article";
 import {verifyToken} from "~/server/middleware/auth";
 
 export default defineEventHandler(async (event) => {
@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
         const token = event.headers.get('Authorization') as string
         if (verifyToken(token)) {
             const page: number = query.page as number
-            return {code: 200, data: await getArticle(page, true, 20)};
+            return {code: 200, data: {total: await getCount(true) ,articles:await getArticle(page, true, 20)}};
         } else {
             return {code: 401, msg: "Authorization Failed"}
         }
