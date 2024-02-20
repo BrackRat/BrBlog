@@ -1,6 +1,5 @@
 import {prisma} from "~/server/db/index";
 import {Article, ArticleToPublish} from "~/server/types/article";
-import {Prisma} from "@prisma/client";
 
 export const createArticle = (articleData: ArticleToPublish) => {
     return prisma.article.create({
@@ -46,13 +45,21 @@ export const getArticle = (page: number, getall: boolean = false, pageSize:numbe
 }
 
 
-export const getArticleWithContent = (id: number) => {
-    return prisma.article.findUnique({
-        where: {
-            id: id,
-            status: 0
-        }
-    });
+export const getArticleWithContent = (id: number, getAll:boolean = false) => {
+    if(getAll){
+        return prisma.article.findUnique({
+            where: {
+                id: id,
+            }
+        });
+    }else{
+        return prisma.article.findUnique({
+            where: {
+                id: id,
+                status: 0
+            }
+        });
+    }
 }
 
 

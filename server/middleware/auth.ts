@@ -22,11 +22,10 @@ export function verifyToken(token: string): boolean {
 export default defineEventHandler(event => {
     const needAuthRoutes = [
         '/api/article/create',
-        '/api/article/update',
+        '/api/article/change',
         '/api/friend/create',
-        '/api/friend/update',
+        '/api/friend/change',
     ]
-
 
     if (needAuthRoutes.includes(event.path)) {
         const token: string = event.headers.get('Authorization') as string;

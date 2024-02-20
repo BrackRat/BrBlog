@@ -34,7 +34,6 @@ export interface ArticleToPublish {
     createTime: number
     publishTime: number
     status: number
-
 }
 
 export interface OnlyTitle {

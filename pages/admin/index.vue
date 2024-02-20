@@ -26,7 +26,7 @@ const StatusMap = {
 
   2: {
     text:"Archived",
-    color:"bg-slate-200 ring-slate-600/20 text-slate-700 inline-flex items-center rounded-md  px-2 py-1 text-xs font-medium  ring-1 ring-inset"
+    style:"bg-slate-200 ring-slate-600/20 text-slate-700 inline-flex items-center rounded-md  px-2 py-1 text-xs font-medium  ring-1 ring-inset"
   },
 }
 
