@@ -23,8 +23,10 @@ export default defineEventHandler(event => {
     const needAuthRoutes = [
         '/api/article/create',
         '/api/article/change',
+        '/api/article/delete',
         '/api/friend/create',
         '/api/friend/change',
+        '/api/friend/delete',
     ]
 
     if (needAuthRoutes.includes(event.path)) {

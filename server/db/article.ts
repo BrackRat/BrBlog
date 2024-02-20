@@ -14,6 +14,10 @@ export const changeArticle = (article: Article) => {
     });
 }
 
+export const deleteArticle = (id: number) => {
+    return prisma.article.delete({where: {id: id}})
+}
+
 export const getArticle = (page: number, getall: boolean = false, pageSize: number = 3) => {
     const skip: number = (page - 1) * pageSize;
 
@@ -50,7 +54,6 @@ export const getCount = (getAll: boolean = false) => {
     } else {
         return prisma.article.count({where: {status: 0}});
     }
-
 }
 
 export const getArticleWithContent = (id: number, getAll: boolean = false) => {
@@ -111,7 +114,7 @@ export const getHome = () => {
         select: {
             id: true,
             title: true,
-            publishTime:true
+            publishTime: true
         }
     });
 }

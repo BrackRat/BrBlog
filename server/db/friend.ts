@@ -14,11 +14,13 @@ export const changeFriend = (friend: FriendDB) => {
     });
 }
 
+export const deleteFriend = (id: number) => {
+    return prisma.friend.delete({where: {id: id}});
+}
+
 export const getFriends = (getAll: boolean = false) => {
     if (getAll) {
-        return prisma.friend.findMany({
-
-        })
+        return prisma.friend.findMany({})
     } else {
         return prisma.friend.findMany({
             where: {
