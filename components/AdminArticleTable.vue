@@ -96,7 +96,7 @@ fetchAdminArticles()
 <template>
   <div class="flex flex-col">
 
-    <div class="flex pt-8 justify-between items-center">
+    <div class="flex px-4 lg:px-0 pt-8 justify-between items-center">
       <div @click="backAdmin" class=" w-24 hover:cursor-pointer hover:opacity-80 transition-all">
         <Icon class="mr-2" name="mingcute:arrow-left-line"/>
         Admin

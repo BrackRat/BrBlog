@@ -96,6 +96,32 @@ async function publishArticle() {
   sending.value = false
 }
 
+
+async function deleteArticle() {
+  sending.value = true
+  msg.value = "Loading..."
+  try {
+    const response = await $fetch(`/api/article/delete`, {
+      method: 'POST',
+      headers: {Authorization: blogStore.token},
+      body: {id:article.value.id}
+    })
+    const {code} = response
+    if (code === 200) {
+      console.log("Success")
+      msg.value = "OK~"
+      await backArticle()
+      setTimeout(() => {msg.value = ""},3000)
+    } else {
+      msg.value = `Failed:${code}`
+    }
+  } catch (error) {
+    console.error('Error fetching article:', error)
+    msg.value = `'Error fetching article:', ${error}`
+  }
+  sending.value = false
+}
+
 const router = useRouter()
 async function backArticle() {
   await router.push(`/admin/article`)
@@ -187,9 +213,9 @@ fetchArticle()
           <div class="mt-2">
             <select  id="status" name="status" v-model="article.status"
                     class="block w-full rounded-md bg-primary bg-opacity-20 border-0 py-1.5 text-content shadow-sm ring-1 ring-inset ring-content focus:ring-2 focus:ring-inset focus:ring-content sm:max-w-xs sm:text-sm sm:leading-6">
-              <option :value="0" class="bg-primary bg-opacity-20 ">Active</option>
-              <option :value="1" class="bg-primary bg-opacity-20 ">Hide</option>
-              <option :value="2" class="bg-primary bg-opacity-20 ">Archived</option>
+              <option :value="0" class="bg-black bg-opacity-70 ">Active</option>
+              <option :value="1" class="bg-black bg-opacity-70 ">Hide</option>
+              <option :value="2" class="bg-black bg-opacity-70 ">Archived</option>
             </select>
           </div>
         </div>
@@ -199,14 +225,18 @@ fetchArticle()
     </div>
 
     <div class="flex py-8 flex-col items-center space-y-2">
-      <ElegantButton @click="publishArticle()" v-if="route.query.id === '0'" >
-        <Icon class="mr-4" name="mingcute:upload-line" />
-        Publish
-      </ElegantButton>
-      <ElegantButton  @click="saveArticle()" v-else >
-        <Icon  class="mr-4" name="mingcute:save-2-line" />
-        Save
-      </ElegantButton>
+      <div class="flex items-center">
+        <ElegantButton @click="publishArticle()" v-if="route.query.id === '0'" >
+          <Icon class="mr-4" name="mingcute:upload-line" />
+          Publish
+        </ElegantButton>
+        <ElegantButton  @click="saveArticle()" v-else >
+          <Icon  class="mr-4" name="mingcute:save-2-line" />
+          Save
+        </ElegantButton>
+        <DeleteConfirm class="ml-8" v-if="route.query.id !== '0'" @really="deleteArticle()" />
+
+      </div>
       <div class="text-content ">
         {{ msg }}
       </div>

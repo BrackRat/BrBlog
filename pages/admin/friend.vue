@@ -3,6 +3,7 @@ import {useBlogStore} from "~/stores/blog";
 import FriendCard from "~/components/FriendCard.vue";
 import ElegantButton from "~/components/ElegantButton.vue";
 import type {FriendDB} from "~/server/types/friend";
+import DeleteConfirm from "~/components/DeleteConfirm.vue";
 
 const router = useRouter()
 
@@ -62,7 +63,7 @@ async function saveFriend() {
     const response = await $fetch(`/api/friend/change`, {
       method: 'POST',
       headers: {Authorization: blogStore.token},
-      body:selectedFriend.value
+      body: selectedFriend.value
     })
     const {code} = response
     if (code === 200) {
@@ -83,7 +84,7 @@ async function createFriend() {
     const response = await $fetch(`/api/friend/create`, {
       method: 'POST',
       headers: {Authorization: blogStore.token},
-      body:selectedFriend.value
+      body: selectedFriend.value
     })
     const {code} = response
     if (code === 200) {
@@ -98,6 +99,29 @@ async function createFriend() {
   sending.value = false
 }
 
+async function deleteFriend(id: number) {
+  if(id && id > 0){
+    sending.value = true
+    try {
+      const response = await $fetch(`/api/friend/delete`, {
+        method: 'POST',
+        headers: {Authorization: blogStore.token},
+        body: {id: id}
+      })
+      const {code} = response
+      if (code === 200) {
+        modalClose()
+        await fetchFriendsAll()
+        console.log("Success")
+      } else {
+      }
+    } catch (error) {
+      console.error('Error fetching article:', error)
+    }
+    sending.value = false
+  }
+}
+
 
 fetchFriendsAll()
 </script>
@@ -108,8 +132,11 @@ fetchFriendsAll()
     <transition name="modal">
       <div v-show="isEditModalOpen"
            class="font-sans fixed bg-black bg-opacity-70 inset-0 flex justify-center items-center shadow-2xl z-50">
-        <div class="bg-secondary p-8 rounded-md shadow-lg">
-          <h2 class="text-lg text-primary font-black mb-4">Edit Friend</h2>
+        <div class="flex flex-col bg-secondary p-8 rounded-md shadow-lg">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-lg text-primary font-black ">Edit Friend</h2>
+            <DeleteConfirm v-if="selectedFriend.id !== undefined" @really="deleteFriend(selectedFriend.id)" />
+          </div>
           <div>
             <div class="mb-4">
               <label class="block text-sm font-black text-gray-900">Name:</label>
@@ -141,6 +168,7 @@ fetchFriendsAll()
             </div>
 
             <div class="flex pt-8 space-x-4 justify-end">
+
               <ElegantButton @click="modalClose">Cancel</ElegantButton>
               <ElegantButton v-if="selectedFriend.id === undefind" @click="createFriend()">New</ElegantButton>
               <ElegantButton v-else @click="saveFriend()">Save</ElegantButton>

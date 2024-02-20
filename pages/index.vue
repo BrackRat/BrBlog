@@ -94,28 +94,12 @@ fetchHome()
         <div class="font-noto-serif font-medium flex flex-col space-y-2 pt-4  lg:text-xl">
 
           <div v-for="(item, idx) in articleTitles" >
-            <div @click="$router.push('/article/' + item.id)"  class="transition-all pb-2 w-[550px] text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
+            <div @click="$router.push('/article/' + item.id)"  class="transition-all pb-2 lg:w-[550px] text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
               {{ item.title }}
             </div>
             <div v-if="idx !== articleTitles.length-1" class="br-divide"/>
           </div>
 
-
-
-<!--          <div class="transition-all text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">-->
-<!--            MoeCTF 2022 WP-->
-<!--          </div>-->
-<!--          <div class="br-divide"/>-->
-
-<!--          <div class="transition-all text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">-->
-<!--            BrackRat 的2022年度总结-->
-<!--          </div>-->
-
-<!--          <div class="br-divide"/>-->
-<!--          <div class="transition-all text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">-->
-<!--            我的Win11优化方案总结报告-->
-
-<!--          </div>-->
         </div>
 
         <MoreButton @click="$router.push('/blog')"/>

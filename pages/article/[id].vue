@@ -67,9 +67,11 @@ fetchArticle()
     </div>
 
     <div class="relative" v-if="!loading && article">
-      <div class="lg:w-[1000px]">
-        <div class="pt-32 max-w-screen">
-          <ShadowImage  height="360px" width="1000px" rounded="rounded-tr-[100px]" :image="article.cover" shadow_x="-top-6" shadow_y="left-6" />
+      <div class="flex flex-col w-96 px-4 lg:w-[1000px]">
+        <div class="pt-32 max-w-screen flex flex-col justify-center items-center">
+          <ShadowImage class="hidden md:block"  height="360px" width="1000px" rounded="rounded-tr-[100px]" :image="article.cover" shadow_x="-top-6" shadow_y="left-6" />
+          <ShadowImage class="block md:hidden self-center" height="200px" width="300px" rounded="rounded-br-[50px]" :image="article.cover" shadow_x="-top-6" shadow_y="left-6" />
+
         </div>
 
         <div class="pt-8 text-3xl text-primary font-black mb-2">
@@ -100,7 +102,7 @@ fetchArticle()
         </div>
 
         <div class="min-h-full">
-          <MDRender class="max-w-full" :content="article.content" />
+          <MDRender class="w-full" :content="article.content" />
         </div>
 
         <div class="pt-32 pb-16">
