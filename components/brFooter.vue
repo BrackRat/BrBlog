@@ -20,7 +20,7 @@
          Powered By
        </p>
        <p class="text-primary">
-         BrBlog
+         <a class="hover:underline" href="https://github.com/BrackRat/BrBlog" target="_blank">BrBlog</a>
        </p>
      </div>
    </div>

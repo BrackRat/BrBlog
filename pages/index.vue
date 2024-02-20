@@ -3,6 +3,7 @@
 import MoreButton from "~/components/MoreButton.vue";
 import ShadowImage from "~/components/ShadowImage.vue";
 import type { OnlyTitle} from "~/server/types/article";
+import {checkSupportBrowser} from "~/composables/supportCheck";
 
 const loading = ref(false)
 const articleTitles = ref<OnlyTitle[]>([])
@@ -36,7 +37,7 @@ fetchHome()
 
 
     <!--  弥散光  -->
-    <div class="w-full h-full overflow-hidden absolute">
+    <div v-if="checkSupportBrowser()" class="w-full h-full overflow-hidden absolute">
       <!--   头像下   -->
       <div
           class="top-[80px] left-[50px] rotate-[-45deg] w-[200px] h-[620px] blur-[200px] absolute  bg-primary -z-50">
