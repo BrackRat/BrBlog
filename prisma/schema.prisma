@@ -6,13 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
-
-// Status
-// 0  Active
-// 1  Deleted
 
 model Article {
   id          Int    @id @default(autoincrement())
