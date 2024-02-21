@@ -18,7 +18,7 @@ export const deleteArticle = (id: number) => {
     return prisma.article.delete({where: {id: id}})
 }
 
-export const getArticle = (page: number, getall: boolean = false, pageSize: number = 3) => {
+export const getArticle = (page: number, getall: boolean = false, pageSize: number = 10) => {
     const skip: number = (page - 1) * pageSize;
 
     let query: Prisma.ArticleFindManyArgs = {

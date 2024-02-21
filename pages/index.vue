@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import MoreButton from "~/components/MoreButton.vue";
 import ShadowImage from "~/components/ShadowImage.vue";
-import type { OnlyTitle} from "~/server/types/article";
+import type {OnlyTitle} from "~/server/types/article";
 import {checkSupportBrowser} from "~/composables/supportCheck";
 
 useSeoMeta({
@@ -21,7 +21,7 @@ async function fetchHome() {
     const response = await useFetch(`/api/article/home`, {
       method: 'GET',
     })
-    const { code, data } = response.data.value
+    const {code, data} = response.data.value
     if (code === 200) {
       articleTitles.value = data
       articleTitles.value = articleTitles.value.sort((a, b) => b.publishTime - a.publishTime);
@@ -71,7 +71,8 @@ fetchHome()
     <!--  BR Hero  -->
     <div class="flex flex-col lg:flex-row relative justify-around w-full lg:px-32 lg:mb-24">
       <div class="w-32 ml-8 lg:w-[330px] lg:h-[330px] pt-8 lg:pt-32">
-        <nuxt-img class="rounded-full shadow-2xl" src="https://static.brackrat.com/blog/2024/02/9911384e6b7ef52a4c87efc6415e0630.png"></nuxt-img>
+        <nuxt-img class="rounded-full shadow-2xl"
+                  src="https://static.brackrat.com/blog/2024/02/9911384e6b7ef52a4c87efc6415e0630.png"></nuxt-img>
       </div>
 
       <div class="flex flex-col -mt-4 justify-end px-12 lg:pl-32">
@@ -86,12 +87,14 @@ fetchHome()
     <div class="flex flex-col px-8 lg:flex-row relative w-full lg:px-16 justify-around pt-32 lg:pt-64">
 
       <!--   移动显示   -->
-      <ShadowImage class="block self-center md:hidden" image="https://static.brackrat.com/2024/02/19/65d30518e651e.jpg" shadow_x="-top-2"
+      <ShadowImage class="block self-center md:hidden" image="https://static.brackrat.com/2024/02/19/65d30518e651e.jpg"
+                   shadow_x="-top-2"
                    shadow_y="left-2" height="200px" width="300px" rounded="rounded-tr-[100px]"/>
 
 
       <!--   宽屏显示   -->
-      <ShadowImage class="hidden md:block" image="https://static.brackrat.com/2024/02/19/65d30518e651e.jpg" shadow_x="-top-6" shadow_y="left-6"
+      <ShadowImage class="hidden md:block" image="https://static.brackrat.com/2024/02/19/65d30518e651e.jpg"
+                   shadow_x="-top-6" shadow_y="left-6"
                    height="330px" width="500px" rounded="rounded-tr-[100px]"/>
 
 
@@ -101,16 +104,22 @@ fetchHome()
 
         <div class="font-noto-serif font-medium flex flex-col space-y-2 pt-4  lg:text-xl">
 
-          <div v-for="(item, idx) in articleTitles" >
-            <div @click="$router.push('/article/' + item.shortTitle)"  class="transition-all pb-2 lg:w-[550px] text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
-              {{ item.title }}
+          <div v-for="(item, idx) in articleTitles">
+
+
+            <div class="transition-all pb-2 lg:w-[550px] text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
+              <NuxtLink :to="'/article/' + item.shortTitle">
+                {{ item.title }}
+              </NuxtLink>
             </div>
+
             <div v-if="idx !== articleTitles.length-1" class="br-divide"/>
           </div>
 
         </div>
-
-        <MoreButton @click="$router.push('/blog')"/>
+        <NuxtLink to="/blog">
+          <MoreButton />
+        </NuxtLink>
 
       </div>
     </div>
@@ -119,17 +128,23 @@ fetchHome()
       <ElegantTitle text="PROJECTS"/>
 
       <div class="flex flex-col space-y-16 lg:space-y-0 lg:flex-row font-noto-serif font-medium justify-around pt-8">
-          <ElegantWithTitle text="波西的博客" height="360px" width="270px" rounded="rounded-tr-[100px]" image="https://static.brackrat.com/blog/2024/02/749c4335e864d4f324a4a75507a9747f.png" shadow_x="-top-6" shadow_y="left-6" />
+        <ElegantWithTitle text="波西的博客" height="360px" width="270px" rounded="rounded-tr-[100px]"
+                          image="https://static.brackrat.com/blog/2024/02/749c4335e864d4f324a4a75507a9747f.png"
+                          shadow_x="-top-6" shadow_y="left-6"/>
 
-          <ElegantWithTitle text="The Lady with an Ermine" height="360px" width="270px" rounded="rounded-t-full" image="https://static.brackrat.com/blog/2024/02/ff0e52564d5963accd9241b159d108f9.png" shadow_x="top-6" shadow_y="right-6" />
+        <ElegantWithTitle text="The Lady with an Ermine" height="360px" width="270px" rounded="rounded-t-full"
+                          image="https://static.brackrat.com/blog/2024/02/ff0e52564d5963accd9241b159d108f9.png"
+                          shadow_x="top-6" shadow_y="right-6"/>
 
-          <ElegantWithTitle text="The Tower of Babel" height="360px" width="270px" rounded="rounded-bl-[100px]" image="https://static.brackrat.com/2024/02/19/65d3051a033f9.jpg" shadow_x="top-6" shadow_y="right-6" />
+        <ElegantWithTitle text="The Tower of Babel" height="360px" width="270px" rounded="rounded-bl-[100px]"
+                          image="https://static.brackrat.com/2024/02/19/65d3051a033f9.jpg" shadow_x="top-6"
+                          shadow_y="right-6"/>
 
       </div>
 
-<!--      <div class="self-center lg:self-start pt-4 lg:pl-32 ">-->
-<!--        <MoreButton/>-->
-<!--      </div>-->
+      <!--      <div class="self-center lg:self-start pt-4 lg:pl-32 ">-->
+      <!--        <MoreButton/>-->
+      <!--      </div>-->
 
 
     </div>
