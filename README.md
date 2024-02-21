@@ -1,43 +1,70 @@
 # BrBlog
 
-Nuxt Fullstack Blog Site
+优雅之上的个人博客网站。
 
-## Home
+欢迎来到文艺复兴时期。
 
-![index.png](docs%2Fimages%2Findex.png)
+## ✨ 特征
 
-## Blogs
+1. 🌟 **SEO Friendly** 由 Nuxt3 驱动。
+2. 🖼 **Renaissance** UI设计将带你回到 14-16 世纪
+3. 📑 **Backend** 支持后台发布/编辑文章等
+4. 📝 **Markdown** 使用轻量的标记语言编写文章
+5. ⚡ **Lightning** 性能优秀
 
-![blogs.png](docs%2Fimages%2Fblogs.png)
+## 🛠️ 技术栈
 
-## Friends
+- Nuxt3
+- Tailwind CSS
+- Prisma
+- Md-editor-v3
+- Pinia
+- Giscus
 
-![friends.png](docs%2Fimages%2Ffriends.png)
+## 📑 部署文档
 
-## About
+施工中...
 
-![about.png](docs%2Fimages%2Fabout.png)
+## 📷 截图
 
-## Article
+### Home
 
-![article.png](docs%2Fimages%2Farticle.png)
+![home](./docs/images/index.png)
 
-## Admin
+### Blogs
 
-![admin.png](docs%2Fimages%2Fadmin.png)
+![](./docs/images/blogs.png)
 
-## Admin Home
+### Friends
 
-![adminIndex.png](docs%2Fimages%2FadminIndex.png)
+![](./docs/images/friends.png)
 
-## Admin Article
+### About
 
-![adminArticle.png](docs%2Fimages%2FadminArticle.png)
+![](./docs/images/about.png)
 
-## Admin Article Edit
+### Article
 
-![adminArticleEdit.png](docs%2Fimages%2FadminArticleEdit.png)
+![](./docs/images/article.png)
 
-## Admin Friends
+### Admin Home
 
-![adminFriends.png](docs%2Fimages%2FadminFriends.png)
+![](./docs/images/admin.png)
+
+### Admin Article
+
+![](./docs/images/adminArticle.png)
+
+### Admin Article Edit
+
+![](./docs/images/adminArticleEdit.png)
+
+### Admin Friends
+
+![](./docs/images/adminFriends.png)
+
+## 😺 关于
+
+AGPL-3.0 license
+
+2024 © BrackRat
