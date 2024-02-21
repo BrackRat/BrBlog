@@ -6,22 +6,22 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model Article {
-  id          Int    @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   title       String
   desc        String
   cover       String
-  content     String
-  viewCount   Int    @default(0)
+  content     String? @db.LongText
+  viewCount   Int     @default(0)
   tag         String
   createTime  Int
   publishTime Int
-  status      Int    @default(0)
-  shortTitle  String @unique
+  status      Int     @default(0)
+  shortTitle  String  @unique
 }
 
 model Friend {
