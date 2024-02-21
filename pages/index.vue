@@ -119,7 +119,7 @@ fetchHome()
       <ElegantTitle text="PROJECTS"/>
 
       <div class="flex flex-col space-y-16 lg:space-y-0 lg:flex-row font-noto-serif font-medium justify-around pt-8">
-          <ElegantWithTitle text="波西的博客" height="360px" width="270px" rounded="rounded-tr-[100px]" image="https://static.brackrat.com/blog/2024/02/4c0b83d36108880784d19a452f7c363a.png" shadow_x="-top-6" shadow_y="left-6" />
+          <ElegantWithTitle text="波西的博客" height="360px" width="270px" rounded="rounded-tr-[100px]" image="https://static.brackrat.com/blog/2024/02/749c4335e864d4f324a4a75507a9747f.png" shadow_x="-top-6" shadow_y="left-6" />
 
           <ElegantWithTitle text="The Lady with an Ermine" height="360px" width="270px" rounded="rounded-t-full" image="https://static.brackrat.com/blog/2024/02/ff0e52564d5963accd9241b159d108f9.png" shadow_x="top-6" shadow_y="right-6" />
 
