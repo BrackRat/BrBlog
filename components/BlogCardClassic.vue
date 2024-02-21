@@ -53,9 +53,12 @@ onMounted(()=>{
           {{article.desc}}
         </div>
         <div class="flex pt-8 lg:pt-16 self-center lg:self-start">
-          <div @click="$router.push('/article/' + article.shortTitle)" class=" active:scale-95 flex px-10 py-2 transition-all  hover:bg-primary hover:bg-opacity-10  font-[500] justify-center items-center text-[24px] hover:cursor-pointer text-primary border-button">
-            Explore
-          </div>
+          <NuxtLink :to="'/article/' + article.shortTitle">
+            <div  class=" active:scale-95 flex px-10 py-2 transition-all  hover:bg-primary hover:bg-opacity-10  font-[500] justify-center items-center text-[24px] hover:cursor-pointer text-primary border-button">
+              Explore
+            </div>
+          </NuxtLink>
+
         </div>
       </div>
 
