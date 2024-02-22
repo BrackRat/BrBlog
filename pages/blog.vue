@@ -142,7 +142,9 @@ main()
         <div>
           <div class="flex pt-24 relative flex-col justify-center items-center w-full">
 
-            <ElegantTitle text="BLOGS"/>
+            <AnimElegant>
+              <ElegantTitle text="BLOGS"/>
+            </AnimElegant>
 
             <div v-if="!loadPrevButtonDisable" @click="fetchPage(false)"
                  class="flex font-noto-serif pt-8 lg:pt-24 self-center">
@@ -156,17 +158,24 @@ main()
               </div>
             </div>
 
-            <div v-auto-animate>
+            <div>
               <div v-if="loadingPrev" class="hidden lg:block animate-pulse">
-                <BlogCardClassicSkeleton/>
+                <AnimElegant delay="300" initial-y="-50">
+
+                  <BlogCardClassicSkeleton/>
+                </AnimElegant>
               </div>
 
               <div v-for="(item, index) in articles" :key="index">
-                <BlogCardClassic class="space-y-96" :article="item" :reverse="generateReverse(index)"/>
+                <AnimElegant>
+                  <BlogCardClassic class="space-y-96" :article="item" />
+                </AnimElegant>
               </div>
 
               <div v-if="loading" class="hidden lg:block animate-pulse">
-                <BlogCardClassicSkeleton/>
+                <AnimElegant delay="200">
+                  <BlogCardClassicSkeleton/>
+                </AnimElegant>
               </div>
             </div>
 

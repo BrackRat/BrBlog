@@ -3,10 +3,6 @@ import type {Article} from "~/server/types/article";
 import ShadowImage from "~/components/ShadowImage.vue";
 
 const props = defineProps({
-  reverse: {
-    type: String,
-    required: true,
-  },
   article: {
     type: Object as PropType<Article>,
     required: true,
