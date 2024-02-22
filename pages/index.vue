@@ -15,6 +15,36 @@ useSeoMeta({
 const loading = ref(false)
 const articleTitles = ref<OnlyTitle[]>([])
 
+const projects = ref([
+  {
+    text: "波西的博客",
+    height: "360px",
+    width: "270px",
+    rounded: "rounded-tr-[100px]",
+    image: "https://static.brackrat.com/blog/2024/02/749c4335e864d4f324a4a75507a9747f.png",
+    shadow_x: "-top-6",
+    shadow_y: "left-6"
+  },
+  {
+    text: "The Lady with an Ermine",
+    height: "360px",
+    width: "270px",
+    rounded: "rounded-t-full",
+    image: "https://static.brackrat.com/blog/2024/02/ff0e52564d5963accd9241b159d108f9.png",
+    shadow_x: "top-6",
+    shadow_y: "right-6"
+  },
+  {
+    text: "The Tower of Babel",
+    height: "360px",
+    width: "270px",
+    rounded: "rounded-bl-[100px]",
+    image: "https://static.brackrat.com/2024/02/19/65d3051a033f9.jpg",
+    shadow_x: "top-6",
+    shadow_y: "right-6"
+  }
+]);
+
 async function fetchHome() {
   loading.value = true
   try {
@@ -70,89 +100,113 @@ fetchHome()
 
     <!--  BR Hero  -->
     <div class="flex flex-col lg:flex-row relative justify-around w-full lg:px-32 lg:mb-24">
-      <div class="w-32 ml-8 lg:w-[330px] lg:h-[330px] pt-8 lg:pt-32">
-        <nuxt-img class="rounded-full shadow-2xl"
-                  src="https://static.brackrat.com/blog/2024/02/9911384e6b7ef52a4c87efc6415e0630.png"></nuxt-img>
-      </div>
+      <AnimElegant>
+        <div class="w-32 ml-8 lg:w-[330px] lg:h-[330px] pt-8 lg:pt-32">
+          <nuxt-img class="rounded-full shadow-2xl"
+                    src="https://static.brackrat.com/blog/2024/02/9911384e6b7ef52a4c87efc6415e0630.png"></nuxt-img>
+        </div>
+      </AnimElegant>
+
 
       <div class="flex flex-col -mt-4 justify-end px-12 lg:pl-32">
-        <p class="text-secondary text-[32px] font-[300] -mb-8 lg:text-[72px] lg:-mb-16 self-end opacity-50">
-          Revalidate</p>
-        <p class="text-secondary text-[64px] font-[500] lg:text-[140px] lg:-mb-8 self-end lg:font-[600]">BrackRat</p>
-        <p class="text-content lg:text-[18px] max-w-[450px]">With a clear direction in mind, day by day, there will be
-          progress.</p>
+        <AnimElegant delay="300" class="-mb-8 lg:-mb-16 self-end">
+          <p class="text-secondary text-[32px] font-[300] lg:text-[72px] opacity-50">
+            Revalidate</p>
+        </AnimElegant>
+
+        <AnimElegant class="self-end" delay="400">
+          <p class="text-secondary text-[64px] font-[500] lg:text-[140px] lg:-mb-8  lg:font-[600]">BrackRat</p>
+        </AnimElegant>
+
+        <AnimElegant delay="500">
+          <p class="text-content lg:text-[18px] max-w-[450px]">With a clear direction in mind, day by day, there will be
+            progress.</p>
+        </AnimElegant>
       </div>
     </div>
 
-    <div class="flex flex-col px-8 lg:flex-row relative w-full lg:px-16 justify-around pt-32 lg:pt-64">
+    <div v-if="articleTitles.length <= 0" class="h-lvh">
+      <!--      占位     -->
+    </div>
 
-      <!--   移动显示   -->
-      <ShadowImage class="block self-center md:hidden" image="https://static.brackrat.com/2024/02/19/65d30518e651e.jpg"
-                   shadow_x="-top-2"
-                   shadow_y="left-2" height="200px" width="300px" rounded="rounded-tr-[100px]"/>
+    <!--    Blogs    -->
+    <!--    Max Delay 300    -->
+    <div v-if="articleTitles.length>0"
+         class="flex  lg:mr-32 flex-col  lg:flex-row relative w-full lg:px-16 justify-center items-center lg:justify-between pt-32 lg:pt-64">
+
+      <AnimElegant >
+        <!--   移动显示   -->
+        <ShadowImage class="block  md:hidden"
+                     image="https://static.brackrat.com/2024/02/19/65d30518e651e.jpg"
+                     shadow_x="-top-2"
+                     shadow_y="left-2" height="200px" width="300px" rounded="rounded-tr-[100px]"/>
+
+      </AnimElegant>
+
+      <AnimElegant delay="200">
+        <!--   宽屏显示   -->
+        <ShadowImage class="hidden md:block" image="https://static.brackrat.com/2024/02/19/65d30518e651e.jpg"
+                     shadow_x="-top-6" shadow_y="left-6"
+                     height="400px" width="600px" rounded="rounded-tr-[100px]"/>
+
+      </AnimElegant>
 
 
-      <!--   宽屏显示   -->
-      <ShadowImage class="hidden md:block" image="https://static.brackrat.com/2024/02/19/65d30518e651e.jpg"
-                   shadow_x="-top-6" shadow_y="left-6"
-                   height="330px" width="500px" rounded="rounded-tr-[100px]"/>
+      <AnimElegant delay="300">
+        <div class="flex flex-col ">
 
+          <ElegantTitle text="BLOGS"/>
 
-      <div class="flex flex-col ">
+          <div class="font-noto-serif font-medium flex flex-col space-y-2 pt-4  lg:text-xl">
 
-        <ElegantTitle text="BLOGS"/>
+            <!--          <div v-if="articleTitles.length <=0" v-for="_ in [1,2,3,4]">-->
+            <!--            <div-->
+            <!--                class="bg-primary opacity-20 h-8  transition-all pb-2 lg:w-[550px] text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">-->
 
-        <div class="font-noto-serif font-medium flex flex-col space-y-2 pt-4  lg:text-xl">
+            <!--            </div>-->
+            <!--          </div>-->
 
-          <div v-for="(item, idx) in articleTitles">
+            <div v-for="(item, idx) in articleTitles">
+              <div
+                  class="transition-all pb-2 lg:w-[550px] text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
+                <NuxtLink :to="'/article/' + item.shortTitle">
+                  {{ item.title }}
+                </NuxtLink>
+              </div>
 
-
-            <div class="transition-all pb-2 lg:w-[550px] text-content active:opacity-80 lg:hover:opacity-80 hover:cursor-pointer">
-              <NuxtLink :to="'/article/' + item.shortTitle">
-                {{ item.title }}
-              </NuxtLink>
+              <div v-if="idx !== articleTitles.length-1" class="br-divide"/>
             </div>
 
-            <div v-if="idx !== articleTitles.length-1" class="br-divide"/>
           </div>
+          <NuxtLink to="/blog">
+            <MoreButton/>
+          </NuxtLink>
 
         </div>
-        <NuxtLink to="/blog">
-          <MoreButton />
-        </NuxtLink>
+      </AnimElegant>
 
-      </div>
     </div>
 
-    <div class="flex relative flex-col w-full px-4 py-32 lg:px-16 lg:py-32 text-secondary ">
-      <ElegantTitle text="PROJECTS"/>
+    <!--   Projects   -->
+    <!--   Init Delay 400   -->
+    <!--   Max Delay X   -->
+    <div v-if="articleTitles.length > 0"
+         class="flex relative flex-col w-full px-4 py-32 lg:px-16 lg:py-32 text-secondary ">
+      <AnimElegant>
+        <ElegantTitle text="PROJECTS"/>
+      </AnimElegant>
 
       <div class="flex flex-col space-y-16 lg:space-y-0 lg:flex-row font-noto-serif font-medium justify-around pt-8">
-        <ElegantWithTitle text="波西的博客" height="360px" width="270px" rounded="rounded-tr-[100px]"
-                          image="https://static.brackrat.com/blog/2024/02/749c4335e864d4f324a4a75507a9747f.png"
-                          shadow_x="-top-6" shadow_y="left-6"/>
-
-        <ElegantWithTitle text="The Lady with an Ermine" height="360px" width="270px" rounded="rounded-t-full"
-                          image="https://static.brackrat.com/blog/2024/02/ff0e52564d5963accd9241b159d108f9.png"
-                          shadow_x="top-6" shadow_y="right-6"/>
-
-        <ElegantWithTitle text="The Tower of Babel" height="360px" width="270px" rounded="rounded-bl-[100px]"
-                          image="https://static.brackrat.com/2024/02/19/65d3051a033f9.jpg" shadow_x="top-6"
-                          shadow_y="right-6"/>
-
+        <div v-for="(item, index) in projects" :key="index">
+          <AnimElegant :delay="index * 100">
+            <ElegantWithTitle :key="index" v-bind="item"/>
+          </AnimElegant>
+        </div>
       </div>
-
       <!--      <div class="self-center lg:self-start pt-4 lg:pl-32 ">-->
       <!--        <MoreButton/>-->
       <!--      </div>-->
-
-
     </div>
-
-
-    <!--      <div class="w-32 h-32 bg-slate-400" @click="blogStore.articlePublishTest()">-->
-    <!--        PUBLISH-->
-    <!--      </div>-->
 
   </div>
 </template>

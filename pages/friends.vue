@@ -19,7 +19,7 @@ async function fetchFriends() {
     const response = await useFetch(`/api/friend/get`, {
       method: 'GET',
     })
-    const { code, data } = response.data.value
+    const {code, data} = response.data.value
     if (code === 200) {
       friends.value = data
       loading.value = false
@@ -71,24 +71,32 @@ fetchFriends()
     </div>
 
 
-    <div class="relative w-full h-full flex flex-col justify-center items-center">
-      <ElegantTitle text="FRIENDS" />
+    <div class="relative flex flex-col justify-center items-center">
+      <AnimElegant>
+        <ElegantTitle text="FRIENDS"/>
+      </AnimElegant>
+
+      <div v-if="friends.length <= 0" class="h-lvh">
+
+      </div>
 
 
       <div class="flex flex-col items-center pt-16 px-12 gap-y-14 lg:grid lg:grid-cols-2 lg:gap-x-12 lg:gap-y-12">
-        <FriendCard v-for="friend in friends" :key="friend.name" :name="friend.name" :avatar="friend.avatar" :screenshot="friend.screenshot" :link="friend.link" />
+        <AnimElegant :delay="idx * 100" v-for="(friend, idx) in friends" :key="friend.name">
+          <FriendCard :name="friend.name" :avatar="friend.avatar" :screenshot="friend.screenshot" :link="friend.link"/>
+        </AnimElegant>
       </div>
 
       <div class="w-4/5 max-w-full lg:w-[800px] pt-24 pb-16">
-        <MDRender :content="md" />
+        <AnimElegant v-if="friends.length > 0">
+          <MDRender :content="md"/>
+        </AnimElegant>
       </div>
 
       <div class="w-4/5 max-w-full lg:w-[800px] pt-14 pb-16">
-        <Comment />
+        <Comment/>
       </div>
     </div>
-
-
 
 
   </div>

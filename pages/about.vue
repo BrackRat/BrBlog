@@ -25,8 +25,7 @@ const about = `# BrackRat
 
 ### Creativity
 
-![Static Badge](https://img.shields.io/badge/Adobe%20Photoshop-000000?style=for-the-badge&logo=adobe%20Photoshop&logoColor=white&color=%23062038)
-![Static Badge](https://img.shields.io/badge/Adobe%20After%20Effects-000000?style=for-the-badge&logo=Adobe%20After%20Effects&logoColor=white&color=%23070857)![](https://img.shields.io/badge/Adobe%20Audition-000000?style=for-the-badge&logo=Adobe%20Audition&color=%23070857)![](https://img.shields.io/badge/Adobe%20Premiere%20Pro-000000?style=for-the-badge&logo=Adobe%20Premiere%20Pro&color=%23070857)![Static Badge](https://img.shields.io/badge/Adobe%20Illustrator-000000?style=for-the-badge&logo=Adobe%20Illustrator&color=%2332080B)![Static Badge](https://img.shields.io/badge/DaVinci%20Resolve-000000?style=for-the-badge&logo=DaVinci%20Resolve&color=%23253A51)
+![Static Badge](https://img.shields.io/badge/Adobe%20Photoshop-000000?style=for-the-badge&logo=adobe%20Photoshop&logoColor=white&color=%23062038)![Static Badge](https://img.shields.io/badge/Adobe%20After%20Effects-000000?style=for-the-badge&logo=Adobe%20After%20Effects&logoColor=white&color=%23070857)![](https://img.shields.io/badge/Adobe%20Audition-000000?style=for-the-badge&logo=Adobe%20Audition&color=%23070857)![](https://img.shields.io/badge/Adobe%20Premiere%20Pro-000000?style=for-the-badge&logo=Adobe%20Premiere%20Pro&color=%23070857)![Static Badge](https://img.shields.io/badge/Adobe%20Illustrator-000000?style=for-the-badge&logo=Adobe%20Illustrator&color=%2332080B)![Static Badge](https://img.shields.io/badge/DaVinci%20Resolve-000000?style=for-the-badge&logo=DaVinci%20Resolve&color=%23253A51)
 
 ### Languages
 
@@ -74,10 +73,17 @@ useSeoMeta({
 
 
     <div class="relative w-full h-full flex flex-col justify-center items-center">
+      <AnimElegant>
+
       <ElegantTitle text="ABOUT" />
+      </AnimElegant>
+
 
       <div class="w-4/5 max-w-full lg:w-[800px] pt-14 pb-16">
+        <AnimElegant delay="200">
+
         <MDRender class="max-w-full" :content="about" />
+        </AnimElegant>
       </div>
 
 
