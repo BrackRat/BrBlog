@@ -31,6 +31,9 @@ async function fetchArticles(page: number = 1, loadingItem: Ref<boolean>) {
   if (page === 1) {
     loadPrevButtonDisable.value = true
   }
+  if (!page){
+    page = 1
+  }
   loadingItem.value = true
   try {
     const response = await useFetch(`/api/article/get?page=${page}`, {
@@ -68,6 +71,7 @@ const isInitedPage = ref(false)
 const currentPage = ref(1)
 
 function initPage() {
+
   if (!route.query.page) {
     currentPage.value = 1
     pageStatus.value = {
@@ -109,7 +113,7 @@ function fetchPage(nextDirection: boolean = true) {
   // 考虑缓存问题
   // 如果向下请求，则请求 pageStatus.max++
   // 如果向上请求，则请求 pageStatus.min++
-  let dynamicPage = -1
+  let dynamicPage
 
   if (nextDirection) {
     dynamicPage = pageStatus.value.max + 1
@@ -160,7 +164,7 @@ main()
 
             <div>
               <div v-if="loadingPrev" class="hidden lg:block animate-pulse">
-                <AnimElegant delay="300" initial-y="-50">
+                <AnimElegant :delay="300" initial-y="-50">
 
                   <BlogCardClassicSkeleton/>
                 </AnimElegant>
@@ -173,7 +177,7 @@ main()
               </div>
 
               <div v-if="loading" class="hidden lg:block animate-pulse">
-                <AnimElegant delay="200">
+                <AnimElegant :delay="200">
                   <BlogCardClassicSkeleton/>
                 </AnimElegant>
               </div>
