@@ -125,7 +125,7 @@ fetchArticle()
         </div>
 
 
-        <div class="h-lvh">
+        <div class="min-h-screen">
             <MDRender class="w-full" :content="article.content"/>
         </div>
 
