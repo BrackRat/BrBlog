@@ -109,16 +109,16 @@ fetchHome()
 
 
       <div class="flex flex-col -mt-4 justify-end px-12 lg:pl-32">
-        <AnimElegant delay="300" class="-mb-8 lg:-mb-16 self-end">
+        <AnimElegant :delay="300" class="-mb-8 lg:-mb-16 self-end">
           <p class="text-secondary text-[32px] font-[300] lg:text-[72px] opacity-50">
             Revalidate</p>
         </AnimElegant>
 
-        <AnimElegant class="self-end" delay="400">
+        <AnimElegant class="self-end" :delay="400">
           <p class="text-secondary text-[64px] font-[500] lg:text-[140px] lg:-mb-8  lg:font-[600]">BrackRat</p>
         </AnimElegant>
 
-        <AnimElegant delay="500">
+        <AnimElegant :delay="500">
           <p class="text-content lg:text-[18px] max-w-[450px]">With a clear direction in mind, day by day, there will be
             progress.</p>
         </AnimElegant>
@@ -143,7 +143,7 @@ fetchHome()
 
       </AnimElegant>
 
-      <AnimElegant delay="200">
+      <AnimElegant :delay="200">
         <!--   宽屏显示   -->
         <ShadowImage class="hidden md:block" image="https://static.brackrat.com/2024/02/19/65d30518e651e.jpg"
                      shadow_x="-top-6" shadow_y="left-6"
@@ -152,7 +152,7 @@ fetchHome()
       </AnimElegant>
 
 
-      <AnimElegant delay="300">
+      <AnimElegant :delay="300">
         <div class="flex flex-col ">
 
           <ElegantTitle text="BLOGS"/>

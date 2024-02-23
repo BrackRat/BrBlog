@@ -80,7 +80,7 @@ useSeoMeta({
 
 
       <div class="w-4/5 max-w-full lg:w-[800px] pt-14 pb-16">
-        <AnimElegant delay="200">
+        <AnimElegant :delay="200">
 
         <MDRender class="max-w-full" :content="about" />
         </AnimElegant>
