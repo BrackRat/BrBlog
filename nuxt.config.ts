@@ -8,10 +8,19 @@ export default defineNuxtConfig({
         '@nuxt/image',
         '@formkit/auto-animate/nuxt',
         '@vueuse/motion/nuxt',
-        'nuxt-icon'
+        'nuxt-icon',
     ],
     app: {
         pageTransition: {name: 'page', mode: 'out-in'},
+        head:{
+            script:[
+                {
+                    async: true,
+                    src: 'https://analytics.us.umami.is/script.js',
+                    'data-website-id': '6524c96d-3029-473e-bf39-2ef1b06faef8',
+                },
+            ],
+        }
     },
     css: ["md-editor-v3/lib/style.css"],
     // devtools: {enabled: true}
