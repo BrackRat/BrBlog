@@ -19,7 +19,7 @@
     "@vueuse/motion": "^2.1.0",
     "jsonwebtoken": "^9.0.2",
     "md-editor-v3": "^4.11.2",
-    "nuxt": "^3.11.2",
+    "nuxt": "^3.17.5",
     "pinia": "^2.1.7",
     "vue": "^3.4.19",
     "vue-router": "^4.2.5"
