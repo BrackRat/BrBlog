@@ -1,7 +1,8 @@
 // @ts-ignore
 import jwt from 'jsonwebtoken';
 
-function extractToken(authHeader: string): string | null {
+function extractToken(authHeader: string | undefined | null): string | null {
+    if (!authHeader) return null;
     const bearerPrefix = 'Bearer ';
     if (authHeader.startsWith(bearerPrefix)) {
         return authHeader.substring(bearerPrefix.length);
@@ -9,9 +10,11 @@ function extractToken(authHeader: string): string | null {
     return null;
 }
 
-export function verifyToken(token: string): boolean {
+export function verifyToken(token: string | undefined | null): boolean {
+    const extracted = extractToken(token);
+    if (!extracted) return false;
     try {
-        const decoded = jwt.verify(extractToken(token), process.env.JWT_SECRET);
+        const decoded = jwt.verify(extracted, process.env.JWT_SECRET as string);
         return !!decoded;
 
     } catch (error) {
@@ -29,11 +32,13 @@ export default defineEventHandler(event => {
         '/api/friend/delete',
     ]
 
-    if (needAuthRoutes.includes(event.path)) {
-        const token: string = event.headers.get('Authorization') as string;
+    const path = event.path.split('?')[0];
+
+    if (needAuthRoutes.includes(path)) {
+        const token = event.headers.get('Authorization');
         if (verifyToken(token)) {
         } else {
-            return {code: 404, msg: "Authorization Failed"}
+            return {code: 401, msg: "Authorization Failed"}
         }
     }
 });

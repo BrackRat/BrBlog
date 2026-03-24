@@ -3,7 +3,6 @@ export default defineNuxtConfig({
     pages: true,
     modules: [
         '@nuxtjs/tailwindcss',
-        '@nuxt/content',
         '@pinia/nuxt',
         '@nuxt/image',
         '@formkit/auto-animate/nuxt',
