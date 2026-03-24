@@ -1,5 +1,5 @@
-// @ts-ignore
 import jwt from 'jsonwebtoken';
+import { defineEventHandler } from 'h3';
 
 function extractToken(authHeader: string | undefined | null): string | null {
     if (!authHeader) return null;
@@ -32,7 +32,7 @@ export default defineEventHandler(event => {
         '/api/friend/delete',
     ]
 
-    const path = event.path.split('?')[0];
+    const path = event.path?.split('?')[0] || '';
 
     if (needAuthRoutes.includes(path)) {
         const token = event.headers.get('Authorization');
