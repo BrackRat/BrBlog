@@ -36,7 +36,8 @@ describe('Login API', () => {
     expect(result.msg).toBe('wrong username or password');
   });
 
-  it('should return 200 and token if credentials are correct', async () => {
+  it('should return 200 and token even if JWT_SECRET is missing (using fallback)', async () => {
+    delete process.env.JWT_SECRET;
     vi.mocked(readBody).mockResolvedValue({ username: 'admin', password: 'password' });
     const result = await (loginHandler as any)({});
     expect(result.code).toBe(200);

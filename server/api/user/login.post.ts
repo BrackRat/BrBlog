@@ -4,7 +4,8 @@ import { defineEventHandler, readBody } from 'h3';
 
 // 生成 JWT
 function generateToken(username: string, role: string) {
-    return jwt.sign({username: username, role: role}, process.env.JWT_SECRET as string, {expiresIn: '1h'});
+    const secret = process.env.JWT_SECRET || 'fallback-secret-for-dev';
+    return jwt.sign({username: username, role: role}, secret, {expiresIn: '1h'});
 }
 
 

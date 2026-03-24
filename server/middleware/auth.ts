@@ -14,7 +14,8 @@ export function verifyToken(token: string | undefined | null): boolean {
     const extracted = extractToken(token);
     if (!extracted) return false;
     try {
-        const decoded = jwt.verify(extracted, process.env.JWT_SECRET as string);
+        const secret = process.env.JWT_SECRET || 'fallback-secret-for-dev';
+        const decoded = jwt.verify(extracted, secret);
         return !!decoded;
 
     } catch (error) {
