@@ -1,46 +1,22 @@
-FROM node:18-alpine3.17 as build
-
-# update and install the latest dependencies for the alpine version
-RUN apk update && apk upgrade
-
-# 切换工作目录
+ARG NODE_IMAGE=node:22-bookworm-slim@sha256:83f487e0a63425e5b4d146fb5e5be574bcbe1b7b843d3ebafdd95eaf7767a7e5
+FROM ${NODE_IMAGE} AS base
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends openssl dumb-init \
+    && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 
-# 克隆项目
-RUN apk add --no-cache git \
-    && git clone https://github.com/BrackRat/BrBlog.git .
+FROM base AS build
+ENV NUXT_TELEMETRY_DISABLED=1
+COPY package.json package-lock.json ./
+# Nuxt prepare needs project files; run it explicitly after copying the source.
+RUN npm ci --ignore-scripts --no-audit --no-fund
+COPY . .
+RUN npx prisma generate && npm run postinstall && npm run build
 
-# install all the project npm dependencies
-RUN  npm install
-
-# build the nuxt project to generate the artifacts in .output directory
-RUN npx prisma generate
-RUN npx nuxt build
-
-# we are using multi stage build process to keep the image size as small as possible
-FROM node:18-alpine3.17
-
-# update and install latest dependencies, add dumb-init package
-# add a non root user
-RUN apk update && apk upgrade && apk add dumb-init && adduser -D nuxtuser
-
-# set non root user
-USER nuxtuser
-
-# set work dir as app
-WORKDIR /app
-
-# copy the output directory to the /app directory from
-# build stage with proper permissions for user nuxt user
-COPY --chown=nuxtuser:nuxtuser --from=build /app/.output ./
-
-# expose port on container
+FROM base AS runtime
+ENV NODE_ENV=production HOST=0.0.0.0 PORT=3000
+COPY --from=build --chown=node:node /app/.output /app/.output
+USER node
 EXPOSE 3000
-
-# set app host and port . In nuxt 3 this is based on nitro and you can read
-#more on this https://nitro.unjs.io/deploy/node#environment-variables
-ENV HOST=0.0.0.0 PORT=3000 NODE_ENV=production
-
-# start the app with dumb init to spawn the Node.js runtime process
-# with signal support
-CMD ["dumb-init","node","/app/server/index.mjs"]
+ENTRYPOINT ["dumb-init", "--"]
+CMD ["node", ".output/server/index.mjs"]
