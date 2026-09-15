@@ -1,3 +1,5 @@
+import { defineAdminEventHandler } from '~/server/utils/auth';
+import { readBody } from 'h3';
 // @ts-ignore
 import {ArticleToPublish, ArticleWithContent} from "~/server/types/article";
 import {createArticle} from "~/server/db/article";
@@ -11,7 +13,7 @@ function transformArticle(article:ArticleWithContent):ArticleToPublish{
     return temp
 }
 
-export default defineEventHandler(async (event) => {
+export default defineAdminEventHandler(async (event) => {
     const article:ArticleWithContent = await readBody(event)
     const tArticle = transformArticle(article)
     const result = await createArticle(tArticle)

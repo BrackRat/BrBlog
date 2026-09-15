@@ -1,5 +1,6 @@
+import { defineEventHandler, getQuery, getRouterParam } from 'h3';
 import { getArticleWithContent} from "~/server/db/article";
-import {verifyToken} from "~/server/middleware/auth";
+import {verifyToken} from "~/server/utils/auth";
 
 export default defineEventHandler(async (event) => {
     const shortTitle = getRouterParam(event, 'shortTitle') as string;

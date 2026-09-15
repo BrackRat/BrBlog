@@ -20,7 +20,6 @@ async function login() {
       method: 'POST',
       body:user.value
     },)
-    console.log(response)
     if (response.code === 200) {
       blogStore.token = `Bearer ${response.token}`
       await router.push({path: "/admin"})
