@@ -1,5 +1,6 @@
+import { defineEventHandler, getQuery } from 'h3';
 import {getFriends} from "~/server/db/friend";
-import {verifyToken} from "~/server/middleware/auth";
+import {verifyToken} from "~/server/utils/auth";
 
 export default defineEventHandler(async (event) => {
     const query = getQuery(event)

@@ -1,46 +1,47 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+// @vitest-environment node
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import crypto from 'node:crypto';
+import jwt from 'jsonwebtoken';
+import { readBody, type H3Event } from 'h3';
+import loginHandler from './login.post';
 
-// Use vi.mock for h3 before importing handler
-vi.mock('h3', () => ({
-  defineEventHandler: vi.fn((handler) => handler),
-  readBody: vi.fn(),
+vi.mock('h3', async importOriginal => ({
+    ...await importOriginal<typeof import('h3')>(),
+    readBody: vi.fn(),
 }));
 
-import { defineEventHandler, readBody } from 'h3';
-import loginHandler from './login.post';
-import crypto from 'crypto';
+beforeEach(() => {
+    vi.clearAllMocks();
+    vi.stubEnv('ADMIN_USERNAME', 'admin');
+    vi.stubEnv('ADMIN_HASHED_PASSWORD', crypto.createHash('sha256').update('password').digest('hex'));
+    vi.stubEnv('JWT_SECRET', 'test-secret');
+});
+afterEach(() => vi.unstubAllEnvs());
 
-// In case they are still not available as globals (Nuxt magic)
-(global as any).defineEventHandler = defineEventHandler;
-(global as any).readBody = readBody;
+const login = async (body: unknown) => {
+    vi.mocked(readBody).mockResolvedValue(body);
+    return loginHandler({} as H3Event);
+};
 
 describe('Login API', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-    process.env.ADMIN_USERNAME = 'admin';
-    process.env.ADMIN_HASHED_PASSWORD = crypto.createHash('sha256').update('password').digest('hex');
-    process.env.JWT_SECRET = 'secret';
-  });
-
-  it('should return 400 if username or password is missing', async () => {
-    vi.mocked(readBody).mockResolvedValue({});
-    const result = await (loginHandler as any)({});
-    expect(result.code).toBe(400);
-    expect(result.msg).toBe('missing username or password');
-  });
-
-  it('should return 401 if credentials are wrong', async () => {
-    vi.mocked(readBody).mockResolvedValue({ username: 'admin', password: 'wrongpassword' });
-    const result = await (loginHandler as any)({});
-    expect(result.code).toBe(401);
-    expect(result.msg).toBe('wrong username or password');
-  });
-
-  it('should return 200 and token even if JWT_SECRET is missing (using fallback)', async () => {
-    delete process.env.JWT_SECRET;
-    vi.mocked(readBody).mockResolvedValue({ username: 'admin', password: 'password' });
-    const result = await (loginHandler as any)({});
-    expect(result.code).toBe(200);
-    expect(result.token).toBeDefined();
-  });
+    it.each([null, undefined, {}, [], 'text', { username: 'admin', password: 42 },
+        { username: {}, password: 'password' }, { username: 'admin', password: '' }])('rejects invalid input %j', async body => {
+        expect((await login(body)).code).toBe(400);
+    });
+    it('rejects incorrect credentials', async () => {
+        expect((await login({ username: 'admin', password: 'wrong' })).code).toBe(401);
+    });
+    it.each(['JWT_SECRET', 'ADMIN_USERNAME', 'ADMIN_HASHED_PASSWORD'])('does not issue a token without %s', async key => {
+        vi.stubEnv(key, '');
+        const result = await login({ username: 'admin', password: 'password' });
+        expect(result.code).toBe(503);
+        expect(result).not.toHaveProperty('token');
+    });
+    it('issues an HS256 admin token with a one-hour expiry', async () => {
+        const result = await login({ username: 'admin', password: 'password' });
+        expect(result.code).toBe(200);
+        const payload = jwt.verify(result.token!, 'test-secret', { algorithms: ['HS256'] }) as jwt.JwtPayload;
+        expect(payload).toMatchObject({ username: 'admin', role: 'admin' });
+        expect(payload.exp! - payload.iat!).toBe(3600);
+    });
 });

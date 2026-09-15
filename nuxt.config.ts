@@ -22,5 +22,5 @@ export default defineNuxtConfig({
         }
     },
     css: ["md-editor-v3/lib/style.css"],
-    // devtools: {enabled: true}
+    devtools: { enabled: false },
 })

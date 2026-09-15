@@ -1,6 +1,7 @@
+import { defineEventHandler, getQuery } from 'h3';
 // @ts-ignore
 import {getArticle, getCount} from "~/server/db/article";
-import {verifyToken} from "~/server/middleware/auth";
+import {verifyToken} from "~/server/utils/auth";
 
 export default defineEventHandler(async (event) => {
     const query = getQuery(event)
